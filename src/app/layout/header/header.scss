@@ -1,0 +1,32 @@
+
+.ocultar-busqueda, .ocultar-palabrabarra, .coloca-izquierda{
+    display: none;
+}
+
+li{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.color-borde{
+    border-color: #00B8D4 !important;
+
+}
+
+i{
+    font-size: 1.5rem;
+}
+
+@media(max-width:991.98px){
+    .ocultar-busqueda{
+        display: block;
+    }
+}
+@media(min-width:767.98px){
+    .ocultar-palabrabarra{
+        display: block;
+    }
+}
+.navbar-collapse.show .ocultar-palabrabarra {
+    display: inline !important;
+}
