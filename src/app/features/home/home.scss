@@ -1,0 +1,106 @@
+.main-wrapper {
+    max-width: 1400px;
+    margin: 15px auto;
+    padding: 0 20px;
+
+    &.bg-color-fondo {
+        background-color: #B9F6FF;
+    }
+
+    h2{
+        font-weight: bolder;
+    }
+}
+
+.cards-container {
+    background-color: #c0f0f7;
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.custom-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+
+    .img-wrapper {
+        height: 450px;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .card-info {
+        background: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 0 0 10px 10px;
+        flex-grow: 1;
+    }
+}
+
+
+
+// Media Query para móviles
+@media (max-width: 600px) {
+    .overlay-container .music-note {
+        display: none;
+    }
+}
+
+
+@media (max-width: 576px) {
+    html {
+        font-size: 14px;
+        /* Al reducir la base, todo lo que use 'rem' se encogerá */
+    }
+
+    /* 2. Ajuste del Contenedor de Login */
+    .main-container {
+        width: 95% !important;
+        /* Que ocupe casi todo el ancho en móvil */
+        padding: 1rem;
+    }
+
+    .signup-card {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+
+    /* 3. Ajuste de las Cards de fondo */
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        /* Apilar cards en vertical en móvil */
+        gap: 1rem;
+        padding: 10px;
+    }
+
+    .custom-card {
+        width: 100% !important;
+        /* Ocupar todo el ancho disponible */
+    }
+
+    /* 4. Navbar: Ajustar iconos para que no se amontonen */
+    .nav-link {
+        padding: 0.5rem 0.2rem !important;
+        font-size: 0.9rem;
+    }
+}
+
+/* 5. Asegurar que las imágenes no se desborden */
+img {
+    max-width: 100%;
+    height: auto;
+}
