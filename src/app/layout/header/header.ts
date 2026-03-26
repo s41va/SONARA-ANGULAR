@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,10 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './header.scss',
 })
 export class Header {
-  isLoggedIn$!:Observable<Boolean>;
-  constructor(private auth: AuthService){
-    this.isLoggedIn$=this.auth.isLoggedIn();
-  }
+  private auth = inject(AuthService);
+
+  // 1. LLAMAMOS a la función del servicio para obtener el Observable
+  isLoggedIn$ = this.auth.isLoggedIn();
   logout():void{
     this.auth.logout('/login');
   }

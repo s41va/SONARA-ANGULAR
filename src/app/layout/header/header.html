@@ -14,42 +14,52 @@
                             <span class="ocultar-palabrabarra">Home </span>
 
                         </a>
-                    </li>                 
+                    </li>
 
                     @if(isLoggedIn$ | async){
-                        <li class="nav-item text-sm-center text-start border-3 color-borde border-end">
-                            <a routerLink="/mapa" class="nav-link">
-                                <i class="bi bi-map"></i>
-                                <span class="ocultar-palabrabarra">Mapa</span>
-                            </a>
-                        </li>
-                        <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
-                            <a routerLink="/chat" class="nav-link">
-                                <i class="bi bi-chat-left-dots"></i>
-                                <span class="ocultar-palabrabarra">Chats</span>
-                            </a>
-                        </li>
-                        <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
-                            <a routerLink="/ticket" class="nav-link">
-                                <i class="bi bi-ticket-perforated"></i>
-                                <span class="ocultar-palabrabarra">Tickets</span>
-                            </a>
-                        </li>
-                        <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ocultar-busqueda">
-                            <a routerLink="/search" class="nav-link ">
-                                <i class="bi bi-search"></i>
-                                <span class="ocultar-palabrabarra">Busqueda</span>
-                            </a>
-                        </li>
-                        <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
-                            <a routerLink="/profile" class="nav-link">
-                                <i class="bi bi-person"></i>
-                                <span class="ocultar-palabrabarra">Perfil</span>
-                            </a>
-                        </li>
-                        <li><a routerLink="#" (click)="logout(); $event.preventDefault()"></a></li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde border-end">
+                        <a routerLink="/mapa" class="nav-link">
+                            <i class="bi bi-map"></i>
+                            <span class="ocultar-palabrabarra">Mapa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
+                        <a routerLink="/chat" class="nav-link">
+                            <i class="bi bi-chat-left-dots"></i>
+                            <span class="ocultar-palabrabarra">Chats</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
+                        <a routerLink="/ticket" class="nav-link">
+                            <i class="bi bi-ticket-perforated"></i>
+                            <span class="ocultar-palabrabarra">Tickets</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ocultar-busqueda">
+                        <a routerLink="/search" class="nav-link ">
+                            <i class="bi bi-search"></i>
+                            <span class="ocultar-palabrabarra">Busqueda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
+                        <a routerLink="/profile" class="nav-link">
+                            <i class="bi bi-person"></i>
+                            <span class="ocultar-palabrabarra">Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ">
+                        <a href="javascript:void(0)" class="nav-link" (click)="logout();  $event.preventDefault()">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span class="">Logout</span>
+                        </a>
+                    </li>
                     }@else {
-                        <li><a routerLink="/login">Login</a></li>
+                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
+                        <a routerLink="/login" class="nav-link ">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span class="">Login</span>
+                        </a>
+                    </li>
                     }
                     <li class="nav-item border-3 color-borde  border-end">
                         <a href="#" class="nav-link">

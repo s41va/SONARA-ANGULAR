@@ -41,7 +41,7 @@ export class Login {
       next: (res) => {
         // El AuthService guarda el token automáticamente.
         // Puedes usar el message si quieres enseñarlo:
-        // console.log(res.message);
+        console.log(this.username);
 
         this.loading = false;
         this.router.navigate(['/regions']);
