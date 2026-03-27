@@ -7,7 +7,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collaseNavbarContent">
-                <ul class="navbar-nav me-auto w-100 ">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item text-sm-center text-start border-3 color-borde border-start border-end ">
                         <a routerLink="/" class="nav-link">
                             <i class="bi bi-house"></i>
@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ">
-                        <a href="javascript:void(0)" class="nav-link" (click)="logout();  $event.preventDefault()">
+                        <a routerLink="#" class="nav-link" (click)="logout();  $event.preventDefault()">
                             <i class="bi bi-box-arrow-right"></i>
                             <span class="">Logout</span>
                         </a>

@@ -1,11 +1,20 @@
 
-.ocultar-busqueda, .ocultar-palabrabarra, .coloca-izquierda{
+/* .ocultar-busqueda, .ocultar-palabrabarra, .coloca-izquierda{
+    display: none;
+} */
+
+.ocultar-busqueda{
     display: none;
 }
 
 li{
     padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+.navbar-nav{
+    flex-grow: 1;
 }
 
 .color-borde{
