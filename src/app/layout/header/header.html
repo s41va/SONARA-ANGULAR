@@ -11,7 +11,7 @@
                     <li class="nav-item text-sm-center text-start border-3 color-borde border-start border-end ">
                         <a routerLink="/" class="nav-link">
                             <i class="bi bi-house"></i>
-                            <span class="ocultar-palabrabarra">Home </span>
+                            <span class="ocultar-palabrabarra">{{'NAVBAR.HOME' | translate }} </span>
 
                         </a>
                     </li>
@@ -20,7 +20,7 @@
                     <li class="nav-item text-sm-center text-start border-3 color-borde border-end">
                         <a routerLink="/mapa" class="nav-link">
                             <i class="bi bi-map"></i>
-                            <span class="ocultar-palabrabarra">Mapa</span>
+                            <span class="ocultar-palabrabarra">{{'NAVBAR.MAP' | translate }}</span>
                         </a>
                     </li>
                     <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
@@ -62,9 +62,13 @@
                     </li>
                     }
                     <li class="nav-item border-3 color-borde  border-end">
-                        <a href="#" class="nav-link">
-                            Idioma
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-translate"></i>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" (click)="changeLanguage('es')">Español</a></li>
+                            <li><a class="dropdown-item" (click)="changeLanguage('en')">English</a></li>
+                        </ul>
                     </li>
 
                 </ul>

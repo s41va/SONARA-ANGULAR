@@ -1,0 +1,12 @@
+{
+  "NAVBAR": {
+    "HOME": "Inicio",
+    "MAP": "Mapa",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar Sesión",
+    "USER": "Usuario",
+    "PASS": "Contraseña"
+  }
+}

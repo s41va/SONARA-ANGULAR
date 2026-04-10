@@ -4,20 +4,34 @@ import { RouterLink } from "@angular/router";
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { inject } from '@angular/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   standalone:true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
+  // Inyecciones modernas
   private auth = inject(AuthService);
+  private translate = inject(TranslateService);
 
-  // 1. LLAMAMOS a la función del servicio para obtener el Observable
+  // Observable de estado
   isLoggedIn$ = this.auth.isLoggedIn();
-  logout():void{
+
+  constructor() {
+    // Configuración inicial
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');
+  }
+
+  changeLanguage(lang: string) {
+    this.translate.use(lang);
+  }
+
+  logout(): void {
     this.auth.logout('/login');
   }
 }
