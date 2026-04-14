@@ -44,31 +44,47 @@
                     <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
                         <a routerLink="/profile" class="nav-link">
                             <i class="bi bi-person"></i>
-                            <span class="ocultar-palabrabarra">Perfil</span>
+                            <span class="ocultar-palabrabarra">{{'NAVBAR.PROFILE' | translate }}</span>
                         </a>
                     </li>
+                    @if(isAdmin$ | async) {
+
+                    <li class="nav-item text-sm-center text-start border-3 color-borde border-end">
+                        <a routerLink="/admin/gestion" class="nav-link">
+                            <i class="bi bi-sliders"></i>
+                            <span class="ocultar-palabrabarra">{{'ADMIN.MANAGE' | translate }}</span>
+                        </a>
+                    </li>
+                    }
                     <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ">
                         <a routerLink="#" class="nav-link" (click)="logout();  $event.preventDefault()">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span class="">Logout</span>
+                            <span class="ocultar-palabrabarra">{{'LOGIN.LOGOUT' | translate }}</span>
                         </a>
                     </li>
                     }@else {
                     <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
-                        <a routerLink="/login" class="nav-link ">
+                        <a routerLink="/login" class="nav-link">
                             <i class="bi bi-box-arrow-in-right"></i>
-                            <span class="">Login</span>
+                            <span class="ocultar-palabrabarra">{{'LOGIN.TITLE' | translate }}</span>
                         </a>
                     </li>
                     }
-                    <li class="nav-item border-3 color-borde  border-end">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    <li class="nav-item" ngbDropdown>
+                        <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2"
+                            ngbDropdownToggle>
                             <i class="bi bi-translate"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" (click)="changeLanguage('es')">Español</a></li>
-                            <li><a class="dropdown-item" (click)="changeLanguage('en')">English</a></li>
-                        </ul>
+                            <span>{{ currentLang | uppercase }}</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <div ngbDropdownMenu>
+                            <button ngbDropdownItem (click)="changeLanguage('es')">
+                                🇪🇸 Español
+                            </button>
+                            <button ngbDropdownItem (click)="changeLanguage('en')">
+                                🇬🇧 English
+                            </button>
+                        </div>
                     </li>
 
                 </ul>

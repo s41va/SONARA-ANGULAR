@@ -1,0 +1,10 @@
+<div class="dashboard-container">
+  @for (item of menuOptions; track item.title) {
+    <div class="card" (click)="navigate(item.route)">
+      <div class="card-content">
+        <h3>{{ item.title }}</h3>
+        <i class="icon">{{ item.icon }}</i>
+      </div>
+    </div>
+  }
+</div>

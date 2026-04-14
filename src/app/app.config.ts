@@ -1,16 +1,13 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core'; // Añade importProvidersFrom
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch, HttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
-// --- Imports de Traducción ---
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// Función para buscar los archivos de idioma en la carpeta assets
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader{
-  return new TranslateHttpLoader(http, '/assets/i18n/', '.json') as any ;
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {
@@ -18,7 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    // --- Configuración de NGX-Translate ---
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
@@ -26,7 +22,7 @@ export const appConfig: ApplicationConfig = {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
         },
-        defaultLanguage: 'es' // Idioma por defecto
+        defaultLanguage: 'es'
       })
     )
   ]

@@ -7,97 +7,86 @@ import { map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environments';
 
 export interface AuthResponse {
- token: string;
- message: string;
+  token: string;
+  message: string;
 }
-
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
- /** Clave donde guardamos el token en el storage del navegador */
- private readonly TOKEN_KEY = 'auth_token';
+  private readonly TOKEN_KEY = 'auth_token';
+  private readonly isBrowser: boolean;
+  private token$ = new BehaviorSubject<string | null>(null);
 
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    @Inject(PLATFORM_ID) platformId: object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
 
- /** true si estamos en navegador; false si estamos en servidor (SSR) */
- private readonly isBrowser: boolean;
+    if (this.isBrowser) {
+      const savedToken = localStorage.getItem(this.TOKEN_KEY);
+      this.token$.next(savedToken);
+    }
+  }
 
+  login(username: string, password: string): Observable<AuthResponse> {
+    return this.http
+      .post<AuthResponse>(`${environment.apiUrl}/auth/authenticate`, { username, password })
+      .pipe(tap((res) => this.saveToken(res.token)));
+  }
 
- /**
-  * Guardamos el token en memoria con un BehaviorSubject.
-  * En SSR NO podemos leer localStorage, así que empezamos en null.
-  * En navegador, cargamos el token en el constructor.
-  */
- private token$ = new BehaviorSubject<string | null>(null);
+  private saveToken(token: string): void {
+    if (this.isBrowser) {
+      localStorage.setItem(this.TOKEN_KEY, token);
+    }
+    this.token$.next(token);
+  }
 
+  getToken(): string | null {
+    return this.token$.value;
+  }
 
- constructor(
-   private http: HttpClient,
-   private router: Router,
-   @Inject(PLATFORM_ID) platformId: object
- ) {
-   // Detecta si estamos en el navegador (donde existe localStorage)
-   this.isBrowser = isPlatformBrowser(platformId);
+  isLoggedIn(): Observable<boolean> {
+    return this.token$.pipe(map((token) => token !== null));
+  }
 
+  // Decodifica el payload del JWT (no valida firma, solo lee claims)
+  private decodeToken(): any | null {
+    const token = this.token$.value;
+    if (!token) return null;
+    try {
+      const payload = token.split('.')[1];
+      return JSON.parse(atob(payload));
+    } catch {
+      return null;
+    }
+  }
 
-   // Solo en navegador podemos leer localStorage
-   if (this.isBrowser) {
-     const savedToken = localStorage.getItem(this.TOKEN_KEY);
-     this.token$.next(savedToken);
-   }
- }
+  // Devuelve los roles del usuario, ej: ['ROLE_ADMIN']
+  getRoles(): string[] {
+    return this.decodeToken()?.roles ?? [];
+  }
 
+  // Comprueba si tiene un rol concreto
+  hasRole(role: string): boolean {
+    return this.getRoles().includes(role);
+  }
 
- /**
-  * Hace login contra el backend y, si va bien, guarda el token.
-  */
- login(username: string, password: string): Observable<AuthResponse> {
-   return this.http
-     .post<AuthResponse>(`${environment.apiUrl}/auth/authenticate`, { username, password })
-     .pipe(
-       tap((res) => this.saveToken(res.token))
-     );
- }
+  // Observables reactivos para usar en el template con async pipe
+  isAdmin(): Observable<boolean> {
+    return this.token$.pipe(map(() => this.hasRole('ROLE_ADMIN')));
+  }
 
+  isManager(): Observable<boolean> {
+    return this.token$.pipe(map(() => this.hasRole('ROLE_MANAGER')));
+  }
 
- /**
-  * Guarda el token:
-  * - en localStorage (solo si estamos en navegador)
-  * - y en el BehaviorSubject (para que la app reaccione al cambio)
-  */
- private saveToken(token: string): void {
-   if (this.isBrowser) {
-     localStorage.setItem(this.TOKEN_KEY, token);
-   }
-   this.token$.next(token);
- }
-
-
- /**
-  * Devuelve el token actual (o null si no hay).
-  */
- getToken(): string | null {
-   return this.token$.value;
- }
-
-
- /**
-  * Indica si el usuario está logueado (true si hay token).
-  */
- isLoggedIn(): Observable<boolean> {
-   return this.token$.pipe(map((token) => token !== null));
- }
-
-
- /**
-  * Cierra sesión:
-  * - borra el token (solo si estamos en navegador)
-  * - redirige al login
-  */
- logout(redirectTo: string = '/login'): void {
-   if (this.isBrowser) {
-     localStorage.removeItem(this.TOKEN_KEY);
-   }
-   this.token$.next(null);
-   this.router.navigate([redirectTo]);
- }
+  logout(redirectTo: string = '/login'): void {
+    if (this.isBrowser) {
+      localStorage.removeItem(this.TOKEN_KEY);
+    }
+    this.token$.next(null);
+    this.router.navigate([redirectTo]);
+  }
 }

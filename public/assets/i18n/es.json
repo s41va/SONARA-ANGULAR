@@ -2,11 +2,15 @@
   "NAVBAR": {
     "HOME": "Inicio",
     "MAP": "Mapa",
-    "LOGOUT": "Cerrar sesión"
+    "PROFILE": "Perfil"
   },
   "LOGIN": {
     "TITLE": "Iniciar Sesión",
     "USER": "Usuario",
-    "PASS": "Contraseña"
+    "PASS": "Contraseña",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "ADMIN": {
+    "MANAGE": "Gestión"
   }
 }

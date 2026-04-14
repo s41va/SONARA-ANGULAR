@@ -11,6 +11,11 @@ export const routes: Routes = [
     component: Home, // Ruta inicial
   },
   {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.routes').then(r => r.ADMIN_ROUTES)
+  },
+  {
     path: 'login',
     component: Login,
   },

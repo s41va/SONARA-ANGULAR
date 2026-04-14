@@ -1,0 +1,17 @@
+{
+  "NAVBAR": {
+    "HOME": "Home",
+    "MAP": "Map",
+    "LOGOUT": "Close Sesion",
+    "PROFILE": "Profile"
+  },
+  "LOGIN": {
+    "TITLE": "Log In",
+    "USER": "User",
+    "PASS": "Password",
+    "LOGOUT": "Log Out"
+  },
+  "ADMIN": {
+    "MANAGE": "Manage"
+  }
+}

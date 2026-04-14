@@ -44,7 +44,7 @@ export class Login {
         console.log(this.username);
 
         this.loading = false;
-        this.router.navigate(['/regions']);
+        this.router.navigate(['/']);
       },
       error: (err: unknown) => {
         this.loading = false;

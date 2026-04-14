@@ -1,0 +1,49 @@
+.dashboard-container {
+  display: grid;
+  // Crea dos columnas de igual tamaño
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; // Espacio entre tarjetas
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #00bcd4; // El color cian de tu imagen
+  border-radius: 15px;
+  padding: 30px;
+  color: #000; // Letras negras como en el diseño
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    filter: brightness(1.1);
+  }
+
+  h3 {
+    margin-bottom: 15px;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+
+  .icon {
+    font-size: 40px; // Tamaño del icono
+    /* Aquí puedes insertar tu lógica de imagen o SVG */
+  }
+}
+
+// Responsividad: En pantallas pequeñas, solo una columna
+@media (max-width: 600px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
