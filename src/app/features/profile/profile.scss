@@ -1,0 +1,73 @@
+$cyan-profile: #00B8D4;
+
+.profile-master-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+// ESTA ES LA CARD BLANCA: Ahora es mucho más ancha
+.profile-card-extra-wide {
+  background-color: #f8fdff; 
+  width: 100%;              // Ocupa casi todo el ancho de la pantalla
+  max-width: 1800px;       // El "doble" de lo que solía ser
+  padding: 80px;           // Mucho espacio alrededor
+  border-radius: 40px;
+  display: flex;
+  justify-content: center; // Centra el contenido dentro de la card gigante
+}
+
+// ESTE CONTENEDOR evita que los elementos se estiren feo
+.table-content-wrapper {
+  width: 100%;
+  max-width: 900px;        // Mantiene el tamaño original de tus elementos
+}
+
+.pill {
+  background-color: $cyan-profile;
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.bio-box {
+  background-color: $cyan-profile;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span { font-size: 2.2rem; }
+}
+
+.gustos-box {
+  background-color: $cyan-profile;
+  height: 120px;
+  border-radius: 15px;
+  padding: 15px;
+  span { font-size: 1.5rem; }
+}
+
+.foto-perfil-circle {
+  width: 140px;
+  height: 140px;
+  background-color: $cyan-profile;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.info-title {
+  color: #333;
+  font-weight: 300;
+}
+
+table { border-collapse: collapse; }
+td { padding: 5px 0; }

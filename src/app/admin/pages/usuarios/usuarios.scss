@@ -1,0 +1,67 @@
+.users-container {
+  padding: 20px;
+  background-color: #f8fdff; // Fondo muy suave basado en el azul claro
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    h2 {
+      color: #008ba3; // Un tono más oscuro del cian para el título
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+}
+
+.users-table {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+
+  th.mat-header-cell {
+    background-color: #00bcd4; // Tu color principal
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+  }
+
+  td.mat-cell {
+    padding: 12px;
+    border-bottom: 1px solid #B9F6FF; // Separador en color azul claro
+  }
+
+  tr:hover {
+    background-color: #f1feff; // Efecto hover sutil
+  }
+}
+
+// Botón personalizado con tu color
+.btn-cyan {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  &:hover {
+    background-color: #0097a7;
+    color: white;
+  }
+}
+
+.meta {
+  background: #B9F6FF;
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: #005662;
+  font-size: 0.9rem;
+}
+
+.loading-overlay {
+  text-align: center;
+  padding: 20px;
+  color: #00bcd4;
+}
