@@ -50,7 +50,7 @@ export class Usuarios implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.loadData();
+    setTimeout(()=>this.loadData());
   }
 
   ngAfterViewInit() {
