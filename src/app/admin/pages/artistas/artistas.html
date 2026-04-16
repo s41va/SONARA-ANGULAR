@@ -59,5 +59,8 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
+        <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+            [pageIndex]="currentPage" (page)="onPageChange($event)" aria-label="Seleccionar página de artistas">
+        </mat-paginator>
     </div>
 </section>

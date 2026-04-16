@@ -59,7 +59,7 @@ export class Artistas implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
-
+  
   loadData() {
     this.loading = true;
     this.error = null;

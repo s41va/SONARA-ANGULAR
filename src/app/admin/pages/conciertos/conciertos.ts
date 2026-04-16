@@ -38,17 +38,30 @@ export class Conciertos implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+
+  onPageChange(event: any) {
+    this.currentPage = event.pageIndex; // Angular Material empieza en 0
+    this.pageSize = event.pageSize;
+    this.loadData(); // Recargamos los datos con la nueva página
+  }
+
+
   loadData() {
     this.loading = true;
+    this.error = null;
+
+    // Enviamos currentPage y pageSize actuales al servidor
     this.conciertoService.fetchConciertos(this.currentPage, this.pageSize, 'fechaHora').subscribe({
       next: (res: any) => {
+        // Si usas Spring Boot (Pageable), los datos vienen en res.content
         this.dataSource.data = res.content || res;
         this.totalElements = res.totalElements || res.length;
         this.loading = false;
       },
-      error: () => {
+      error: (err) => {
         this.loading = false;
         this.error = 'Error al cargar los conciertos';
+        if (err.stats === 403) this.router.navigate(['/forbidden']);
       }
     });
   }

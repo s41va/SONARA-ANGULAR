@@ -1,0 +1,64 @@
+<section class="detail-container">
+  <div class="top-row">
+    <h2>Detalle del Concierto</h2>
+    <a routerLink="/admin/tickets" class="back-link">← Volver al listado</a>
+  </div>
+
+  @if (loading) {
+    <div class="loading-overlay">
+      <p class="info">Cargando detalles del concierto...</p>
+    </div>
+  }
+
+  @if (error) {
+    <p class="error-message" role="alert">{{ error }}</p>
+  }
+
+  @if (concierto) {
+    <div class="card">
+      <div class="row">
+        <span class="label">ID Sistema:</span>
+        <span class="value">{{ concierto.id }}</span>
+      </div>
+      
+      <div class="row">
+        <span class="label">Artista:</span>
+        <span class="value">
+            <strong>{{ concierto.nombre || 'Desconocido' }}</strong>
+        </span>
+      </div>
+
+      <div class="row">
+        <span class="label">Fecha y Hora:</span>
+        <span class="value">{{ concierto.fechaHora | date:'medium' }}</span>
+      </div>
+      
+      <div class="row">
+        <span class="label">Recinto / Local:</span>
+        <span class="value">{{ concierto.local }}</span>
+      </div>
+    </div>
+
+    <h3>Descripción del Evento</h3>
+    <div class="card">
+       <div class="descripcion-box">
+         {{ concierto.descripcion }}
+       </div>
+    </div>
+
+    <h3>Ubicación</h3>
+    <div class="card">
+      @if (concierto.localidad) {
+        <div class="row">
+          <span class="label">Ciudad:</span>
+          <span class="value">
+            {{ concierto.localidad.nombreCiudad }}, {{ concierto.localidad.pais }} 
+            (ID: {{ concierto.localidad.id }})
+          </span>
+        </div>
+      } @else {
+        <p class="text-muted">No hay información de localidad asignada.</p>
+      }
+    </div>
+}
+</section>

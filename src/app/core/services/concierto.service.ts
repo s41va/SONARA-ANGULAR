@@ -19,6 +19,10 @@ export class ConciertoService {
     return this.http.get<Page<Concierto>>(this.baseUrl, { params });
   }
 
+  fetchConciertosById(id: number): Observable<Concierto>{
+    return this.http.get<Concierto>(`${this.baseUrl}/${id}`);
+  }
+
   deleteConcierto(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }

@@ -13,7 +13,7 @@ export class DashboardComponent {
   private router = inject(Router)
   menuOptions = [
     { title: 'Administrar Usuarios', icon: '👤', route: 'users' },
-    { title: 'Administrar Conciertos/Eventos', icon: '🏟️', route: 'tickets' },
+    { title: 'Administrar Conciertos/Eventos', icon: '🏟️', route: 'concierto' },
     { title: 'Administrar Artistas', icon: '🎵', route: 'artists' },
     { title: 'Administrar Mapa', icon: '🗺️', route: '/map' },
     { title: 'Administrar Estadísticas', icon: '📊', route: '/stats' },

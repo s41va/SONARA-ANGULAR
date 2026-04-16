@@ -1,7 +1,7 @@
 export interface Concierto {
   id: number;
   artistaId: string;
-  artistaNombre: string;
+  nombre: string;
   localidad?: any; // O la interfaz Localidad si la tienes
   fechaHora: Date | string;
   local: string;

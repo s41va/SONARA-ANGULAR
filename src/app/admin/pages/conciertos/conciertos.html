@@ -2,7 +2,7 @@
     <div class="title-row">
         <h2>Administración de Conciertos</h2>
         <div class="actions">
-            <a routerLink="/admin/tickets/new" class="btn btn-cyan">
+            <a routerLink="/admin/concierto/new" class="btn btn-cyan">
                 <i class="bi bi-ticket-perforated"></i> Nuevo Concierto
             </a>
             <span class="meta">Total: <strong>{{ totalElements }}</strong></span>
@@ -10,9 +10,9 @@
     </div>
 
     @if (loading) {
-        <div class="loading-overlay">
-            <p class="info">Cargando conciertos...</p>
-        </div>
+    <div class="loading-overlay">
+        <p class="info">Cargando conciertos...</p>
+    </div>
     }
 
     <div class="table-responsive">
@@ -26,7 +26,7 @@
             <ng-container matColumnDef="artista_nombre">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Artista</th>
                 <td mat-cell *matCellDef="let c">
-                    <strong>{{ c.artistaNombre }}</strong>
+                    <strong>{{ c.nombre }}</strong>
                     <small class="d-block text-muted">ID: {{ c.artistaId }}</small>
                 </td>
             </ng-container>
@@ -45,11 +45,9 @@
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let c">
                     <div class="btn-group btn-group-sm">
-                        <a [routerLink]="['/admin/tickets', c.id]" class="btn btn-outline-info">Ver</a>
-                        <a [routerLink]="['/admin/tickets', c.id, 'edit']" class="btn btn-outline-primary">Editar</a>
-                        <button 
-                            type="button" 
-                            class="btn btn-outline-danger"
+                        <a [routerLink]="['/admin/concierto', c.id]" class="btn btn-outline-info">Ver</a>
+                        <a [routerLink]="['/admin/concierto', c.id, 'edit']" class="btn btn-outline-primary">Editar</a>
+                        <button type="button" class="btn btn-outline-danger"
                             (click)="deleteConcierto(c.id, c.artistaNombre)">
                             Borrar
                         </button>
@@ -60,5 +58,8 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
+        <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+            [pageIndex]="currentPage" (page)="onPageChange($event)" aria-label="Seleccionar página de conciertos">
+        </mat-paginator>
     </div>
 </section>
