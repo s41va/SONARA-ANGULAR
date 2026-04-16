@@ -1,6 +1,6 @@
-.users-container {
+.artists-container {
   padding: 20px;
-  background-color: #f8fdff; 
+  background-color: #f8fdff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 
@@ -11,41 +11,48 @@
     margin-bottom: 25px;
 
     h2 {
-      color: #008ba3; 
+      color: #008ba3;
       margin: 0;
       font-weight: 500;
     }
   }
 }
 
-.users-table {
+.artists-table {
   width: 100%;
   background: white;
   border-radius: 8px;
   overflow: hidden;
 
   th.mat-header-cell {
-    background-color: #00bcd4; 
+    background-color: #00bcd4;
     color: white;
     font-weight: bold;
     padding: 15px;
+    // Alineación para los encabezados con ordenación
+    &.mat-sort-header-sorted {
+      color: #e0f7fa;
+    }
   }
 
   td.mat-cell {
     padding: 12px;
-    border-bottom: 1px solid #B9F6FF; 
+    border-bottom: 1px solid #B9F6FF;
   }
 
   tr:hover {
-    background-color: #f1feff; 
+    background-color: #f1feff;
   }
 }
-
 
 .btn-cyan {
   background-color: #00bcd4;
   color: white;
   border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   &:hover {
     background-color: #0097a7;
     color: white;
@@ -64,4 +71,16 @@
   text-align: center;
   padding: 20px;
   color: #00bcd4;
+  font-weight: 500;
+}
+
+// Estilo para los votos en la tabla
+.badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    &.bg-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
 }

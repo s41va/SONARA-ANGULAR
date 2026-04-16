@@ -1,0 +1,114 @@
+.tickets-container {
+  padding: 20px;
+  background-color: #f8fdff; // Fondo suave basado en el azul claro
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    h2 {
+      color: #008ba3; // Tono oscuro del cian para el título
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+}
+
+.tickets-table {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+
+  th.mat-header-cell {
+    background-color: #00bcd4; // Color principal de Sonara
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+
+  td.mat-cell {
+    padding: 12px;
+    border-bottom: 1px solid #B9F6FF; // Separador azul muy claro
+  }
+
+  tr:hover {
+    background-color: #f1feff; // Efecto hover sutil
+  }
+
+  // Estilos para el texto secundario (ID del artista bajo el nombre)
+  .text-muted {
+    font-size: 0.75rem;
+    color: #6c757d;
+  }
+}
+
+// Botón cian personalizado
+.btn-cyan {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #0097a7;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+// Etiqueta de total de elementos
+.meta {
+  background: #B9F6FF;
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: #005662;
+  font-size: 0.9rem;
+  font-weight: 400;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+// Overlay de carga
+.loading-overlay {
+  text-align: center;
+  padding: 40px;
+  
+  .info {
+    color: #00bcd4;
+    font-weight: 500;
+    margin: 0;
+    font-style: italic;
+  }
+}
+
+// Utilidades para grupos de botones
+.btn-group {
+  .btn {
+    border-radius: 4px;
+    margin: 0 2px;
+  }
+}
