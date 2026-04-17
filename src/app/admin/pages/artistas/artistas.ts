@@ -66,6 +66,7 @@ export class Artistas implements OnInit, AfterViewInit {
 
     this.artistaService.fetchArtistas(this.currentPage, this.pageSize, this.sortColumn).subscribe({
       next: (res: any) => {
+        console.log(res)
         // Adaptado para manejar tanto arrays simples como respuestas paginadas de Spring
         this.dataSource.data = res.content || res;
         this.totalElements = res.totalElements || res.length;

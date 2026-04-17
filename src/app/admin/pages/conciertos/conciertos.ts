@@ -53,12 +53,14 @@ export class Conciertos implements OnInit, AfterViewInit {
     // Enviamos currentPage y pageSize actuales al servidor
     this.conciertoService.fetchConciertos(this.currentPage, this.pageSize, 'fechaHora').subscribe({
       next: (res: any) => {
+        console.log(res);
         // Si usas Spring Boot (Pageable), los datos vienen en res.content
         this.dataSource.data = res.content || res;
         this.totalElements = res.totalElements || res.length;
         this.loading = false;
       },
       error: (err) => {
+        console.log(err);
         this.loading = false;
         this.error = 'Error al cargar los conciertos';
         if (err.stats === 403) this.router.navigate(['/forbidden']);

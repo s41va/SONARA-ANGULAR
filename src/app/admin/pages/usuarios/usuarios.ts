@@ -65,6 +65,7 @@ export class Usuarios implements OnInit, AfterViewInit {
     // Asumimos que fetchUsuarios sigue la misma lógica de paginación
     this.usuarioService.fetchUsuarios(this.currentPage, this.pageSize, this.sortColumn).subscribe({
       next: (res: any) => {
+        console.log(res)
         this.dataSource.data = res.content || res;
         this.totalElements = res.totalElements || res.length;
         this.loading = false;

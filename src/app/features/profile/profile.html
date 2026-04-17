@@ -6,7 +6,9 @@
         <tbody>
           <tr>
             <td style="width: 45%;">
-              <div class="foto-perfil-circle">Foto Perfil</div>
+              <div class="foto-perfil-circle">
+                <img src="assets/default-avatar.png" alt="Foto Perfil" style="border-radius: 50%; width: 100%;">
+              </div>
             </td>
             <td style="width: 10%;"></td> 
             <td style="width: 45%;" class="align-bottom text-end">
@@ -15,36 +17,64 @@
           </tr>
 
           <tr>
-            <td><div class="pill">Nombre</div></td>
+            <td>
+              <div class="pill">
+                <strong>Nombre:</strong> {{ usuario.nombre }}
+              </div>
+            </td>
             <td></td>
-            <td><div class="pill">Correo Electrónico</div></td>
+            <td>
+              <div class="pill">
+                <strong>Email:</strong> {{ usuario.email }}
+              </div>
+            </td>
           </tr>
 
           <tr>
-            <td><div class="pill mt-2">Nombre de Usuario</div></td>
+            <td>
+              <div class="pill mt-2">
+                <strong>ID Usuario:</strong> #{{ usuario.usuario_id }}
+              </div>
+            </td>
             <td></td>
-            <td><div class="pill mt-2">Teléfono</div></td>
+            <td>
+              <div class="pill mt-2">
+                <strong>Teléfono:</strong> No disponible
+              </div>
+            </td>
           </tr>
 
           <tr>
             <td rowspan="2" class="align-top">
               <div class="bio-box mt-3">
                 <span>BIOGRAFÍA</span>
+                <p class="mt-1 small text-muted">
+                  Miembro desde: {{ usuario?.fecha_registro | date:'dd/MM/yyyy' }}
+                </p>
               </div>
             </td>
             <td></td>
-            <td><div class="pill mt-2">País</div></td>
+            <td>
+              <div class="pill mt-2">
+                <strong>Localidad ID:</strong> {{ usuario.localidad_id || 'N/A' }}
+              </div>
+            </td>
           </tr>
 
           <tr>
             <td></td>
-            <td><div class="pill mt-2">Ciudad</div></td>
+            <td>
+              <div class="pill mt-2">
+                <strong>F. Nacimiento:</strong> {{ usuario.fecha_nacimiento || 'No definida' }}
+              </div>
+            </td>
           </tr>
 
           <tr>
             <td colspan="3">
               <div class="gustos-box mt-4">
                 <span>Gustos</span>
+                <div class="small mt-1">Interesado en actividades locales y eventos.</div>
               </div>
             </td>
           </tr>
