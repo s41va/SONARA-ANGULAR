@@ -1,0 +1,52 @@
+<section class="detail-container">
+  <div class="top-row">
+    <h2>Perfil del Artista</h2>
+    <a routerLink="/admin/artists" class="back-link">← Volver al listado</a>
+  </div>
+
+  @if (loading) {
+    <div class="loading-overlay">
+      <p>Cargando información del artista...</p>
+    </div>
+  }
+
+  @if (error) {
+    <p class="error-message">{{ error }}</p>
+  }
+
+  @if (artista) {
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="image-container">
+          <img [src]="artista.foto || 'assets/img/default-artist.png'" [alt]="artista.nombre">
+        </div>
+        <div class="basic-info">
+          <h1>{{ artista.nombre }}</h1>
+          <span class="genre-badge">{{ artista.genero || 'Género no especificado' }}</span>
+          <p class="id-tag">ID Sistema: {{ artista.id }}</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h3>Biografía</h3>
+        <div class="bio-box">
+          <p>{{ artista.biografia || 'Este artista aún no tiene una biografía registrada.' }}</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="label">Votos Ranking</span>
+          <span class="value">{{ artista.votosRanking || 0 }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Sitio Web</span>
+          <span class="value">
+            <a *ngIf="artista.web" [href]="artista.web" target="_blank">{{ artista.web }}</a>
+            <span *ngIf="!artista.web">No disponible</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  }
+</section>

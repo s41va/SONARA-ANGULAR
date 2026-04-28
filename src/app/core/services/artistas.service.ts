@@ -44,6 +44,16 @@ export class ArtistaService {
   }
 
   /**
+ * Obtiene un artista específico por su ID.
+ * @param id Identificador único del artista (string o number).
+ * @returns Observable con los datos del artista.
+ */
+  getArtistaById(id: string | number): Observable<any> {
+    // La URL final será algo como: http://localhost:8080/api/artista/174685
+    return this.http.get<any>(`${environment.apiUrl}/artistas/${id}`);
+  }
+
+  /**
    * Actualizar un artista existente
    */
   updateArtista(id: number, artista: Partial<Artista>): Observable<Artista> {

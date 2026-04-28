@@ -25,6 +25,16 @@ export const ADMIN_ROUTES: Routes = [
             import('./pages/artistas/artistas').then(c => c.Artistas)
     },
     {
+        path: 'artists/new',
+        loadComponent: () =>
+            import('./pages/artistas/artistas-create/artistas-create').then(c => c.ArtistasCreate)
+    },
+    {
+        path: 'artists/:id',
+        loadComponent: () =>
+            import('./pages/artistas/artistas-detail/artistas-detail').then(c => c.ArtistaDetail)
+    },
+    {
         path: 'concierto',
         loadComponent: () =>
             import('./pages/conciertos/conciertos').then(c => c.Conciertos)
