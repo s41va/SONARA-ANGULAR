@@ -4,6 +4,7 @@ import { Forbidden } from './features/forbidden/forbidden';
 import { Error404 } from './features/error404/error404';
 import { Login } from './features/login/login';
 import { Profile } from './features/profile/profile';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
     {
@@ -23,6 +24,7 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: Profile,
+    data: {role: 'USER'}
   },
   {
     path: 'forbidden',

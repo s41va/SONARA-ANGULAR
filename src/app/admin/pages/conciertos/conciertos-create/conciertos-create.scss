@@ -1,0 +1,52 @@
+.create-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      
+      label { font-weight: bold; margin-bottom: 0.5rem; color: #444; }
+      input, select, textarea {
+        padding: 0.6rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      &.full { grid-column: span 2; }
+    }
+
+    .btn-save {
+      background: #00bcd4;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      
+      &:disabled { background: #ccc; cursor: not-allowed; }
+    }
+  }
+}

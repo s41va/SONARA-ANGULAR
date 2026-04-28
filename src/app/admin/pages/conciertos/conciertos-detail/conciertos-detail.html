@@ -1,7 +1,7 @@
 <section class="detail-container">
   <div class="top-row">
     <h2>Detalle del Concierto</h2>
-    <a routerLink="/admin/tickets" class="back-link">← Volver al listado</a>
+    <a routerLink="/admin/concierto" class="back-link">← Volver al listado</a>
   </div>
 
   @if (loading) {
@@ -24,7 +24,7 @@
       <div class="row">
         <span class="label">Artista:</span>
         <span class="value">
-            <strong>{{ concierto.nombre || 'Desconocido' }}</strong>
+            <strong>{{ concierto.artista.nombre || 'Desconocido' }}</strong>
         </span>
       </div>
 

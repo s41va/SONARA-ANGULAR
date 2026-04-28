@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environments';
 import { Page } from '../models/pagination.model';
-import { Artista } from '../models/artistas.model'; 
+import { Artista } from '../models/artistas.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { Artista } from '../models/artistas.model';
 export class ArtistaService {
   private readonly baseUrl = `${environment.apiUrl}/artistas`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Obtener lista de artistas paginada y ordenada
@@ -21,7 +21,7 @@ export class ArtistaService {
       .set('page', page.toString())
       .set('size', size.toString())
       .set('sort', sort);
-    
+
     return this.http.get<Page<Artista>>(this.baseUrl, { params });
   }
 
@@ -30,6 +30,10 @@ export class ArtistaService {
    */
   fetchArtistaById(id: number): Observable<Artista> {
     return this.http.get<Artista>(`${this.baseUrl}/${id}`);
+  }
+
+  getArtistas(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/artistas`);
   }
 
   /**

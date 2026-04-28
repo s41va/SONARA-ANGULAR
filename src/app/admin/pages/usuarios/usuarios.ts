@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -30,7 +30,7 @@ import { UsuarioService } from '../../../core/services/usuario.service';
 })
 export class Usuarios implements OnInit, AfterViewInit {
   // Ajustado a los campos de tu tabla SQL
-  displayedColumns: string[] = ['usuario_id', 'nombre', 'email', 'fecha_registro', 'actions'];
+  displayedColumns: string[] = ['usuario_id', 'nombre', 'email','localidad_id', 'fecha_registro', 'actions'];
   dataSource = new MatTableDataSource<any>([]); 
 
   totalElements = 0;
@@ -46,11 +46,12 @@ export class Usuarios implements OnInit, AfterViewInit {
 
   constructor(
     private usuarioService: UsuarioService, 
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    setTimeout(()=>this.loadData());
+    this.loadData();
   }
 
   ngAfterViewInit() {
@@ -69,6 +70,7 @@ export class Usuarios implements OnInit, AfterViewInit {
         this.dataSource.data = res.content || res;
         this.totalElements = res.totalElements || res.length;
         this.loading = false;
+        this.cdr.detectChanges()
       },
       error: (err) => {
         this.loading = false;

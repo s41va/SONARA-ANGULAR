@@ -7,7 +7,10 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
   const token = auth.getToken();
 
+  console.log('Interceptor Token:', token);
+
   if(!token){
+    console.warn('Request sent WITHOUT token to:', req.url);
     return next(req);
   }
 

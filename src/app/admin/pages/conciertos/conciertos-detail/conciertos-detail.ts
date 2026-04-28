@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ConciertoService } from '../../../../core/services/concierto.service';
@@ -18,7 +18,8 @@ export class ConciertoDetail implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private conciertoService: ConciertoService
+    private conciertoService: ConciertoService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -28,19 +29,25 @@ export class ConciertoDetail implements OnInit {
     }
   }
 
-  loadConcierto(id: number): void {
-    this.loading = true;
-    this.conciertoService.fetchConciertosById(id).subscribe({
-      next: (data) => {
-        console.log('Respuesta del servidor:', data);
-        this.concierto = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.log('error Capturado:', err);
-        this.error = 'No se pudo cargar la información del concierto.';
-        this.loading = false;
+ loadConcierto(id: number): void {
+  this.loading = true;
+  this.conciertoService.fetchConciertosById(id).subscribe({
+    next: (response: any) => {
+      // Your existing unwrapping logic
+      if (response && response.content) {
+        this.concierto = response.content[0];
+      } else {
+        this.concierto = response;
       }
-    });
-  }
+
+      this.loading = false;
+      this.cdr.detectChanges(); // 3. Force the UI to update!
+    },
+    error: (err) => {
+      this.error = 'Error';
+      this.loading = false;
+      this.cdr.detectChanges(); 
+    }
+  });
+}
 }

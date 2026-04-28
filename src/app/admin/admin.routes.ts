@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { adminGuard } from './guards/admin-guard';
 import { DashboardComponent } from './pages/dashboard/dashboard';
+import { authGuard } from '../core/guards/auth-guard';
 
 export const ADMIN_ROUTES: Routes = [
     {
@@ -29,9 +30,16 @@ export const ADMIN_ROUTES: Routes = [
             import('./pages/conciertos/conciertos').then(c => c.Conciertos)
     },
     {
+        path: 'concierto/new',
+        loadComponent: () =>
+            import('./pages/conciertos/conciertos-create/conciertos-create').then(c => c.ConciertosCreate),
+        canActivate: [authGuard]
+    },
+    {
         path: 'concierto/:id',
         loadComponent: () =>
-            import('./pages/conciertos/conciertos-detail/conciertos-detail').then(c => c.ConciertoDetail)
+            import('./pages/conciertos/conciertos-detail/conciertos-detail').then(c => c.ConciertoDetail),
+        canActivate: [authGuard]
     },
     {
         path: 'roles',

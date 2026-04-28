@@ -1,40 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../../core/models/usuario.model'; // Asegúrate de que la ruta sea correcta
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { Usuario } from '../../core/models/usuario.model';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-perfil',
-  imports:[CommonModule],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './profile.html',
   styleUrls: ['./profile.scss']
 })
 export class Profile implements OnInit {
+  public usuario: Usuario | null = null;
 
-  // Inicializamos el objeto para evitar errores de "undefined" en la vista
-  public usuario: Usuario = {
-    usuario_id: 0,
-    nombre: '',
-    email: '',
-    fecha_registro: new Date()
-  };
-
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    @Inject(PLATFORM_ID) private platformId: object // Para saber si es navegador
+  ) { }
 
   ngOnInit(): void {
-    this.cargarDatosUsuario();
+  if (isPlatformBrowser(this.platformId)) {
+    this.authService.getUser().subscribe(user => {
+      console.log('Datos actuales en el servicio:', user);
+      
+      if (user) {
+        this.usuario = user;
+      } else {
+        // Si el usuario es null pero tenemos token, pedimos los datos a la API
+        console.log('Usuario null, intentando recuperar perfil del servidor...');
+        this.authService.fetchUserProfile().subscribe({
+          next: (userFetched) => {
+            if (userFetched) {
+              this.usuario = userFetched;
+            }
+          },
+          error: (err) => console.error('No se pudo recuperar el perfil', err)
+        });
+      }
+    });
   }
-
-  /**
-   * Simula la carga de datos del usuario logueado.
-   * En una app real, aquí llamarías a tu AuthService o a un LocalStorage.
-   */
-  cargarDatosUsuario(): void {
-    // Ejemplo de cómo recuperarías el usuario de la sesión (puedes adaptarlo)
-    const datosSesion = localStorage.getItem('usuario_logueado');
-
-    if (datosSesion) {
-      this.usuario = JSON.parse(datosSesion);
-    };
-  }
-
+}
 }

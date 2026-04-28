@@ -9,7 +9,7 @@ import { Page } from '../models/pagination.model';
 export class ConciertoService {
   private readonly baseUrl = `${environment.apiUrl}/concierto`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   fetchConciertos(page: number, size: number, sort: string): Observable<Page<Concierto>> {
     const params = new HttpParams()
@@ -19,8 +19,12 @@ export class ConciertoService {
     return this.http.get<Page<Concierto>>(this.baseUrl, { params });
   }
 
-  fetchConciertosById(id: number): Observable<Concierto>{
+  fetchConciertosById(id: number): Observable<Concierto> {
     return this.http.get<Concierto>(`${this.baseUrl}/${id}`);
+  }
+
+  createConcierto(conciertoData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}`, conciertoData);
   }
 
   deleteConcierto(id: number): Observable<void> {

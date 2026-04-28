@@ -1,9 +1,18 @@
 export interface Concierto {
   id: number;
-  artistaId: string;
-  nombre: string;
-  localidad?: any; // O la interfaz Localidad si la tienes
-  fechaHora: Date | string;
+  artista: {
+    id: number;
+    nombre: string;
+    foto?: string;
+    biografia?: string;
+  };
+  localidad: {
+    id: number;
+    nombreCiudad: string;
+    pais: string;
+    codigoPostal: string;
+  };
+  fechaHora: string; // ISO string from backend
   local: string;
   descripcion: string;
 }

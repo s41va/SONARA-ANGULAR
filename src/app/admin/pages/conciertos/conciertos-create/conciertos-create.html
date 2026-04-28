@@ -1,1 +1,49 @@
-<p>conciertos-create works!</p>
+<section class="create-container">
+  <div class="header">
+    <h2>Nuevo Concierto</h2>
+    <a routerLink="/admin/concierto" class="btn-back">Volver</a>
+  </div>
+
+  <form [formGroup]="conciertoForm" (ngSubmit)="onSubmit()" class="form-card">
+    <div class="grid">
+      <div class="field">
+        <label>Artista</label>
+        <select formControlName="artistaId">
+          <option value="">Seleccione artista...</option>
+          @for (a of artistas; track a.id) {
+            <option [value]="a.id">{{ a.nombre }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Ubicación (Localidad)</label>
+        <select formControlName="localidadId">
+          <option value="">Seleccione ciudad...</option>
+          @for (l of localidades; track l.id) {
+            <option [value]="l.id">{{ l.nombreCiudad }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Fecha y Hora</label>
+        <input type="datetime-local" formControlName="fechaHora">
+      </div>
+
+      <div class="field">
+        <label>Recinto</label>
+        <input type="text" formControlName="local" placeholder="Nombre del recinto">
+      </div>
+    </div>
+
+    <div class="field full">
+      <label>Descripción</label>
+      <textarea formControlName="descripcion" rows="4"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="conciertoForm.invalid || loading" class="btn-save">
+      {{ loading ? 'Guardando...' : 'Crear Concierto' }}
+    </button>
+  </form>
+</section>

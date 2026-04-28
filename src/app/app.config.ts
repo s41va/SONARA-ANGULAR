@@ -16,7 +16,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([authTokenInterceptor, authErrorInterceptor])),
+    provideHttpClient(withFetch(),withInterceptors([authTokenInterceptor, authErrorInterceptor])),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(), // Llama a la función sin parámetros

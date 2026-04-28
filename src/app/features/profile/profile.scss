@@ -42,7 +42,8 @@ $cyan-profile: #00B8D4;
   display: flex;
   justify-content: center;
   align-items: center;
-  span { font-size: 2.2rem; }
+  span { font-size: 1.5rem; }
+  div {font-size: 1.0rem;}
 }
 
 .gustos-box {
@@ -51,6 +52,7 @@ $cyan-profile: #00B8D4;
   border-radius: 15px;
   padding: 15px;
   span { font-size: 1.5rem; }
+  div { font-size: 1.0rem;}
 }
 
 .foto-perfil-circle {
