@@ -23,6 +23,10 @@ export class ConciertoService {
     return this.http.get<Concierto>(`${this.baseUrl}/${id}`);
   }
 
+  updateConcierto(id: number, conciertoData: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`, conciertoData);
+  }
+
   createConcierto(conciertoData: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, conciertoData);
   }

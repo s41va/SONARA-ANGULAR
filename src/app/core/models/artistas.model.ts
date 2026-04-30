@@ -3,6 +3,7 @@ export interface Artista {
   nombre: string;
   generoId: number | null; // Mapeado de 'genero_id', el signo | null por el 'SET NULL' del SQL
   votosRanking: number; // Mapeado de 'votos_ranking' (default 0)
+  genero: string;
   
   // Campos de metadatos o API
   ultimaSincronizacion?: Date | string; // Mapeado de 'ultima_sincronizacion'

@@ -66,4 +66,9 @@ export class ArtistaService {
   deleteArtista(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  // En tu ArtistaService (Angular)
+  getArtistaByNombreApi(nombre: string): Observable<Artista> {
+    return this.http.get<Artista>(`${this.baseUrl}/nombre/${nombre}`);
+  }
 }
