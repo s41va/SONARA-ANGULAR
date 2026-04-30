@@ -1,1 +1,41 @@
-<p>conciertos-edit works!</p>
+<div class="container mt-4">
+  <h2>Editar Concierto #{{ model.id }}</h2>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="!loading">
+    
+    <div class="mb-3">
+      <label class="form-label">Local / Recinto</label>
+      <input type="text" name="local" class="form-control" 
+             [(ngModel)]="model.local" required 
+             [class.is-invalid]="fieldErrors['local']">
+      <div class="invalid-feedback" *ngIf="fieldErrors['local']">
+        {{ fieldErrors['local'] }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Fecha y Hora</label>
+      <input type="datetime-local" name="fechaHora" class="form-control" 
+             [(ngModel)]="model.fechaHora" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea name="descripcion" class="form-control" 
+                [(ngModel)]="model.descripcion" rows="3"></textarea>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid || saving">
+        {{ saving ? 'Guardando...' : 'Guardar Cambios' }}
+      </button>
+      <a routerLink="/admin/conciertos" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+
+  <div *ngIf="loading" class="text-center">
+    <p>Cargando datos del concierto...</p>
+  </div>
+</div>

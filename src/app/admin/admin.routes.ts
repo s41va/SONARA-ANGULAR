@@ -27,7 +27,7 @@ export const ADMIN_ROUTES: Routes = [
     {
         path: 'artists/new',
         loadComponent: () =>
-            import('./pages/artistas/artistas-create/artistas-create').then(c => c.ArtistasCreate)
+            import('./pages/artistas/artistas-create/artistas-create').then(c => c.ArtistaCreate)
     },
     {
         path: 'artists/:id',
@@ -49,6 +49,12 @@ export const ADMIN_ROUTES: Routes = [
         path: 'concierto/:id',
         loadComponent: () =>
             import('./pages/conciertos/conciertos-detail/conciertos-detail').then(c => c.ConciertoDetail),
+        canActivate: [authGuard]
+    },
+    {
+        path: 'concierto/:id/edit',
+        loadComponent: () =>
+            import('./pages/conciertos/conciertos-edit/conciertos-edit').then(c => c.ConciertoEdit),
         canActivate: [authGuard]
     },
     {
