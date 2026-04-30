@@ -67,18 +67,6 @@ export const ADMIN_ROUTES: Routes = [
         canActivate: [authGuard]
     },
     {
-        path: 'concierto/:id/edit',
-        loadComponent: () =>
-            import('./pages/conciertos/conciertos-edit/conciertos-edit').then(c => c.ConciertoEdit),
-        canActivate: [authGuard]
-    },
-    {
-        path: 'peticiones',
-        loadComponent: () =>
-            import('./pages/peticiones/peticiones/peticiones').then(c => c.SolicitudesAdminComponent),
-        canActivate: [authGuard]
-    },
-    {
         path: 'roles',
         loadComponent: () =>
             import('./pages/roles/roles').then(c => c.Roles)
