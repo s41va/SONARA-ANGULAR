@@ -1,13 +1,16 @@
 <header>
-    <div class="navbar navbar-expand-sm border-3 border-bottom color-borde" style="background-color: #B9F6FF;">
+    <div class="navbar navbar-expand-lg navbar-light border-3 border-bottom color-borde" style="background-color: #B9F6FF;">
         <div class="container-fluid">
-            <a routerLink="/" class="navbar-brand ps-2"><img src="logo/logo.svg" alt="logo de la app"></a>
+            <a routerLink="/" class="navbar-brand ps-2">
+                <img src="logo/logo.svg" alt="logo de la app" class="img-fluid logo-img">
+            </a>
+            <img src="img/Music4Life.png" alt="Music4Life" class="music4life-img">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collaseNavbarContent">
+                data-bs-target="#collaseNavbarContent" aria-controls="collaseNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="collaseNavbarContent">
-                <ul class="navbar-nav me-auto">
+            <div class="collapse navbar-collapse justify-content-between" id="collaseNavbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-0 gap-lg-2">
                     <li class="nav-item text-sm-center text-start border-3 color-borde border-start border-end ">
                         <a routerLink="/" class="nav-link">
                             <i class="bi bi-house"></i>
@@ -33,12 +36,6 @@
                         <a routerLink="/concierto" class="nav-link">
                             <i class="bi bi-ticket-perforated"></i>
                             <span class="ocultar-palabrabarra">Tickets</span>
-                        </a>
-                    </li>
-                    <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ocultar-busqueda">
-                        <a routerLink="/search" class="nav-link ">
-                            <i class="bi bi-search"></i>
-                            <span class="ocultar-palabrabarra">Busqueda</span>
                         </a>
                     </li>
                     <li class="nav-item text-sm-center text-start border-3 color-borde  border-end">
@@ -70,6 +67,12 @@
                         </a>
                     </li>
                     }
+                       <li class="nav-item text-sm-center text-start border-3 color-borde  border-end ocultar-busqueda">
+                        <a routerLink="/search" class="nav-link ">
+                            <i class="bi bi-search"></i>
+                            <span class="ocultar-palabrabarra">Busqueda</span>
+                        </a>
+                    </li>
                     <li class="nav-item" ngbDropdown>
                         <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2"
                             ngbDropdownToggle>
@@ -89,7 +92,7 @@
 
                 </ul>
                 <form action="" class="d-flex  d-none d-lg-flex  p-2 ">
-                    <input type="text" class="form-control" type="search" placeholder="Buscar..">
+                    <input type="text" class="form-control" type="search" placeholder="Buscar...">
                     <button class="btn "><i class="bi bi-search"></i></button>
                 </form>
             </div>
