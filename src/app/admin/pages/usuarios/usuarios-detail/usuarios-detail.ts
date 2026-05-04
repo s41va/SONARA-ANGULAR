@@ -36,6 +36,7 @@ export class UsuarioDetail implements OnInit {
         // Mantenemos tu lógica de "unwrapping" por si el API devuelve un array o el objeto directo
         if (response && response.content) {
           this.usuario = response.content[0];
+          console.log(response);
         } else {
           this.usuario = response;
         }

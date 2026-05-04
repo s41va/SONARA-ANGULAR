@@ -1,0 +1,99 @@
+.create-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.8rem;
+    }
+
+    .btn-back {
+      text-decoration: none;
+      color: #7f8c8d;
+      font-weight: 500;
+      &:hover { color: #34495e; }
+    }
+  }
+
+  .form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      &.full {
+        grid-column: 1 / -1; // Ocupa todo el ancho en el grid
+      }
+
+      label {
+        font-weight: 600;
+        color: #444;
+        font-size: 0.9rem;
+      }
+
+      input, select, textarea {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: #3498db;
+        }
+      }
+    }
+
+    .btn-save {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 1rem;
+      background-color: #2ecc71; // Color verde para "Crear"
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: #27ae60;
+      }
+    }
+  }
+
+  .error-message {
+    background: #fdeaea;
+    color: #c0392b;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+}

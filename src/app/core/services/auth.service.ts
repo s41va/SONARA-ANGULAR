@@ -68,7 +68,7 @@ export class AuthService {
 
 
   fetchUserProfile(): Observable<Usuario | null> {
-    return this.http.get<Usuario>(`${environment.apiUrl}/usuarios/perfil`).pipe(
+    return this.http.get<Usuario>(`${environment.apiUrl}/profile/perfil`).pipe(
       tap(user => this.saveUser(user)),
       catchError(err => {
         console.error("Error obteniendo perfil:", err);

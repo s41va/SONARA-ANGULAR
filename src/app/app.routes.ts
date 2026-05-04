@@ -5,6 +5,7 @@ import { Error404 } from './features/error404/error404';
 import { Login } from './features/login/login';
 import { Profile } from './features/profile/profile';
 import { authGuard } from './core/guards/auth-guard';
+import { RegisterComponent } from './features/signup/signup';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,10 @@ export const routes: Routes = [
       import('./admin/admin.routes').then(r => r.ADMIN_ROUTES)
   },
   {
+    path: 'signup',
+    component: RegisterComponent,
+  },
+  {
     path: 'login',
     component: Login,
   },
@@ -25,7 +30,7 @@ export const routes: Routes = [
     path: 'profile',
     component: Profile,
     data: {role: 'USER'}
-  },
+  },  
   {
     path: 'forbidden',
     component: Forbidden, // Página 403

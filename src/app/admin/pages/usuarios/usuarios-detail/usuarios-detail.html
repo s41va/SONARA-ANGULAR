@@ -29,7 +29,7 @@
       <div class="row">
         <span class="label">Nombre Completo:</span>
         <span class="value">
-            <strong>{{ usuario.nombreCompleto }}</strong>
+            <strong>{{ usuario.nombre }}</strong>
         </span>
       </div>
 
@@ -40,7 +40,7 @@
       
       <div class="row">
         <span class="label">Teléfono:</span>
-        <span class="value">{{ usuario.phoneNumber }}</span>
+        <span class="value">{{ usuario.phoneNumber || "Sin especificar" }}</span>
       </div>
     </div>
 
@@ -60,17 +60,12 @@
 
       <div class="row">
         <span class="label">Fecha de Nacimiento:</span>
-        <span class="value">{{ usuario.fecha_nacimiento ? (usuario.fecha_nacimiento | date:'longDate') : 'No especificada' }}</span>
-      </div>
-
-      <div class="row">
-        <span class="label">Idioma (Locale):</span>
-        <span class="value">{{ usuario.locale | uppercase }}</span>
+        <span class="value">{{ usuario.fechaNacimiento ? (usuario.fechaNacimiento | date:'longDate') : 'No especificada' }}</span>
       </div>
 
       <div class="row">
         <span class="label">ID Localidad:</span>
-        <span class="value">{{ usuario.localidad_id || 'No asignada' }}</span>
+        <span class="value">{{ usuario.localidadNombre || 'No asignada' }}</span>
       </div>
     </div>
   }
