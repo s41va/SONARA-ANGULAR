@@ -40,3 +40,76 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+@media (max-height: 600px), (max-width: 768px) {
+  .bottom-half {
+    flex: none !important;
+  }
+
+  div.d-flex > main.app-content {
+    flex-grow: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  app-error404 {
+    height: auto !important;
+    min-height: auto !important;
+    display: block !important;
+
+    html, body {
+      height: auto !important;
+      min-height: auto !important;
+    }
+
+    .flex-grow-1 {
+      flex-grow: 0 !important;
+    }
+
+    .error-page {
+      height: auto !important;
+      min-height: auto !important;
+    }
+
+    .top-half {
+      flex-direction: column !important;
+      padding: 24px 5% !important;
+      gap: 16px;
+
+      #piano {
+        display: none !important;
+      }
+
+      .side-img {
+        max-width: 40vw !important;
+        max-height: 40vw !important;
+        order: 2;
+      }
+
+      .center-group {
+        order: 1;
+
+        .code-404 {
+          font-size: clamp(4rem, 20vw, 10rem) !important;
+        }
+
+        h1 {
+          font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+        }
+      }
+    }
+
+    .bottom-half {
+      flex: none !important;
+      margin-top: 10%;
+      padding: 45px 20px !important;
+
+      .subtitle {
+        font-size: clamp(1.2rem, 4vw, 2rem) !important;
+      }
+
+      .main-title {
+        font-size: clamp(1.8rem, 6vw, 3.5rem) !important;
+      }
+    }
+  }
+}
