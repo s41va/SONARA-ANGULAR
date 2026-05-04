@@ -1,1 +1,60 @@
-<p>usuarios-create works!</p>
+<section class="create-container">
+  <div class="header">
+    <h2>Nuevo Usuario</h2>
+    <a routerLink="/admin/usuarios" class="btn-back">Volver</a>
+  </div>
+
+  <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()" class="form-card">
+    <div class="grid">
+      <!-- ... (campos de nombre, email, password, fechaNacimiento ya existentes) -->
+
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre">
+      </div>
+
+      <div class="field">
+        <label>Correo Electrónico</label>
+        <input type="email" formControlName="email">
+      </div>
+
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" formControlName="contrasenaHash">
+      </div>
+
+      <div class="field">
+        <label>Fecha de Nacimiento</label>
+        <input type="date" formControlName="fechaNacimiento">
+      </div>
+
+      <!-- DESPLEGABLE DE LOCALIDADES -->
+      <div class="field">
+        <label>Localidad / Ciudad</label>
+        <select formControlName="localidadId">
+          <option [ngValue]="null" disabled>Selecciona una ciudad...</option>
+          @for (loc of localidades; track loc.id) {
+            <option [value]="loc.id">{{ loc.nombreCiudad }} ({{ loc.pais }})</option>
+          }
+        </select>
+      </div>
+
+      <!-- DESPLEGABLE DE ROLES -->
+      <div class="field">
+        <label>Rol del Sistema</label>
+        <select formControlName="rolesIds">
+          @for (rol of rolesDisponibles; track rol.id) {
+            <option [value]="rol.id">{{ rol.nombre }}</option>
+          }
+        </select>
+        <small class="info-text">Determina los permisos del usuario.</small>
+      </div>
+      
+      <!-- ... (resto de campos: bio, phone, etc) -->
+    </div>
+
+    <button type="submit" [disabled]="usuarioForm.invalid || loading" class="btn-save">
+      {{ loading ? 'Creando...' : 'Crear Usuario' }}
+    </button>
+  </form>
+</section>

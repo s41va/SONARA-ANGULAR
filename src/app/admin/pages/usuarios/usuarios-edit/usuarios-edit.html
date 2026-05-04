@@ -1,1 +1,78 @@
-<p>usuarios-edit works!</p>
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h2 class="mb-4">Editar Perfil de Usuario #{{ model.id }}</h2>
+
+    @if (error) {
+      <div class="alert alert-danger">{{ error }}</div>
+    }
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="!loading">
+      
+      <div class="row">
+        <!-- Nombre -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nombre de Usuario</label>
+          <input type="text" name="nombre" class="form-control" 
+                 [(ngModel)]="model.nombre" required 
+                 [class.is-invalid]="fieldErrors['nombre']">
+          @if (fieldErrors['nombre']) {
+            <div class="invalid-feedback">{{ fieldErrors['nombre'] }}</div>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Correo Electrónico</label>
+          <input type="email" name="email" class="form-control" 
+                 [(ngModel)]="model.email" required
+                 [class.is-invalid]="fieldErrors['email']">
+          @if (fieldErrors['email']) {
+            <div class="invalid-feedback">{{ fieldErrors['email'] }}</div>
+          }
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Teléfono -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Teléfono</label>
+          <input type="text" name="phoneNumber" class="form-control" 
+                 [(ngModel)]="model.phoneNumber">
+        </div>
+
+        <!-- Localidad -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Localidad</label>
+          <select name="localidadId" class="form-select" [(ngModel)]="model.localidadId" required>
+            <option [ngValue]="null">Seleccione una ciudad</option>
+            @for (loc of localidades; track loc.id) {
+              <option [value]="loc.id">{{ loc.nombreCiudad }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <!-- Biografía -->
+      <div class="mb-3">
+        <label class="form-label">Biografía</label>
+        <textarea name="bio" class="form-control" 
+                  [(ngModel)]="model.bio" rows="4"
+                  placeholder="Cuéntanos algo sobre ti..."></textarea>
+      </div>
+
+      <div class="d-flex gap-2 pt-3">
+        <button type="submit" class="btn btn-primary px-4" [disabled]="f.invalid || saving">
+          {{ saving ? 'Guardando...' : 'Guardar Cambios' }}
+        </button>
+        <a routerLink="/admin/usuarios" class="btn btn-outline-secondary">Cancelar</a>
+      </div>
+    </form>
+
+    @if (loading) {
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2">Cargando datos del usuario...</p>
+      </div>
+    }
+  </div>
+</div>

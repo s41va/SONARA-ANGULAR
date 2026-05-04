@@ -47,8 +47,8 @@
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let u">
                     <div class="btn-group btn-group-sm">
-                        <a [routerLink]="['/admin/users', u.usuario_id]" class="btn btn-outline-info">Ver</a>
-                        <a [routerLink]="['/admin/users', u.usuario_id, 'edit']" class="btn btn-outline-primary">Editar</a>
+                        <a [routerLink]="['/admin/users', u.id]" class="btn btn-outline-info">Ver</a>
+                        <a [routerLink]="['/admin/users', u.id, 'edit']" class="btn btn-outline-primary">Editar</a>
                         <button
                             type="button"
                             class="btn btn-outline-danger"

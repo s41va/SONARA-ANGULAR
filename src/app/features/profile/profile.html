@@ -1,95 +1,66 @@
-<div class="profile-master-container">
+<div class="">
   @if (usuario) {
   <div class="profile-card-extra-wide shadow-lg">
+    
+    <!-- Cabecera: Foto e Info Title -->
+    <div class="profile-header">
+      <div class="foto-perfil-container">
+        <div class="foto-perfil-circle">
+          <img [src]="usuario.profileImage || 'assets/default-avatar.png'" alt="Foto Perfil">
+        </div>
+      </div>
+      <div class="header-title-container">
+        <h2 class="info-title">INFORMACIÓN DEL USUARIO</h2>
+      </div>
+    </div>
 
-    <div class="table-content-wrapper">
-      <table class="w-100">
-        <tbody>
-          <tr>
-            <td style="width: 45%;">
-              <div class="foto-perfil-circle">
-                <img [src]="usuario.profileImage || 'assets/default-avatar.png'" alt="Foto Perfil"
-                  style="border-radius: 50%; width: 100%;">
-              </div>
-            </td>
-            <td style="width: 10%;"></td>
-            <td style="width: 45%;" class="align-bottom text-end">
-              <h2 class="info-title">INFORMACIÓN DEL USUARIO</h2>
-            </td>
-          </tr>
+    <!-- Cuerpo: Grid de Información -->
+    <div class="profile-grid">
+      <!-- Columna Izquierda -->
+      <div class="grid-column">
+        <div class="pill">
+          <span class="label">Nombre:</span> 
+          <span class="value">{{ usuario.nombreCompleto }}</span>
+        </div>
+        <div class="pill">
+          <span class="label">ID Usuario:</span> 
+          <span class="value">#{{ usuario.id }}</span>
+        </div>
+        <div class="bio-box">
+          <span class="box-title">BIOGRAFÍA</span>
+          <p class="box-text">{{ usuario.bio || 'Sin biografía disponible.' }}</p>
+        </div>
+      </div>
 
-          <tr>
-            <td>
-              <div class="pill">
-                <strong>Nombre:</strong> {{ usuario.nombreCompleto }}
-              </div>
-            </td>
-            <td></td>
-            <td>
-              <div class="pill">
-                <strong>Email:</strong> {{ usuario.email }}
-              </div>
-            </td>
-          </tr>
+      <!-- Columna Derecha -->
+      <div class="grid-column">
+        <div class="pill">
+          <span class="label">Email:</span> 
+          <span class="value">{{ usuario.email }}</span>
+        </div>
+        <div class="pill">
+          <span class="label">Teléfono:</span> 
+          <span class="value">{{ usuario.phoneNumber || 'No disponible' }}</span>
+        </div>
+        <div class="pill">
+          <span class="label">Idioma:</span> 
+          <span class="value">{{ usuario.locale || 'Español' }}</span>
+        </div>
+        <div class="pill">
+          <span class="label">Estado:</span> 
+          <span class="value">Activo</span>
+        </div>
+        <div class="pill">
+          <span class="label">Miembro desde:</span> 
+          <span class="value">{{ usuario.fechaRegistro | date:'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+    </div>
 
-          <tr>
-            <td>
-              <div class="pill mt-2">
-                <strong>ID Usuario:</strong> #{{ usuario.id }}
-              </div>
-            </td>
-            <td></td>
-            <td>
-              <div class="pill mt-2">
-                <strong>Teléfono:</strong> {{ usuario.phoneNumber || 'No disponible' }}
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td rowspan="3" class="align-top">
-              <div class="bio-box mt-3">
-                <span>BIOGRAFÍA</span>
-                <p class="mt-2">{{ usuario.bio || 'Sin biografía disponible.' }}</p>
-
-              </div>
-            </td>
-            <td></td>
-            <td>
-              <div class="pill mt-2">
-                <strong>Idioma:</strong> {{usuario.locale}}
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td>
-              <div class="pill mt-2">
-                <strong>Estado:</strong> Activo
-              </div>
-            </td>
-
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="pill mt-2">
-                <strong> Miembro desde:</strong> {{ usuario.fechaRegistro | date:'dd/MM/yyyy' }}
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td colspan="3">
-              <div class="gustos-box mt-4">
-                <span>Gustos</span>
-                <div class="mt-1">Interesado en actividades musicales y eventos artísticos.</div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Pie: Gustos Full Width -->
+    <div class="gustos-box">
+      <span class="box-title">Gustos</span>
+      <p class="box-text">Interesado en actividades musicales y eventos artísticos.</p>
     </div>
 
   </div>

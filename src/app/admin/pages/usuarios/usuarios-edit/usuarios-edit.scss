@@ -1,0 +1,23 @@
+.card {
+  border-radius: 15px;
+  border: none;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #444;
+}
+
+.btn-primary {
+  background-color: #00bcd4; // Manteniendo tu turquesa
+  border-color: #00bcd4;
+  
+  &:hover {
+    background-color: #00acc1;
+    border-color: #00acc1;
+  }
+}
+
+.invalid-feedback {
+  font-size: 0.85rem;
+}
