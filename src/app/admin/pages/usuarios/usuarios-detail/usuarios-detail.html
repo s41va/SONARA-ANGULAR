@@ -1,0 +1,77 @@
+<section class="detail-container">
+  <div class="top-row">
+    <h2>Detalle del Usuario</h2>
+    <a routerLink="/admin/usuarios" class="back-link">← Volver al listado</a>
+  </div>
+
+  @if (loading) {
+    <div class="loading-overlay">
+      <p class="info">Cargando perfil de usuario...</p>
+    </div>
+  }
+
+  @if (error) {
+    <p class="error-message" role="alert">{{ error }}</p>
+  }
+
+  @if (usuario) {
+    <div class="card profile-header">
+      <!-- Ejemplo de visualización de imagen de perfil si existe -->
+      @if (usuario.profileImage) {
+        <img [src]="usuario.profileImage" alt="Foto de {{ usuario.nombreCompleto }}" class="profile-thumb">
+      }
+      
+      <div class="row">
+        <span class="label">ID Usuario:</span>
+        <span class="value">{{ usuario.id }}</span>
+      </div>
+      
+      <div class="row">
+        <span class="label">Nombre Completo:</span>
+        <span class="value">
+            <strong>{{ usuario.nombreCompleto }}</strong>
+        </span>
+      </div>
+
+      <div class="row">
+        <span class="label">Email:</span>
+        <span class="value">{{ usuario.email }}</span>
+      </div>
+      
+      <div class="row">
+        <span class="label">Teléfono:</span>
+        <span class="value">{{ usuario.phoneNumber }}</span>
+      </div>
+    </div>
+
+    <h3>Biografía</h3>
+    <div class="card">
+       <div class="descripcion-box">
+         {{ usuario.bio || 'Este usuario no ha escrito una biografía todavía.' }}
+       </div>
+    </div>
+
+    <h3>Información de Cuenta</h3>
+    <div class="card">
+      <div class="row">
+        <span class="label">Fecha de Registro:</span>
+        <span class="value">{{ usuario.fechaRegistro | date:'medium' }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Fecha de Nacimiento:</span>
+        <span class="value">{{ usuario.fecha_nacimiento ? (usuario.fecha_nacimiento | date:'longDate') : 'No especificada' }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Idioma (Locale):</span>
+        <span class="value">{{ usuario.locale | uppercase }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">ID Localidad:</span>
+        <span class="value">{{ usuario.localidad_id || 'No asignada' }}</span>
+      </div>
+    </div>
+  }
+</section>

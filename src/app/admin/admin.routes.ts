@@ -20,6 +20,11 @@ export const ADMIN_ROUTES: Routes = [
             import('./pages/usuarios/usuarios').then(c => c.Usuarios)
     },
     {
+        path: 'users/:id',
+        loadComponent: () =>
+            import('./pages/usuarios/usuarios-detail/usuarios-detail').then(c => c.UsuarioDetail)
+    },
+    {
         path: 'artists',
         loadComponent: () =>
             import('./pages/artistas/artistas').then(c => c.Artistas)
