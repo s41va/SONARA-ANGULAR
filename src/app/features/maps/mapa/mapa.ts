@@ -1,12 +1,12 @@
 import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common'; // Importante para detectar el navegador
+import { CommonModule, isPlatformBrowser } from '@angular/common'; // Importante para detectar el navegador
 import { HttpClient } from '@angular/common/http';
 import { LocalidadService } from '../../../core/services/localidad.service';
 
 @Component({
   selector: 'app-mapa',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './mapa.html',
   styleUrl: './mapa.scss',
 })
@@ -51,7 +51,9 @@ export class Mapa implements AfterViewInit {
         style: (feature: any) => this.getStyle(feature),
         onEachFeature: (feature: any, layer: any) => {
           layer.on({
-            click: (e: any) => this.onProvinceClick(e, feature)
+            mouseover: (e: any) => this.highlightFeature(e), // Al pasar el ratón
+            mouseout: (e: any) => this.resetHighlight(e, layer), // Al quitar el ratón
+            click: (e: any) => this.onProvinceClick(e, feature) // Al hacer clic
           });
         }
       }).addTo(this.map);
@@ -68,21 +70,49 @@ export class Mapa implements AfterViewInit {
     };
   }
 
+  public topArtistas: any[] = [];
+  public provinciaSeleccionada: string = '';
+
   private onProvinceClick(e: any, feature: any) {
-    const nombre = feature.properties.name || feature.properties.nombre;
-    const id = feature.properties.id || feature.properties.code;
+    // Extraemos el ID y el Nombre del GeoJSON (ajusta según tus propiedades)
+    const idProvincia = feature.properties?.id || feature.properties?.code || feature.properties?.codprov;
+    this.provinciaSeleccionada = feature.properties?.name || feature.properties?.nombre || 'Provincia';
 
-    console.log("Datos de la provincia:", feature.properties);
-
-    if (id) {
-      this.localidadService.getLocalidadPorId(id).subscribe({
-        next: (res) => {
-          console.log("Respuesta de Spring Boot:", res);
+    if (idProvincia) {
+      // Llamada al servicio que conectará con tu endpoint de Spring Boot
+      this.localidadService.getTopArtistasPorProvincia(idProvincia).subscribe({
+        next: (artistas: any[]) => {
+          // Guardamos los 5 artistas que vienen del backend
+          this.topArtistas = artistas;
+          console.log(`Top 5 artistas de ${this.provinciaSeleccionada}:`, artistas);
         },
-        error: (err) => console.error("Error al conectar con el backend", err)
+        error: (err) => {
+          console.error("Error al obtener artistas:", err);
+          this.topArtistas = [];
+        }
       });
-    } else {
-      console.warn("La provincia clicada no tiene un ID válido en el GeoJSON");
     }
   }
+
+  // Cambia el estilo cuando el ratón entra
+  private highlightFeature(e: any) {
+    const layer = e.target;
+
+    layer.setStyle({
+      weight: 3,
+      color: '#2c3e50',
+      dashArray: '',
+      fillOpacity: 0.9,
+      fillColor: '#2980b9' // Un azul más oscuro al seleccionar
+    });
+
+    layer.bringToFront(); // Coloca la provincia encima de las demás para resaltar el borde
+  }
+
+  // Restaura el estilo original cuando el ratón sale
+  private resetHighlight(e: any, layer: any) {
+    const originalStyle = this.getStyle(null); // Obtiene el estilo base
+    e.target.setStyle(originalStyle);
+  }
+
 }
