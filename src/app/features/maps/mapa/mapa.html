@@ -1,4 +1,24 @@
 <div class="map-wrapper">
-  <h2 class="map-title">Mapa de Provincias</h2>
+  <h2 class="map-title">Explora Artistas por Provincia</h2>
+  
   <div id="map"></div>
+
+  <!-- Sección de resultados -->
+  <div class="results-container" *ngIf="provinciaSeleccionada">
+    <h3>Top 5 Artistas en {{ provinciaSeleccionada }}</h3>
+    
+    <div *ngIf="topArtistas.length > 0; else noArtistas" class="artist-list">
+      <div *ngFor="let artista of topArtistas; let i = index" class="artist-card">
+        <span class="rank">#{{ i + 1 }}</span>
+        <div class="artist-info">
+          <strong>{{ artista.nombre }}</strong>
+          <p>{{ artista.votos }} votos de usuarios locales</p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noArtistas>
+      <p class="no-data">Aún no hay votos de artistas en esta provincia.</p>
+    </ng-template>
+  </div>
 </div>

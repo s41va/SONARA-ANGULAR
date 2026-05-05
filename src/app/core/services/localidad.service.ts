@@ -20,4 +20,9 @@ export class LocalidadService {
   getLocalidadPorId(id: number): Observable<any>{
     return this.http.get<any>(`${environment.apiUrl}/localidad/${id}`);
   }
+
+  getTopArtistasPorProvincia(id: number): Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}/artistas/ranking`);
+  }
 }
+

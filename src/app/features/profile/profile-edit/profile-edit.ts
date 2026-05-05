@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Usuario } from '../../../core/models/usuario.model';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { LocalidadService } from '../../../core/services/localidad.service';
+import { Localidad } from '../../../core/models/localidad.model';
 // ... imports anteriores
 
 @Component({
@@ -16,20 +18,50 @@ import { Router, RouterLink } from '@angular/router';
 export class ProfileEdit implements OnInit {
   public usuario: Usuario | null = null;
   public profileForm!: FormGroup;
+  localidades : Localidad[] = []; 
+  error: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private localidadService: LocalidadService
   ) {
     this.createForm();
   }
 
-  ngOnInit() {
-    this.authService.getUser().subscribe(user => {
-      if (user) {
-        this.usuario = user;
-        this.profileForm.patchValue(user);
+ ngOnInit() {
+  // 1. Cargamos las localidades primero o en paralelo
+  this.loadLocalidades();
+
+  // 2. Escuchamos al usuario
+  this.authService.getUser().subscribe(user => {
+    if (user) {
+      this.usuario = user;
+      
+      // Mapeo manual si los nombres de la API no coinciden exactos con el formulario
+      this.profileForm.patchValue({
+        nombreCompleto: user.nombreCompleto,
+        email: user.email,
+        localidadId: user.localidadNombre || null, // Asegúrate de extraer el ID
+        fechaNacimiento: user.fechaNacimiento,
+        bio: user.bio,
+        locale: user.locale,
+        phoneNumber: user.phoneNumber
+      });
+    }
+  });
+}
+
+  loadLocalidades(): void {
+    this.localidadService.getLocalidades().subscribe({
+      next: (response: any) => {
+        // Manejamos si la respuesta viene paginada (.content) o es un array directo
+        this.localidades = response.content || response;
+      },
+      error: (err) => {
+        console.error('Error al obtener localidades:', err);
+        this.error = 'No se pudieron cargar las localidades. Verifica la conexión.';
       }
     });
   }
@@ -38,7 +70,7 @@ export class ProfileEdit implements OnInit {
   this.profileForm = this.fb.group({
     nombreCompleto: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    localidad: [''],        // Campo nuevo
+    localidad: [null],        // Campo nuevo
     fechaNacimiento: [''],   // Campo nuevo
     bio: [''],
     locale: ['Español'],
