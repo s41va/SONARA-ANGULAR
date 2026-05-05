@@ -17,4 +17,7 @@ export class LocalidadService {
     return this.http.get<any>(`${environment.apiUrl}/localidad?size=500`);
   }
 
+  getLocalidadPorId(id: number): Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}/localidad/${id}`);
+  }
 }

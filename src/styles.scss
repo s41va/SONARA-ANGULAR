@@ -3,7 +3,10 @@
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
+//@import "leaflet/dist/leaflet.css";
 @use '@angular/material' as mat;
+/* En styles.css */
+
 
 html {
   height: 100%;

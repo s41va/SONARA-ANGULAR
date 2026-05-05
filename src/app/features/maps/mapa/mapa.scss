@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%; // Le dice al padre flex que este componente ocupa todo el ancho
+}
+
+.map-wrapper {
+  width: 95%; // Aquí decides qué tan ancho quieres el mapa (95% es bastante)
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.map-title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#map {
+  height: 70vh; // 70% de la altura de la pantalla
+  width: 100%;  // Ocupa el 100% de .map-wrapper
+  align-self: stretch; // FUERZA a que ignore el centrado del padre y se estire
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: white; // Fondo base mientras carga
+  z-index: 1;
+}
