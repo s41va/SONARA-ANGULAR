@@ -1,7 +1,7 @@
 <div class="">
   @if (usuario) {
   <div class="profile-card-extra-wide shadow-lg">
-    
+
     <!-- Cabecera: Foto e Info Title -->
     <div class="profile-header">
       <div class="foto-perfil-container">
@@ -9,8 +9,12 @@
           <img [src]="usuario.profileImage || 'assets/default-avatar.png'" alt="Foto Perfil">
         </div>
       </div>
+
       <div class="header-title-container">
         <h2 class="info-title">INFORMACIÓN DEL USUARIO</h2>
+      </div>
+      <div class="cuenta-centro py-3">
+        <a (click)="editarUsuario()" class="btn-edit">Editar Usuario</a>
       </div>
     </div>
 
@@ -19,11 +23,11 @@
       <!-- Columna Izquierda -->
       <div class="grid-column">
         <div class="pill">
-          <span class="label">Nombre:</span> 
+          <span class="label">Nombre:</span>
           <span class="value">{{ usuario.nombreCompleto }}</span>
         </div>
         <div class="pill">
-          <span class="label">ID Usuario:</span> 
+          <span class="label">ID Usuario:</span>
           <span class="value">#{{ usuario.id }}</span>
         </div>
         <div class="bio-box">
@@ -35,23 +39,31 @@
       <!-- Columna Derecha -->
       <div class="grid-column">
         <div class="pill">
-          <span class="label">Email:</span> 
+          <span class="label">Email:</span>
           <span class="value">{{ usuario.email }}</span>
         </div>
         <div class="pill">
-          <span class="label">Teléfono:</span> 
+          <span class="label">Fecha de Nacimiento:</span>
+          <span class="value">{{ usuario.fechaNacimiento }}</span>
+        </div>
+        <div class="pill">
+          <span class="label">Teléfono:</span>
           <span class="value">{{ usuario.phoneNumber || 'No disponible' }}</span>
         </div>
         <div class="pill">
-          <span class="label">Idioma:</span> 
+          <span class="label">Localidad: </span>
+          <span class="value">{{ usuario.localidadNombre || 'No asignada' }}</span>
+        </div>
+        <div class="pill">
+          <span class="label">Idioma:</span>
           <span class="value">{{ usuario.locale || 'Español' }}</span>
         </div>
         <div class="pill">
-          <span class="label">Estado:</span> 
+          <span class="label">Estado:</span>
           <span class="value">Activo</span>
         </div>
         <div class="pill">
-          <span class="label">Miembro desde:</span> 
+          <span class="label">Miembro desde:</span>
           <span class="value">{{ usuario.fechaRegistro | date:'dd/MM/yyyy' }}</span>
         </div>
       </div>

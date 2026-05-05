@@ -1,0 +1,99 @@
+<div class="profile-container py-5">
+  @if (usuario) {
+  <form [formGroup]="profileForm" (ngSubmit)="guardarCambios()" class="profile-card-modern shadow-soft">
+
+    <!-- Cabecera Curva -->
+    <div class="profile-header-premium">
+      <div class="foto-perfil-wrapper">
+        <div class="foto-circle-main">
+          <img [src]="usuario.profileImage || 'assets/default-avatar.png'" alt="Foto Perfil">
+          <label for="fileInput" class="upload-badge">
+            <i class="fas fa-camera"></i>
+          </label>
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+        </div>
+      </div>
+
+      <div class="header-content">
+        <h2 class="premium-title">Configuración de Perfil</h2>
+        <p class="premium-subtitle">Gestiona tu información personal y preferencias</p>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" (click)="cancelar()" class="btn-pill btn-light">Cancelar</button>
+        <button type="submit" [disabled]="profileForm.invalid" class="btn-pill btn-primary">Guardar Cambios</button>
+      </div>
+    </div>
+
+    <!-- Cuerpo: Grid con Bordes Redondeados -->
+    <div class="profile-body p-4">
+      <div class="row g-4">
+        
+        <!-- Columna Datos -->
+        <div class="col-md-7">
+          <div class="form-section">
+            <h3 class="section-label">DATOS PERSONALES</h3>
+            
+            <div class="input-pill">
+              <span class="pill-icon"><i class="bi bi-person-fill"></i></span>
+              <div class="pill-content">
+                <label>Nombre Completo</label>
+                <input type="text" formControlName="nombreCompleto" placeholder="Tu nombre...">
+              </div>
+            </div>
+
+            <!-- NUEVO: LOCALIDAD -->
+            <div class="input-pill">
+              <span class="pill-icon"><i class="bi bi-geo-alt-fill"></i></span>
+              <div class="pill-content">
+                <label>Localidad</label>
+                <input type="text" formControlName="localidad" placeholder="Ciudad, Provincia...">
+              </div>
+            </div>
+
+            <div class="input-pill">
+              <span class="pill-icon">📧</span>
+              <div class="pill-content">
+                <label>Correo Electrónico</label>
+                <input type="email" formControlName="email">
+              </div>
+            </div>
+
+            <!-- NUEVO: FECHA DE NACIMIENTO -->
+            <div class="input-pill">
+              <span class="pill-icon"><i class="bi bi-calendar-event"></i></span>
+              <div class="pill-content">
+                <label>Fecha de Nacimiento</label>
+                <input type="date" formControlName="fechaNacimiento">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Bio y Otros -->
+        <div class="col-md-5">
+          <div class="form-section">
+            <h3 class="section-label">BIOGRAFÍA</h3>
+            <div class="textarea-pill">
+              <textarea formControlName="bio" placeholder="Cuéntanos algo sobre ti..."></textarea>
+            </div>
+
+            <h3 class="section-label mt-4">PREFERENCIAS</h3>
+            <div class="input-pill">
+              <span class="pill-icon">🌍</span>
+              <div class="pill-content">
+                <label>Idioma Preferido</label>
+                <select formControlName="locale">
+                  <option value="Español">Español</option>
+                  <option value="Inglés">Inglés</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+  }
+</div>

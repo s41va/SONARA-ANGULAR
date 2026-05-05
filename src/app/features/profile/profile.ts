@@ -2,11 +2,12 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Usuario } from '../../core/models/usuario.model';
 import { AuthService } from '../../core/services/auth.service';
+import {Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './profile.html',
   styleUrls: ['./profile.scss']
 })
@@ -15,7 +16,9 @@ export class Profile implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: object // Para saber si es navegador
+    
   ) { }
 
   ngOnInit(): void {
@@ -39,5 +42,9 @@ export class Profile implements OnInit {
       }
     });
   }
+}
+
+editarUsuario(){
+  this.router.navigate(['/profile/edit'])
 }
 }

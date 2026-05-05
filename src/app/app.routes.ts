@@ -6,6 +6,8 @@ import { Login } from './features/login/login';
 import { Profile } from './features/profile/profile';
 import { authGuard } from './core/guards/auth-guard';
 import { RegisterComponent } from './features/signup/signup';
+import { ProfileEdit } from './features/profile/profile-edit/profile-edit';
+import { Mapa } from './features/maps/mapa/mapa';
 
 export const routes: Routes = [
     {
@@ -29,6 +31,16 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: Profile,
+    data: {role: 'USER'}
+  }, 
+  {
+    path: 'profile/edit',
+    component: ProfileEdit,
+    data: {role: 'USER'}
+  }, 
+  {
+    path: 'mapa',
+    component: Mapa,
     data: {role: 'USER'}
   },  
   {
