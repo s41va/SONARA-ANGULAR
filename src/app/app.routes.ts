@@ -8,6 +8,7 @@ import { authGuard } from './core/guards/auth-guard';
 import { RegisterComponent } from './features/signup/signup';
 import { ProfileEdit } from './features/profile/profile-edit/profile-edit';
 import { Mapa } from './features/maps/mapa/mapa';
+import { TicketsComponent } from './features/tickets/tickets';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,11 @@ export const routes: Routes = [
   {
     path: 'mapa',
     component: Mapa,
+    data: {role: 'USER'}
+  },  
+  {
+    path: 'tickets',
+    component: TicketsComponent,
     data: {role: 'USER'}
   },  
   {

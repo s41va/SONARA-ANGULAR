@@ -1,24 +1,44 @@
 <div class="map-wrapper">
-  <h2 class="map-title">Explora Artistas por Provincia</h2>
-  
-  <div id="map"></div>
+  <h2 class="map-title">Explora la escena musical</h2>
 
-  <!-- Sección de resultados -->
-  <div class="results-container" *ngIf="provinciaSeleccionada">
-    <h3>Top 5 Artistas en {{ provinciaSeleccionada }}</h3>
+  <div class="dashboard-layout">
     
-    <div *ngIf="topArtistas.length > 0; else noArtistas" class="artist-list">
-      <div *ngFor="let artista of topArtistas; let i = index" class="artist-card">
-        <span class="rank">#{{ i + 1 }}</span>
-        <div class="artist-info">
-          <strong>{{ artista.nombre }}</strong>
-          <p>{{ artista.votos }} votos de usuarios locales</p>
+    <!-- SECCIÓN IZQUIERDA: RANKING GLOBAL (Top 10) -->
+    <aside class="results-container global-ranking">
+      <h3>🏆 Top 10 Global</h3>
+      <div *ngIf="topArtistasGlobal.length > 0; else noGlobal" class="artist-list">
+        <div *ngFor="let artista of topArtistasGlobal; let i = index" class="artist-card gold-border">
+          <span class="rank">#{{ i + 1 }}</span>
+          <div class="artist-info">
+            <strong>{{ artista.nombre }}</strong>
+            <p>{{ artista.totalVotos }} votos totales</p>
+          </div>
         </div>
       </div>
+      <ng-template #noGlobal><p>Cargando ranking...</p></ng-template>
+    </aside>
+
+    <!-- SECCIÓN CENTRAL: MAPA -->
+    <div class="map-container">
+      <div id="map"></div>
     </div>
 
-    <ng-template #noArtistas>
-      <p class="no-data">Aún no hay votos de artistas en esta provincia.</p>
-    </ng-template>
+    <!-- SECCIÓN DERECHA: RANKING PROVINCIAL (Dinámico) -->
+    <aside class="results-container province-ranking" *ngIf="provinciaSeleccionada">
+      <h3>📍 Top en {{ provinciaSeleccionada }}</h3>
+      <div *ngIf="topArtistas.length > 0; else noArtistas" class="artist-list">
+        <div *ngFor="let artista of topArtistas; let i = index" class="artist-card">
+          <span class="rank">#{{ i + 1 }}</span>
+          <div class="artist-info">
+            <strong>{{ artista.nombre }}</strong>
+            <p>{{ artista.votos }} votos locales</p>
+          </div>
+        </div>
+      </div>
+      <ng-template #noArtistas>
+        <p class="no-data">No hay votos en esta provincia todavía.</p>
+      </ng-template>
+    </aside>
+
   </div>
 </div>

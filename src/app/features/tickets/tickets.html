@@ -1,0 +1,43 @@
+<div class="container">
+  <header class="list-header">
+    <h2>Próximos Conciertos</h2>
+    
+    <div class="filters">
+      <label for="pageSize">Mostrar:</label>
+      <select id="pageSize" (change)="onPageSizeChange($event)">
+        <option [value]="5">5</option>
+        <option [value]="10" selected>10</option>
+        <option [value]="20">20</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="grid-conciertos">
+    <div *ngFor="let concierto of conciertos" class="card">
+      <div class="card-image">
+        <img [src]="concierto.artista.foto || 'assets/default-artist.jpg'" [alt]="concierto.artista.nombre">
+      </div>
+      <div class="card-content">
+        <h3>{{ concierto.artista.nombre }}</h3>
+        <p class="fecha">{{ concierto.fechaHora | date:'fullDate' }} - {{ concierto.fechaHora | date:'shortTime' }}</p>
+        <p class="ubicacion">
+          <strong>{{ concierto.local }}</strong>, {{ concierto.localidad.nombreCiudad }} ({{ concierto.localidad.pais }})
+        </p>
+        <p class="descripcion">{{ concierto.descripcion | slice:0:100 }}...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controles de Paginación -->
+  <nav class="pagination" *ngIf="totalPages > 1">
+    <button [disabled]="currentPage === 0" (click)="cambiarPagina(currentPage - 1)">
+      Anterior
+    </button>
+
+    <span class="info">Página {{ currentPage + 1 }} de {{ totalPages }}</span>
+
+    <button [disabled]="currentPage === totalPages - 1" (click)="cambiarPagina(currentPage + 1)">
+      Siguiente
+    </button>
+  </nav>
+</div>

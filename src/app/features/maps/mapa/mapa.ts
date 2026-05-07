@@ -1,8 +1,8 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common'; // Importante para detectar el navegador
 import { HttpClient } from '@angular/common/http';
 import { LocalidadService } from '../../../core/services/localidad.service';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-mapa',
   standalone: true,
@@ -10,14 +10,22 @@ import { LocalidadService } from '../../../core/services/localidad.service';
   templateUrl: './mapa.html',
   styleUrl: './mapa.scss',
 })
-export class Mapa implements AfterViewInit {
+export class Mapa implements OnInit, AfterViewInit {
   private map: any; // Usamos any porque el tipo L.Map solo existe tras importar Leaflet
+  public topArtistasGlobal: any[] = [];
 
   constructor(
     private http: HttpClient,
     private localidadService: LocalidadService,
+    private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object // Inyectamos el ID de la plataforma
   ) { }
+
+  ngOnInit(){
+      if (isPlatformBrowser(this.platformId)) {
+      this.obtenerRankingGlobal();
+    }
+  }
 
   async ngAfterViewInit() { // Usa AfterViewInit
     if (isPlatformBrowser(this.platformId)) {
@@ -35,6 +43,10 @@ export class Mapa implements AfterViewInit {
     if (!container) return;
     // Inicialización del mapa
     this.map = L.map('map').setView([40.4167, -3.7033], 6);
+
+    setTimeout(()=>{
+      this.map.invalidateSize();
+    },500);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -107,6 +119,19 @@ export class Mapa implements AfterViewInit {
     });
 
     layer.bringToFront(); // Coloca la provincia encima de las demás para resaltar el borde
+  }
+
+  private obtenerRankingGlobal() {
+    this.localidadService.getTopArtistasGlobal().subscribe({
+      next: (artistas) => {
+       setTimeout(() => {
+        console.log("Datos recibidos:", artistas);
+        this.topArtistasGlobal = artistas;
+        this.cdr.detectChanges(); // Ahora esto sí será efectivo
+      }, 0);
+      },
+      error: (err) => console.error("Error al obtener ranking global:", err)
+    });
   }
 
   // Restaura el estilo original cuando el ratón sale
