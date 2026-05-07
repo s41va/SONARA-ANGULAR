@@ -17,12 +17,17 @@ export class LocalidadService {
     return this.http.get<any>(`${environment.apiUrl}/localidad?size=500`);
   }
 
-  getLocalidadPorId(id: number): Observable<any>{
+  getLocalidadPorId(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/localidad/${id}`);
   }
 
-  getTopArtistasPorProvincia(id: number): Observable<any>{
+  getTopArtistasPorProvincia(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/artistas/ranking`);
+  }
+
+  // En tu LocalidadService
+  getTopArtistasGlobal(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/ranking/global`);
   }
 }
 

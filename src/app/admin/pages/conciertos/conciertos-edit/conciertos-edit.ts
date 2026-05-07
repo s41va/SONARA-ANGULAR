@@ -6,7 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { ConciertoService } from '../../../../core/services/concierto.service';
 import { Concierto } from '../../../../core/models/concierto.models';
-import { ApiError } from '../../../../core/models/concierto.model';
+import { ApiError } from '../../../../core/models/api-error.model'; 
 
 @Component({
   selector: 'app-concierto-edit',
