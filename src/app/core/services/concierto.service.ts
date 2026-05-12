@@ -19,6 +19,14 @@ export class ConciertoService {
     return this.http.get<Page<Concierto>>(this.baseUrl, { params });
   }
 
+  fetchConciertosPay(page: number, size: number, sort: string, nombre: string, fecha: string, ubi: string): Observable<Page<Concierto>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('sort', sort);
+    return this.http.get<Page<Concierto>>(this.baseUrl, { params });
+  }
+
   fetchConciertosById(id: number): Observable<Concierto> {
     return this.http.get<Concierto>(`${this.baseUrl}/${id}`);
   }

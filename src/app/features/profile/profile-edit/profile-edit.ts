@@ -6,7 +6,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { LocalidadService } from '../../../core/services/localidad.service';
 import { Localidad } from '../../../core/models/localidad.model';
-// ... imports anteriores
+import { UsuarioPerfil } from '../../../core/models/user-profile.model';
 
 @Component({
   selector: 'app-perfil-edit',
