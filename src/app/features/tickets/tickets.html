@@ -1,43 +1,90 @@
 <div class="container">
   <header class="list-header">
-    <h2>Próximos Conciertos</h2>
-    
-    <div class="filters">
+    <div class="title-section">
+      <h2>Próximos Conciertos</h2>
+      <div class="underline"></div>
+    </div>
+
+    <div class="page-size-selector">
       <label for="pageSize">Mostrar:</label>
       <select id="pageSize" (change)="onPageSizeChange($event)">
-        <option [value]="5">5</option>
-        <option [value]="10" selected>10</option>
+        <option [value]="5" selected>5</option>
+        <option [value]="10">10</option>
         <option [value]="20">20</option>
       </select>
     </div>
   </header>
 
-  <div class="grid-conciertos">
-    <div *ngFor="let concierto of conciertos" class="card">
-      <div class="card-image">
-        <img [src]="concierto.artista.foto || 'assets/default-artist.jpg'" [alt]="concierto.artista.nombre">
+  <!-- Nueva Sección de Filtros -->
+  <section class="filters-bar">
+    <div class="filters-container">
+      <!-- Input Artista -->
+      <div class="filter-group">
+        <label>Artista</label>
+        <input type="text" #artistaInput placeholder="Ej: Metallica...">
       </div>
+
+      <!-- Input Fecha -->
+      <div class="filter-group">
+        <label>Fecha</label>
+        <input type="date" #fechaInput>
+      </div>
+
+      <!-- Input Ubicación -->
+      <div class="filter-group">
+        <label>Ubicación</label>
+        <input type="text" #ubicacionInput placeholder="Ej: Madrid...">
+      </div>
+
+      <!-- Botón de Acción -->
+      <div class="filter-actions">
+        <button class="btn-submit"
+          (click)="ejecutarFiltros(artistaInput.value, fechaInput.value, ubicacionInput.value)">
+          <span class="icon">🔍</span> Buscar
+        </button>
+        <button class="btn-reset" (click)="limpiarFiltros(artistaInput, fechaInput, ubicacionInput)">
+          ✕
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid-conciertos">
+    <div *ngFor="let concierto of conciertos" class="card-modern">
+      <div class="card-gradient-top"></div>
       <div class="card-content">
-        <h3>{{ concierto.artista.nombre }}</h3>
-        <p class="fecha">{{ concierto.fechaHora | date:'fullDate' }} - {{ concierto.fechaHora | date:'shortTime' }}</p>
-        <p class="ubicacion">
-          <strong>{{ concierto.local }}</strong>, {{ concierto.localidad.nombreCiudad }} ({{ concierto.localidad.pais }})
-        </p>
-        <p class="descripcion">{{ concierto.descripcion | slice:0:100 }}...</p>
+        <span class="badge-categoria">En Vivo</span>
+        <h3>{{ concierto.artista?.nombre }}</h3>
+
+        <div class="info-row">
+          <span class="icon">📅</span>
+          <p class="fecha">{{ concierto.fechaHora | date:'fullDate' }}</p>
+        </div>
+
+        <div class="info-row">
+          <span class="icon">📍</span>
+          <p class="ubicacion">
+            <strong>{{ concierto.local }}</strong>, {{ concierto.localidad?.nombreCiudad }}
+          </p>
+        </div>
+
+        <p class="descripcion">{{ concierto.descripcion | slice:0:80 }}...</p>
+
+        <button class="btn-detalles">Ver Entradas</button>
       </div>
     </div>
   </div>
 
-  <!-- Controles de Paginación -->
+  <!-- Paginación con estilo renovado -->
   <nav class="pagination" *ngIf="totalPages > 1">
-    <button [disabled]="currentPage === 0" (click)="cambiarPagina(currentPage - 1)">
-      Anterior
+    <button class="btn-nav" [disabled]="currentPage === 0" (click)="cambiarPagina(currentPage - 1)">
+      ← Anterior
     </button>
-
-    <span class="info">Página {{ currentPage + 1 }} de {{ totalPages }}</span>
-
-    <button [disabled]="currentPage === totalPages - 1" (click)="cambiarPagina(currentPage + 1)">
-      Siguiente
+    <div class="page-indicator">
+      <span>{{ currentPage + 1 }}</span> / {{ totalPages }}
+    </div>
+    <button class="btn-nav" [disabled]="currentPage === totalPages - 1" (click)="cambiarPagina(currentPage + 1)">
+      Siguiente →
     </button>
   </nav>
 </div>

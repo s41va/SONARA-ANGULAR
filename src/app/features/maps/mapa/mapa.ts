@@ -3,6 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common'; // Importante
 import { HttpClient } from '@angular/common/http';
 import { LocalidadService } from '../../../core/services/localidad.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { RankingService } from '../../../core/services/ranking.service';
 @Component({
   selector: 'app-mapa',
   standalone: true,
@@ -18,6 +19,7 @@ export class Mapa implements OnInit, AfterViewInit {
     private http: HttpClient,
     private localidadService: LocalidadService,
     private cdr: ChangeDetectorRef,
+    private rankingService: RankingService,
     @Inject(PLATFORM_ID) private platformId: Object // Inyectamos el ID de la plataforma
   ) { }
 
@@ -87,20 +89,23 @@ export class Mapa implements OnInit, AfterViewInit {
 
   private onProvinceClick(e: any, feature: any) {
     // Extraemos el ID y el Nombre del GeoJSON (ajusta según tus propiedades)
-    const idProvincia = feature.properties?.id || feature.properties?.code || feature.properties?.codprov;
+    const idProvincia = feature.properties?.id || feature.properties?.code || feature.properties?.cod_prov;
     this.provinciaSeleccionada = feature.properties?.name || feature.properties?.nombre || 'Provincia';
 
     if (idProvincia) {
       // Llamada al servicio que conectará con tu endpoint de Spring Boot
-      this.localidadService.getTopArtistasPorProvincia(idProvincia).subscribe({
+      this.rankingService.getTopArtistasPorProvincia(idProvincia).subscribe({
         next: (artistas: any[]) => {
           // Guardamos los 5 artistas que vienen del backend
           this.topArtistas = artistas;
           console.log(`Top 5 artistas de ${this.provinciaSeleccionada}:`, artistas);
+
+          this.cdr.detectChanges();
         },
         error: (err) => {
           console.error("Error al obtener artistas:", err);
           this.topArtistas = [];
+          this.cdr.detectChanges();
         }
       });
     }
@@ -122,7 +127,7 @@ export class Mapa implements OnInit, AfterViewInit {
   }
 
   private obtenerRankingGlobal() {
-    this.localidadService.getTopArtistasGlobal().subscribe({
+    this.rankingService.getTopArtistasGlobal().subscribe({
       next: (artistas) => {
        setTimeout(() => {
         console.log("Datos recibidos:", artistas);
