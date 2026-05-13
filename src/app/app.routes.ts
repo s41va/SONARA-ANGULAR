@@ -52,7 +52,12 @@ export const routes: Routes = [
     path: 'tickets',
     component: TicketsComponent,
     data: {role: 'USER'}
-  }, 
+  },
+  {
+    path: 'concierto',
+    component: ConciertoComponent,
+    data: {role: 'USER'}
+    }, 
   {
     path: 'peticiones/artista',
     component: SolicitudCrearComponent,
