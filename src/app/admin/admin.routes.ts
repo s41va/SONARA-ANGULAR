@@ -73,6 +73,12 @@ export const ADMIN_ROUTES: Routes = [
         canActivate: [authGuard]
     },
     {
+        path: 'peticiones',
+        loadComponent: () =>
+            import('./pages/peticiones/peticiones/peticiones').then(c => c.SolicitudesAdminComponent),
+        canActivate: [authGuard]
+    },
+    {
         path: 'roles',
         loadComponent: () =>
             import('./pages/roles/roles').then(c => c.Roles)

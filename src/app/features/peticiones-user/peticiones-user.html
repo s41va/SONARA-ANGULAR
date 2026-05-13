@@ -1,0 +1,55 @@
+<div class="form-container">
+  <div class="form-card">
+    <div class="form-header">
+      <h2>Postular Artista</h2>
+      <p>Envía la información para que sea revisada por nuestro equipo.</p>
+    </div>
+
+    <form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()">
+      
+      <div class="form-group">
+        <label for="nombreArtista">Nombre del Artista *</label>
+        <input 
+          type="text" 
+          id="nombreArtista" 
+          formControlName="nombreArtista" 
+          placeholder="Ej: Los Turquesas"
+          [class.error]="solicitudForm.get('nombreArtista')?.invalid && solicitudForm.get('nombreArtista')?.touched">
+      </div>
+
+      <div class="form-group">
+        <label for="generoSugerido">Género Musical</label>
+        <input 
+          type="text" 
+          id="generoSugerido" 
+          formControlName="generoSugerido" 
+          placeholder="Ej: Rock, Jazz, Pop...">
+      </div>
+
+      <div class="form-group">
+        <label for="fotoUrl">URL de la Foto</label>
+        <input 
+          type="text" 
+          id="fotoUrl" 
+          formControlName="fotoUrl" 
+          placeholder="https://ejemplo.com/foto.jpg">
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea 
+          id="descripcion" 
+          formControlName="descripcion" 
+          rows="4" 
+          placeholder="Cuéntanos un poco sobre el artista..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="solicitudForm.invalid || isSubmitting" class="btn-submit">
+          {{ isSubmitting ? 'Enviando...' : 'Enviar Solicitud' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

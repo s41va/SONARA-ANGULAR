@@ -1,3 +1,5 @@
+$primary-cyan: #00bcd4;
+
 :host {
   display: flex;
   justify-content: center;
@@ -20,7 +22,7 @@
 
 #map {
   height: 70vh; // 70% de la altura de la pantalla
-  width: 100%;  // Ocupa el 100% de .map-wrapper
+  width: 100%; // Ocupa el 100% de .map-wrapper
   align-self: stretch; // FUERZA a que ignore el centrado del padre y se estire
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -29,10 +31,24 @@
   cursor: grab;
 }
 
-#map:active{
-    cursor: grabbing;
+#map:active {
+  cursor: grabbing;
 }
 
+.btn-solicitar {
+  background-color: $primary-cyan;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
 
 .results-container {
   margin-top: 30px;
@@ -40,7 +56,7 @@
   background: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
   h3 {
     color: #2c3e50;
@@ -77,7 +93,14 @@
   }
 
   .artist-info {
-    strong { font-size: 1.1rem; }
-    p { margin: 0; color: #666; font-size: 0.9rem; }
+    strong {
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
   }
 }

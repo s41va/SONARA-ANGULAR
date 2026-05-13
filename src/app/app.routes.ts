@@ -9,6 +9,8 @@ import { RegisterComponent } from './features/signup/signup';
 import { ProfileEdit } from './features/profile/profile-edit/profile-edit';
 import { Mapa } from './features/maps/mapa/mapa';
 import { TicketsComponent } from './features/tickets/tickets';
+import { SolicitudesAdminComponent } from './admin/pages/peticiones/peticiones/peticiones';
+import { SolicitudCrearComponent } from './features/peticiones-user/peticiones-user';
 
 export const routes: Routes = [
     {
@@ -47,6 +49,11 @@ export const routes: Routes = [
   {
     path: 'tickets',
     component: TicketsComponent,
+    data: {role: 'USER'}
+  }, 
+  {
+    path: 'peticiones/artista',
+    component: SolicitudCrearComponent,
     data: {role: 'USER'}
   },  
   {

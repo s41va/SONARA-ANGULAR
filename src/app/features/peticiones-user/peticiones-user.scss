@@ -1,0 +1,104 @@
+$primary-cyan: #00bcd4;
+$text-dark: #333;
+$bg-light: #f8f9fa;
+$white: #ffffff;
+$error-red: #ff5252;
+
+/* .form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $bg-light;
+  padding: 20px;
+} */
+
+.form-card {
+  background: $primary-cyan;
+  width: 100%;
+  max-width: 500px;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin: 2rem;
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+
+    h2 {
+      color: $text-dark;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    p {
+      color: $white;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: $text-dark;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-cyan;
+      box-shadow: 0 0 0 2px rgba($primary-cyan, 0.1);
+    }
+
+    &.error {
+      border-color: $error-red;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.form-actions {
+  margin-top: 2rem;
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background-color: $primary-cyan;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+
+    &:hover:not(:disabled) {
+      background-color: darken($primary-cyan, 10%);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}

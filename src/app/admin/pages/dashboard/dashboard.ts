@@ -15,7 +15,7 @@ export class DashboardComponent {
     { title: 'Administrar Usuarios', icon: '👤', route: 'users' },
     { title: 'Administrar Conciertos/Eventos', icon: '🏟️', route: 'concierto' },
     { title: 'Administrar Artistas', icon: '🎵', route: 'artists' },
-    { title: 'Administrar Mapa', icon: '🗺️', route: '/map' },
+    { title: 'Administrar Peticiones Artistas', icon: '👤 + 🎵 ', route: 'peticiones' },
     { title: 'Administrar Estadísticas', icon: '📊', route: '/stats' },
     { title: 'Administrar El Pago', icon: '💳', route: '/payments' },
   ];

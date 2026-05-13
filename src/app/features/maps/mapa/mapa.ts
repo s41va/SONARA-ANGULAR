@@ -4,10 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { LocalidadService } from '../../../core/services/localidad.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { RankingService } from '../../../core/services/ranking.service';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-mapa',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './mapa.html',
   styleUrl: './mapa.scss',
 })
@@ -21,6 +22,7 @@ export class Mapa implements OnInit, AfterViewInit {
     private cdr: ChangeDetectorRef,
     private rankingService: RankingService,
     private zone: NgZone,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object // Inyectamos el ID de la plataforma
   ) { }
 
@@ -150,6 +152,10 @@ export class Mapa implements OnInit, AfterViewInit {
   private resetHighlight(e: any, layer: any) {
     const originalStyle = this.getStyle(null); // Obtiene el estilo base
     e.target.setStyle(originalStyle);
+  }
+
+  SolicitarArtista(){
+    this.router.navigate(['/peticiones/artista']);
   }
 
 }
