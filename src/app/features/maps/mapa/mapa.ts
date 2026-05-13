@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, OnInit, NgZone } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common'; // Importante para detectar el navegador
 import { HttpClient } from '@angular/common/http';
 import { LocalidadService } from '../../../core/services/localidad.service';
@@ -20,6 +20,7 @@ export class Mapa implements OnInit, AfterViewInit {
     private localidadService: LocalidadService,
     private cdr: ChangeDetectorRef,
     private rankingService: RankingService,
+    private zone: NgZone,
     @Inject(PLATFORM_ID) private platformId: Object // Inyectamos el ID de la plataforma
   ) { }
 
@@ -88,17 +89,23 @@ export class Mapa implements OnInit, AfterViewInit {
   public provinciaSeleccionada: string = '';
 
   private onProvinceClick(e: any, feature: any) {
+    console.log('Propiedades del GeoJSON:', feature.properties);
     // Extraemos el ID y el Nombre del GeoJSON (ajusta según tus propiedades)
     const idProvincia = feature.properties?.id || feature.properties?.code || feature.properties?.cod_prov;
     this.provinciaSeleccionada = feature.properties?.name || feature.properties?.nombre || 'Provincia';
 
     if (idProvincia) {
+      console.log(idProvincia);
       // Llamada al servicio que conectará con tu endpoint de Spring Boot
-      this.rankingService.getTopArtistasPorProvincia(idProvincia).subscribe({
+      this.rankingService.getTopArtistasPorProvincia(this.provinciaSeleccionada).subscribe({
         next: (artistas: any[]) => {
+          console.log(artistas)
           // Guardamos los 5 artistas que vienen del backend
-          this.topArtistas = artistas;
-          console.log(`Top 5 artistas de ${this.provinciaSeleccionada}:`, artistas);
+          this.zone.run(()=>{
+            this.topArtistas = artistas;
+            console.log(`Top 5 artistas de ${this.provinciaSeleccionada}:`, artistas);
+          });
+          
 
           this.cdr.detectChanges();
         },

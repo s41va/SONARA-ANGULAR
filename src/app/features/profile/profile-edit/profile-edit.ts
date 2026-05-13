@@ -38,6 +38,7 @@ export class ProfileEdit implements OnInit {
   this.authService.getUser().subscribe(user => {
     if (user) {
       this.usuario = user;
+      console.log(user);
       
       // Mapeo manual si los nombres de la API no coinciden exactos con el formulario
       this.profileForm.patchValue({
@@ -70,7 +71,7 @@ export class ProfileEdit implements OnInit {
   this.profileForm = this.fb.group({
     nombreCompleto: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    localidad: [null],        // Campo nuevo
+    localidadNombre: [null],        // Campo nuevo
     fechaNacimiento: [''],   // Campo nuevo
     bio: [''],
     locale: ['Español'],
