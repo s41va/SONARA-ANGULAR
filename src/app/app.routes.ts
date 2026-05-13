@@ -9,6 +9,7 @@ import { RegisterComponent } from './features/signup/signup';
 import { ProfileEdit } from './features/profile/profile-edit/profile-edit';
 import { Mapa } from './features/maps/mapa/mapa';
 import { TicketsComponent } from './features/tickets/tickets';
+import { ConciertoComponent } from './features/concierto/concierto';
 
 export const routes: Routes = [
     {
@@ -49,6 +50,11 @@ export const routes: Routes = [
     component: TicketsComponent,
     data: {role: 'USER'}
   },  
+  {
+    path: 'concierto',
+    component: ConciertoComponent,
+    data: {role: 'USER'}
+  },
   {
     path: 'forbidden',
     component: Forbidden, // Página 403

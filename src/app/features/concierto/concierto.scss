@@ -1,0 +1,233 @@
+/* USANDO TUS COLORES: #B9F6FF y #000 */
+
+.conciertos-page {
+  min-height: 100vh;
+  background-color: #B9F6FF;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SECCIÓN SUPERIOR (Filtros) */
+.top-section {
+  padding: 40px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  .main-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    text-align: center;
+    span { color: #fff; text-shadow: 2px 2px #000; }
+  }
+
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+
+    .filter-group {
+      flex: 1;
+      min-width: 200px;
+      
+      input {
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 50px;
+        border: 2px solid #00B8D4;
+        font-family: inherit;
+        font-weight: 600;
+        outline: none;
+        transition: transform 0.2s;
+
+        &:focus { transform: scale(1.02); }
+      }
+    }
+  }
+}
+
+.divider {
+  width: 100%;
+  opacity: 1 !important;
+  height: 3px;
+  background-color: #00B8D4;
+  border: none;
+}
+
+/* GRID DE CONCIERTOS */
+.bottom-section {
+  flex: 1;
+  padding: 40px 5%;
+
+  .conciertos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.concert-card {
+  background: #fff;
+  border: 3px solid #00B8D4;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 10px 10px 0px #000;
+  }
+
+  .card-media {
+    position: relative;
+    height: 180px;
+    img { width: 100%; height: 100%; object-fit: cover; }
+
+    .date-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #00B8D4;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+
+      .day { font-size: 1.4rem; font-weight: 800; }
+      .month { font-size: 0.7rem; font-weight: 700; }
+    }
+  }
+
+  .card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .artist-name { font-size: 1.5rem; font-weight: 800; }
+    .venue { font-weight: 600; font-size: 0.9rem; color: #444; }
+    .description { font-size: 0.85rem; color: #666; line-height: 1.4; height: 3.2em; overflow: hidden; }
+
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .price { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+
+      .btn-action {
+        background: #00B8D4;
+        color: #fff;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: 0.2s;
+
+        &:hover { background: #333; }
+      }
+    }
+  }
+}
+
+/* --- RESPONSIVE AJUSTADO --- */
+@media (max-width: 1000px) {
+  
+  /* 1. Ajuste de Cabecera y Títulos */
+  .top-section {
+    padding: 30px 20px;
+    gap: 20px;
+
+    .main-title {
+      font-size: 2.5rem; // Un poco más pequeño para que no rompa
+    }
+  }
+
+  /* 2. Filtros: De horizontal a vertical/stack */
+  .top-section .filters-container {
+    flex-direction: column; // Los filtros ahora van uno debajo de otro
+    width: 90%; // Ocupan casi todo el ancho
+    gap: 10px;
+
+    .filter-group {
+      width: 100%;
+      min-width: unset; // Eliminamos el mínimo para que no fuerce el ancho
+
+      input {
+        padding: 15px 25px; // Inputs más grandes para que sean fáciles de tocar (touch friendly)
+        font-size: 1rem;
+      }
+    }
+  }
+
+  /* 3. Grid: 1 Concierto por fila */
+  .bottom-section {
+    padding: 20px 15px;
+
+    .conciertos-grid {
+      grid-template-columns: 1fr; // Forzamos una sola columna
+      gap: 20px;
+      max-width: 600px; // Evitamos que la carta sea infinitamente ancha en tablets
+    }
+  }
+
+  /* 4. Tarjetas de Concierto: Ajustes de espacio */
+  .concert-card {
+    &:hover {
+      transform: translateY(-5px); // Hover menos agresivo en móviles para evitar saltos raros
+      rotate: 0deg; // Quitamos la rotación en móvil para que sea más legible
+    }
+
+    .card-media {
+      height: 200px; // Un poco más de imagen ya que solo hay una columna
+    }
+
+    .card-content {
+      padding: 15px;
+      
+      .artist-name {
+        font-size: 1.3rem;
+      }
+
+      .card-footer {
+        flex-direction: column; // El botón y el texto uno sobre otro si el espacio es muy crítico
+        align-items: flex-start;
+        gap: 15px;
+
+        .btn-action {
+          width: 100%; // Botón a ancho completo para que sea más "clicable"
+          padding: 12px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+/* Ajuste extra para móviles muy pequeños (iPhone SE, etc) */
+@media (max-width: 400px) {
+  .top-section .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .card-media .date-tag {
+    scale: 0.8; // Hacemos el tag de fecha un pelín más pequeño
+    left: 10px;
+    top: 10px;
+  }
+}
