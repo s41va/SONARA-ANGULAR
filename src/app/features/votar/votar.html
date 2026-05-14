@@ -1,0 +1,13 @@
+<div class="votar-card" *ngIf="artista">
+  <div class="info">
+    <h3>{{ artista.nombre }}</h3>
+    <p class="genero">{{ artista.genero }}</p>
+  </div>
+  
+  <div class="ranking">
+    <span class="votos-count">{{ artista.votosRanking }} votos</span>
+    <button (click)="votar()" [disabled]="cargando" class="btn-votar">
+      {{ cargando ? 'Enviando...' : '¡Votar!' }}
+    </button>
+  </div>
+</div>
