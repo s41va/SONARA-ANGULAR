@@ -13,6 +13,9 @@ import { SolicitudesAdminComponent } from './admin/pages/peticiones/peticiones/p
 import { SolicitudCrearComponent } from './features/peticiones-user/peticiones-user';
 import { VotarArtistaComponent } from './features/votar/votar';
 import { ListaArtistasComponent } from './features/votar/lista-artista-votar';
+import { ConciertoComponent } from './features/concierto/concierto';
+import { PagoExitoComponent } from './features/pago-exito/pago-exito';
+
 
 export const routes: Routes = [
     {
