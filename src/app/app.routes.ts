@@ -53,6 +53,11 @@ export const routes: Routes = [
     component: TicketsComponent,
     data: {role: 'USER'}
   },
+    {
+    path: 'pago-exito',
+    component: PagoExitoComponent,
+    data: {role: 'USER'}
+  },
   {
     path: 'concierto',
     component: ConciertoComponent,

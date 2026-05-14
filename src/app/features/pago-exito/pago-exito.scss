@@ -1,0 +1,208 @@
+@import 'variables';
+
+.success-wrapper {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.artista-highlight {
+  color: $secondary-color; // O cualquier color que contraste con el fondo negro
+  font-weight: 800;
+}
+
+.ticket {
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 20px;
+  /* Sombra inicial */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Transición para que el hover sea fluido */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+
+  /* Efecto Hover */
+  &:hover {
+    transform: translateY(-5px); // Se eleva un poquito al pasar el ratón
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .ticket-header {
+    padding: 40px 30px 20px;
+    text-align: center;
+    background: #1a1a1a; // Negro elegante
+    color: $primary-color !important;
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .event-msg {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+  }
+
+  .ticket-divider {
+    position: relative;
+    height: 20px;
+    background: white;
+
+    .notch {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #f4f4f9;
+      border-radius: 50%;
+      top: 0;
+
+      &.left { left: -10px; }
+      &.right { right: -10px; }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      right: 20px;
+      border-bottom: 2px dashed #eee;
+    }
+  }
+
+  .ticket-body {
+    padding: 20px 30px 40px;
+    text-align: center;
+
+    .qr-container {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .ticket-info {
+      margin-bottom: 30px;
+      .label {
+        display: block;
+        font-size: 0.7rem;
+        color: #999;
+        letter-spacing: 1px;
+      }
+      .value {
+        font-family: monospace;
+        font-size: 0.8rem;
+        color: #333;
+      }
+    }
+
+   .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      button {
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        /* Transición suave para todos los cambios (color, sombra, transformación) */
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+
+        &:active { 
+          transform: scale(0.95); // Efecto de hundirse al pulsar
+        }
+      }
+
+      .btn-primary {
+        background: #000;
+        color: $primary-color !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          background: #222; // Aclara un poco el negro
+          transform: translateY(-2px); // Sube un poquito
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          color: lighten($primary-color, 10%) !important; // Brillo extra al texto
+        }
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: $secondary-color !important;
+        text-decoration: underline;
+        border: 1px solid transparent;
+
+        &:hover {
+          background: rgba($secondary-color, 0.05); // Un toque de color de fondo muy sutil
+          text-decoration: none; // Quita el subrayado al pasar el ratón para dar dinamismo
+          transform: translateY(-1px);
+          border-color: rgba($secondary-color, 0.2); // Aparece un borde suave
+        }
+      }
+    }
+  }
+}
+
+
+
+// Ocultar botones al imprimir
+@media print {
+
+    @page {
+    margin: 0; // Esto elimina los márgenes del navegador donde se imprimen el título y la URL
+  }
+  
+  body {
+    margin: 1.6cm; // Esto añade margen interno para que el ticket no se pegue al borde del folio
+  }
+  /* 1. Ocultamos absolutamente todo en la página */
+  body * {
+    visibility: hidden;
+  }
+  .navbar-toggler[type="button"] {
+  display: none !important;
+}
+
+  /* 2. Hacemos que el contenedor del ticket y sus hijos sí sean visibles */
+  .success-wrapper, 
+  .success-wrapper *,
+  .ticket, 
+  .ticket * {
+    visibility: visible;
+  }
+
+  /* 3. Posicionamos el ticket arriba a la izquierda para que no flote en mitad del folio */
+  .success-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: white !important;
+  }
+
+  /* 4. Limpieza final de elementos internos que no queremos en papel */
+  .actions, 
+  .status-badge,
+  button {
+    display: none !important;
+  }
+
+  .ticket {
+    box-shadow: none !important;
+    border: 1px solid #eee;
+    margin: 0 auto;
+  }
+}

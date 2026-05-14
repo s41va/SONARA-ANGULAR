@@ -1,8 +1,9 @@
-/* USANDO TUS COLORES: #B9F6FF y #000 */
+@import "variables";
+/* USANDO TUS COLORES: $primary-color y #000 */
 
 .conciertos-page {
   min-height: 100vh;
-  background-color: #B9F6FF;
+  background-color: $primary-color;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
@@ -39,7 +40,7 @@
         width: 100%;
         padding: 12px 20px;
         border-radius: 50px;
-        border: 2px solid #00B8D4;
+        border: 2px solid $secondary-color;
         font-family: inherit;
         font-weight: 600;
         outline: none;
@@ -55,7 +56,7 @@
   width: 100%;
   opacity: 1 !important;
   height: 3px;
-  background-color: #00B8D4;
+  background-color: $secondary-color;
   border: none;
 }
 
@@ -75,7 +76,7 @@
 
 .concert-card {
   background: #fff;
-  border: 3px solid #00B8D4;
+  border: 3px solid $secondary-color;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
@@ -96,7 +97,7 @@
       position: absolute;
       top: 15px;
       left: 15px;
-      background: #00B8D4;
+      background: $secondary-color;
       color: #fff;
       padding: 8px 15px;
       border-radius: 12px;
@@ -129,7 +130,7 @@
       .price { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
 
       .btn-action {
-        background: #00B8D4;
+        background: $secondary-color;
         color: #fff;
         border: none;
         padding: 8px 18px;

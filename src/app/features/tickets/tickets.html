@@ -1,0 +1,49 @@
+<div class="modal-overlay" (click)="cerrar()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="cerrar()">×</button>
+    
+    <div class="ticket-header">
+      <img [src]="concierto?.artista?.foto || 'https://placehold.co/600x300'" alt="Banner Artista">
+      <div class="status-badge">Disponible</div>
+    </div>
+
+    <div class="ticket-body">
+      <div class="artist-info">
+        <small>ARTISTA</small>
+        <h2>{{ concierto?.artista?.nombre }}</h2>
+      </div>
+
+      <div class="event-details">
+        <div class="detail-item">
+          <span class="icon">📅</span>
+          <div>
+            <p>{{ concierto?.fechaHora | date:'EEEE, d MMMM' }}</p>
+            <small>{{ concierto?.fechaHora | date:'yyyy · HH:mm' }}h</small>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <span class="icon">📍</span>
+          <div>
+            <p>{{ concierto?.local }}</p>
+            <small>{{ concierto?.localidad?.nombreCiudad }}</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-section">
+        <div class="price-label">
+          <span>Entrada General</span>
+          <small>IVA incluido</small>
+        </div>
+        <div class="price-value">45.00€</div>
+      </div>
+    </div>
+
+    <div class="ticket-footer">
+      <button class="btn-confirm" (click)="comprar()">
+        PROCEDER AL PAGO
+      </button>
+    </div>
+  </div>
+</div>
