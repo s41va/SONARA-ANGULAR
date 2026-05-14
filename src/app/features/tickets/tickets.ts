@@ -1,146 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { ConciertoService } from '../../core/services/concierto.service';
-import { Concierto } from '../../core/models/concierto.models';
-import { Page } from '../../core/models/pagination.model';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StripeService } from '../../core/services/stripe.service'; 
 
 @Component({
-  selector: 'app-conciertos-list',
+  selector: 'app-tickets',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './tickets.html',
   styleUrls: ['./tickets.scss']
 })
-export class TicketsComponent implements OnInit {
-  conciertos: Concierto[] = [];
+export class TicketsComponent {
+  @Input() concierto: any | null = null; // O el tipo Concierto si lo tienes definido
+  @Output() close = new EventEmitter<void>();
 
-  // Parámetros de paginación
-  currentPage: number = 0;
-  pageSize: number = 5;
-  totalPages: number = 0;
-  totalElements: number = 0;
-  sortBy: string = 'fechaHora,asc';
-  // Almacenan el valor actual de cada filtro
-  filtroNombre: string = '';
-  filtroFecha: string = '';
-  filtroUbicacion: string = '';
+  // 1. Inyectamos el servicio que acabamos de crear
+  private stripeService = inject(StripeService);
 
-  // Arrays de datos
-  conciertosOriginales: Concierto[] = []; // Los datos que vienen del servicio (nunca se tocan)
-
-
-  constructor(private conciertoService: ConciertoService) { }
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.cargarConciertos();
-    }, 100);
-
+  cerrar(): void {
+    this.close.emit();
   }
 
-  cargarConciertos(): void {
-  this.conciertoService.fetchConciertosPay(
-    this.currentPage,
-    this.pageSize,
-    this.sortBy,
-    this.filtroNombre,    
-    this.filtroFecha,     
-    this.filtroUbicacion
-    )
-    .subscribe({
-      next: (response: Page<Concierto>) => {
-        this.conciertos = response.content;
-        this.conciertosOriginales = response.content; 
+  // 2. Convertimos el método en async para manejar la redirección
+  async comprar(): Promise<void> {
+    if (this.concierto && this.concierto.id) {
+      try {
+        console.log('Iniciando proceso de compra para:', this.concierto.artista.nombre);
         
-        this.totalPages = response.totalPages;
-        this.totalElements = response.totalElements;
-      },
-      error: (err) => console.error('Error cargando conciertos', err)
-    });
-}
-
-  cambiarPagina(nuevaPagina: number): void {
-    if (nuevaPagina >= 0 && nuevaPagina < this.totalPages) {
-      this.currentPage = nuevaPagina;
-      this.cargarConciertos();
+        // Llamamos al servicio de Stripe
+        await this.stripeService.redirectToCheckout(this.concierto.id);
+        
+      } catch (error) {
+        console.error('Error al procesar el pago:', error);
+        alert('Lo sentimos, hubo un error al conectar con la pasarela de pago. Inténtalo de nuevo.');
+      }
+    } else {
+      console.warn('No hay datos del concierto para procesar la compra');
     }
   }
-
-  onPageSizeChange(event: any): void {
-    this.pageSize = event.target.value;
-    this.currentPage = 0; // Reiniciar a la primera página al cambiar el tamaño
-    this.cargarConciertos();
-  }
-
-  // Filtro por Artista
-  filtrarPorArtista(event: any): void {
-    this.filtroNombre = event.target.value.toLowerCase();
-    this.aplicarFiltros();
-  }
-
-  // Filtro por Fecha
-  filtrarPorFecha(event: any): void {
-    this.filtroFecha = event.target.value; // El input date ya devuelve "YYYY-MM-DD"
-    this.aplicarFiltros();
-  }
-
-  // Filtro por Ubicación (Local o Ciudad)
-  filtrarPorUbicacion(event: any): void {
-    this.filtroUbicacion = event.target.value.toLowerCase();
-    this.aplicarFiltros();
-  }
-
-  // LA FUNCIÓN MAESTRA: Aplica todos los filtros a la vez
-  aplicarFiltros(): void {
-    this.conciertos = this.conciertosOriginales.filter(concierto => {
-
-      // Lógica para Artista
-      const cumpleArtista = concierto.artista?.nombre?.toLowerCase().includes(this.filtroNombre);
-
-      // Lógica para Ubicación (Busca en nombre del local Y en la ciudad)
-      const datosUbicacion = `${concierto.local} ${concierto.localidad?.nombreCiudad}`.toLowerCase();
-      const cumpleUbicacion = datosUbicacion.includes(this.filtroUbicacion);
-
-      // Lógica para Fecha
-      let cumpleFecha = true;
-      if (this.filtroFecha) {
-        // Formateamos la fecha del concierto para comparar solo el día (YYYY-MM-DD)
-        const fechaC = new Date(concierto.fechaHora).toISOString().split('T')[0];
-        cumpleFecha = (fechaC === this.filtroFecha);
-      }
-
-      // El concierto debe cumplir las tres condiciones
-      return cumpleArtista && cumpleUbicacion && cumpleFecha;
-    });
-
-    // Al filtrar, solemos querer volver a la página 1
-    this.currentPage = 0;
-  }
-  // En tu componente.ts
-
-ejecutarFiltros(artista: string, fecha: string, ubicacion: string): void {
-  // Actualizamos las variables de estado con los valores de los inputs
-  this.filtroNombre = artista.toLowerCase();
-  this.filtroFecha = fecha;
-  this.filtroUbicacion = ubicacion.toLowerCase();
-
-  // Ejecutamos la lógica de filtrado que ya teníamos
-  this.aplicarFiltros();
-}
-
-limpiarFiltros(artista: HTMLInputElement, fecha: HTMLInputElement, ubicacion: HTMLInputElement): void {
-  // Limpiamos los inputs físicamente
-  artista.value = '';
-  fecha.value = '';
-  ubicacion.value = '';
-
-  // Limpiamos las variables de estado
-  this.filtroNombre = '';
-  this.filtroFecha = '';
-  this.filtroUbicacion = '';
-
-  // Restauramos la lista original
-  this.conciertos = [...this.conciertosOriginales];
-  this.currentPage = 0;
-}
 }

@@ -1,3 +1,4 @@
+@import "variables";
 .tickets-container {
   padding: 20px;
   background-color: #f8fdff; // Fondo suave basado en el azul claro
@@ -43,7 +44,7 @@
 
   td.mat-cell {
     padding: 12px;
-    border-bottom: 1px solid #B9F6FF; // Separador azul muy claro
+    border-bottom: 1px solid $primary-color; // Separador azul muy claro
   }
 
   tr:hover {
@@ -81,7 +82,7 @@
 
 // Etiqueta de total de elementos
 .meta {
-  background: #B9F6FF;
+  background: $primary-color;
   padding: 8px 15px;
   border-radius: 20px;
   color: #005662;

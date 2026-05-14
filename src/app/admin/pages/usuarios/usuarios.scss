@@ -1,3 +1,4 @@
+@import "variables";
 .users-container {
   padding: 20px;
   background-color: #f8fdff; 
@@ -34,7 +35,7 @@
 
   td.mat-cell {
     padding: 12px;
-    border-bottom: 1px solid #B9F6FF; 
+    border-bottom: 1px solid $primary-color; 
   }
 
   tr:hover {
@@ -54,7 +55,7 @@
 }
 
 .meta {
-  background: #B9F6FF;
+  background: $primary-color;
   padding: 8px 15px;
   border-radius: 20px;
   color: #005662;

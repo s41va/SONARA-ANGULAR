@@ -10,6 +10,7 @@ import { ProfileEdit } from './features/profile/profile-edit/profile-edit';
 import { Mapa } from './features/maps/mapa/mapa';
 import { TicketsComponent } from './features/tickets/tickets';
 import { ConciertoComponent } from './features/concierto/concierto';
+import { PagoExitoComponent } from './features/pago-exito/pago-exito';
 
 export const routes: Routes = [
     {
@@ -51,6 +52,11 @@ export const routes: Routes = [
     data: {role: 'USER'}
   },  
   {
+    path: 'pago-exito',
+    component: PagoExitoComponent,
+    data: {role: 'USER'}
+  },
+    {
     path: 'concierto',
     component: ConciertoComponent,
     data: {role: 'USER'}

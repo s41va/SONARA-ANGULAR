@@ -1,0 +1,41 @@
+<div class="success-wrapper">
+  <div class="ticket">
+    <!-- Parte superior: Info del Evento -->
+    <div class="ticket-header">
+    <h1>¡Nos vemos en el show de <span class="artista-highlight">{{ artistaNombre }}</span>!</h1>
+      <p class="event-msg">Tu entrada se ha generado correctamente.</p>
+    </div>
+
+    <!-- Divisor con efecto de corte -->
+    <div class="ticket-divider">
+      <div class="notch left"></div>
+      <div class="notch right"></div>
+    </div>
+
+    <!-- Parte inferior: QR y Datos -->
+    <div class="ticket-body">
+      @if (sessionId) {
+        <div class="qr-container">
+          <qrcode 
+            [qrdata]="sessionId" 
+            [width]="200" 
+            [errorCorrectionLevel]="'M'"
+            [margin]="2">
+          </qrcode>
+        </div>
+        
+        <div class="ticket-info">
+          <span class="label">ID DE TRANSACCIÓN</span>
+          <span class="value">{{ sessionId }}</span>
+        </div>
+      } @else {
+        <div class="loader">Generando código...</div>
+      }
+
+      <div class="actions">
+        <button class="btn-primary" onclick="window.print()">Imprimir Ticket</button>
+        <button class="btn-secondary" routerLink="/">Volver a Sonara</button>
+      </div>
+    </div>
+  </div>
+</div>

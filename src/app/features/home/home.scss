@@ -1,10 +1,11 @@
+@import "variables";
 .main-wrapper {
     max-width: 1400px;
     margin: 15px auto;
     padding: 0 20px;
 
     &.bg-color-fondo {
-        background-color: #B9F6FF;
+        background-color: $primary-color;
     }
 
     h2{
