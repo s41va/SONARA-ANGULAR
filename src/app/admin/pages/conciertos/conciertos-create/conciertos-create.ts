@@ -37,7 +37,7 @@ export class ConciertosCreate implements OnInit {
 
   ngOnInit(): void {
     // Cargamos los datos para los selectores
-    this.artistaService.getArtistas().subscribe(data => this.artistas = data.content || data);
+    this.artistaService.getArtistas().subscribe(data => this.artistas = data);
     this.localidadService.getLocalidades().subscribe(data => this.localidades = data.content || data);
   }
 

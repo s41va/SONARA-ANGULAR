@@ -32,8 +32,8 @@ export class ArtistaService {
     return this.http.get<Artista>(`${this.baseUrl}/${id}`);
   }
 
-  getArtistas(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/artistas`);
+  getArtistas(): Observable<Artista[]> {
+    return this.http.get<Artista[]>(`${environment.apiUrl}/artistas`);
   }
 
   /**

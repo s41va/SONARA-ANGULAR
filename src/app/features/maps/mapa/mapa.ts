@@ -158,4 +158,7 @@ export class Mapa implements OnInit, AfterViewInit {
     this.router.navigate(['/peticiones/artista']);
   }
 
+  VotarArtista(){
+    this.router.navigate(['/votar/artista']);
+  }
 }

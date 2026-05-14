@@ -1,44 +1,55 @@
-
 <div class="admin-container">
-  <header class="header">
-    <h2>Solicitudes de Artistas</h2>
-    <span class="badge">Pendientes: {{ solicitudes.length }}</span>
-  </header>
+    <!-- ... header ... -->
 
-  <div *ngIf="loading" class="loader">Cargando...</div>
+    <!-- Loader: Solo si loading es estrictamente true -->
+    <div *ngIf="loading" class="loader">
+        <div class="spinner"></div> <!-- Puedes añadir un spinner CSS aquí -->
+        <p>Cargando solicitudes...</p>
+    </div>
 
-  <div class="table-container" *ngIf="!loading && solicitudes.length > 0">
-    <table class="solicitudes-table">
-      <thead>
-        <tr>
-          <th>Artista</th>
-          <th>Género</th>
-          <th>Descripción</th>
-          <th>Fecha</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let s of solicitudes">
-          <td>
-            <div class="artist-info">
-              <img [src]="s.fotoUrl || 'assets/default-avatar.png'" alt="Foto">
-              <strong>{{ s.nombreArtista }}</strong>
-            </div>
-          </td>
-          <td>{{ s.generoSugerido || 'N/A' }}</td>
-          <td class="text-truncate">{{ s.descripcion }}</td>
-          <td>{{ s.fechaSolicitud | date:'dd/MM/yyyy' }}</td>
-          <td class="actions">
-            <button class="btn-approve" (click)="aprobar(s)">Aprobar</button>
-            <button class="btn-reject" (click)="rechazar(s.id)">Rechazar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Contenido principal: Solo si NO estamos cargando -->
+    <ng-container *ngIf="!loading">
 
-  <div *ngIf="!loading && solicitudes.length === 0" class="empty-state">
-    <p>No hay solicitudes pendientes por el momento.</p>
-  </div>
+        <!-- Tabla: Si hay datos -->
+        <div class="table-container" *ngIf="solicitudes.length > 0">
+            <table class="solicitudes-table">
+                <div class="table-container" *ngIf="!loading && solicitudes.length > 0">
+                    <table class="solicitudes-table">
+                        <thead>
+                            <tr>
+                                <th>Artista</th>
+                                <th>Género</th>
+                                <th>Descripción</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let s of solicitudes">
+                                <td>
+                                    <div class="artist-info">
+                                        <img [src]="s.fotoUrl || 'assets/default-avatar.png'" alt="Foto">
+                                        <strong>{{ s.nombreArtista }}</strong>
+                                    </div>
+                                </td>
+                                <td>{{ s.generoSugerido || 'N/A' }}</td>
+                                <td class="text-truncate">{{ s.descripcion }}</td>
+                                <td>{{ s.fechaSolicitud | date:'dd/MM/yyyy' }}</td>
+                                <td class="actions">
+                                    <button class="btn-approve" (click)="aprobar(s)">Aprobar</button>
+                                    <button class="btn-reject" (click)="rechazar(s.id)">Rechazar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </table>
+        </div>
+
+        <!-- Empty State: Si el array está vacío -->
+        <div *ngIf="solicitudes.length === 0" class="empty-state">
+            <p>No hay solicitudes pendientes por el momento.</p>
+        </div>
+
+    </ng-container>
 </div>

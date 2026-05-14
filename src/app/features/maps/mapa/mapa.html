@@ -1,11 +1,17 @@
 <div class="map-wrapper">
-  <div class="btn-solicitar">
-    <a (click)="SolicitarArtista()">Soliticitar Artista</a>
+  <div>
+    <div class="btn-solicitar">
+      <a (click)="SolicitarArtista()">Soliticitar Artista</a>
+    </div>
+    <div class="btn-votar">
+      <a (click)="VotarArtista()">Votar Artista</a>
+    </div>
   </div>
+
   <h2 class="map-title">EXPLORA LA ESCALA MUSICAL</h2>
 
-  <div class="dashboard-layout"> 
-    
+  <div class="dashboard-layout">
+
     <!-- SECCIÓN IZQUIERDA: RANKING GLOBAL (Top 10) -->
     <aside class="results-container global-ranking">
       <h3>🏆 Top 10 Global</h3>
@@ -18,7 +24,9 @@
           </div>
         </div>
       </div>
-      <ng-template #noGlobal><p>Cargando ranking...</p></ng-template>
+      <ng-template #noGlobal>
+        <p>Cargando ranking...</p>
+      </ng-template>
     </aside>
 
     <!-- SECCIÓN CENTRAL: MAPA -->

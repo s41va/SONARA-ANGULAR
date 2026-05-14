@@ -22,16 +22,15 @@ export class SolicitudesAdminComponent implements OnInit {
     this.loading = true;
     this.solicitudService.listarPendientes().subscribe({
       next: (data) => {
-        this.solicitudes = data;
+        this.solicitudes = data || [];
         this.loading = false;
         this.cdr.detectChanges();
-        
-        
-        
       },
       error: (err) => {
         console.error('Error al cargar solicitudes', err);
+        this.solicitudes = [];
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }

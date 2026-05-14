@@ -11,6 +11,8 @@ import { Mapa } from './features/maps/mapa/mapa';
 import { TicketsComponent } from './features/tickets/tickets';
 import { SolicitudesAdminComponent } from './admin/pages/peticiones/peticiones/peticiones';
 import { SolicitudCrearComponent } from './features/peticiones-user/peticiones-user';
+import { VotarArtistaComponent } from './features/votar/votar';
+import { ListaArtistasComponent } from './features/votar/lista-artista-votar';
 
 export const routes: Routes = [
     {
@@ -54,6 +56,13 @@ export const routes: Routes = [
   {
     path: 'peticiones/artista',
     component: SolicitudCrearComponent,
+    data: {role: 'USER'}
+  },  
+  {
+    path: 'votar',
+    children: [
+      {path: 'artista', component: ListaArtistasComponent}
+    ],
     data: {role: 'USER'}
   },  
   {
