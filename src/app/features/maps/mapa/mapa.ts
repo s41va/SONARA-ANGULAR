@@ -38,7 +38,7 @@ export class Mapa implements OnInit, AfterViewInit {
       // Pequeño timeout para asegurar que el DOM procesó el CSS
       setTimeout(() => {
         this.initMap(L);
-      }, 400);
+      }, 200);
     }
   }
 

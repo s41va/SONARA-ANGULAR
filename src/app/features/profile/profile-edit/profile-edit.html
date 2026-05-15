@@ -6,7 +6,7 @@
         <div class="profile-header-premium">
             <div class="foto-perfil-wrapper">
                 <div class="foto-circle-main">
-                    <img [src]="usuario.profileImage || 'assets/default-avatar.png'" alt="Foto Perfil">
+                    <img [src]="usuario.profileImage || 'assets/default-avatar.png'" alt="">
                     <label for="fileInput" class="upload-badge">
                         <i class="fas fa-camera"></i>
                     </label>
@@ -85,12 +85,12 @@
                 <!-- Columna Bio y Otros -->
                 <div class="col-md-5">
                     <div class="form-section">
-                        <h3 class="section-label">BIOGRAFÍA</h3>
+                        <h3 class="section-label-w">BIOGRAFÍA</h3>
                         <div class="textarea-pill">
                             <textarea formControlName="bio" placeholder="Cuéntanos algo sobre ti..."></textarea>
                         </div>
 
-                        <h3 class="section-label mt-4">PREFERENCIAS</h3>
+                        <h3 class="section-label-w mt-4">PREFERENCIAS</h3>
                         <div class="input-pill">
                             <span class="pill-icon">🌍</span>
                             <div class="pill-content">

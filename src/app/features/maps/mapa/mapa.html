@@ -1,18 +1,18 @@
 <div class="map-wrapper">
-  <div>
-    <div class="btn-solicitar">
-      <a (click)="SolicitarArtista()">Soliticitar Artista</a>
-    </div>
-    <div class="btn-votar">
-      <a (click)="VotarArtista()">Votar Artista</a>
-    </div>
+  <!-- BARRA DE ACCIONES SUPERIOR -->
+  <div class="action-bar">
+    <button class="btn-action btn-solicitar" (click)="SolicitarArtista()">
+      <span class="icon">➕</span> Solicitar Artista
+    </button>
+    <button class="btn-action btn-votar" (click)="VotarArtista()">
+      <span class="icon">🗳️</span> Votar Artista
+    </button>
   </div>
 
   <h2 class="map-title">EXPLORA LA ESCALA MUSICAL</h2>
 
   <div class="dashboard-layout">
-
-    <!-- SECCIÓN IZQUIERDA: RANKING GLOBAL (Top 10) -->
+    <!-- SECCIÓN IZQUIERDA: RANKING GLOBAL -->
     <aside class="results-container global-ranking">
       <h3>🏆 Top 10 Global</h3>
       <div *ngIf="topArtistasGlobal.length > 0; else noGlobal" class="artist-list">
@@ -24,9 +24,7 @@
           </div>
         </div>
       </div>
-      <ng-template #noGlobal>
-        <p>Cargando ranking...</p>
-      </ng-template>
+      <ng-template #noGlobal><p>Cargando ranking...</p></ng-template>
     </aside>
 
     <!-- SECCIÓN CENTRAL: MAPA -->
@@ -34,7 +32,7 @@
       <div id="map"></div>
     </div>
 
-    <!-- SECCIÓN DERECHA: RANKING PROVINCIAL (Dinámico) -->
+    <!-- SECCIÓN DERECHA: RANKING PROVINCIAL -->
     <aside class="results-container province-ranking" *ngIf="provinciaSeleccionada">
       <h3>📍 Top en {{ provinciaSeleccionada }}</h3>
       <div *ngIf="topArtistas.length > 0; else noArtistas" class="artist-list">
@@ -50,6 +48,5 @@
         <p class="no-data">No hay votos en esta provincia todavía.</p>
       </ng-template>
     </aside>
-
   </div>
 </div>

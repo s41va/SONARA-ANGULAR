@@ -71,4 +71,8 @@ export class ArtistaService {
   getArtistaByNombreApi(nombre: string): Observable<Artista> {
     return this.http.get<Artista>(`${this.baseUrl}/nombre/${nombre}`);
   }
+
+  votarArtista(artistaId: string): Observable<any> {
+    return this.http.put(`${environment.apiUrl}/ranking/votar/${artistaId}`, {});
+  }
 }

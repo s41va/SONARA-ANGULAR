@@ -13,7 +13,7 @@ $bg-light: #f8f9fa;
 }
 
 .profile-card-extra-wide {
-  background: white;
+  background: linear-gradient(135deg, #e0f2fe 50%, $secondary-color 100%);
   border-radius: 20px;
   width: 100%;
   max-width: 900px;

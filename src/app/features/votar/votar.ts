@@ -20,18 +20,27 @@ export class VotarArtistaComponent {
   constructor(private artistaService: ArtistaService) {}
 
   votar(): void {
-    if (this.cargando) return;
+  if (this.cargando) return;
 
-    this.cargando = true;
-    const updatePayload = { votosRanking: this.artista.votosRanking + 1 };
+  this.cargando = true;
 
-    this.artistaService.updateArtista(this.artista.id, updatePayload).subscribe({
-      next: (artistaActualizado) => {
-        this.artista = artistaActualizado;
-        this.votoRealizado.emit(this.artista);
-        this.cargando = false;
-      },
-      error: () => this.cargando = false
-    });
-  }
+  // Llamamos al nuevo método que creamos en el servicio
+  this.artistaService.votarArtista(this.artista.id.toString()).subscribe({
+    next: () => {
+      // Si el backend responde 200 OK, incrementamos visualmente o 
+      // podrías recargar el objeto si el backend te lo devolviera.
+      this.artista.votosRanking++; 
+      
+      this.votoRealizado.emit(this.artista);
+      this.cargando = false;
+      alert('¡Voto registrado con éxito!');
+    },
+    error: (err) => {
+      this.cargando = false;
+      // Aquí capturamos el error del "catch" de Java (ej. "Usuario no encontrado")
+      console.error('Error al votar:', err);
+      alert(err.error || 'Error al procesar el voto');
+    }
+  });
+}
 }

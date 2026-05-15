@@ -1,106 +1,154 @@
 $primary-cyan: #00bcd4;
+$secondary-purple: #673ab7; // Color complementario para el botón de votar
+$white: #ffffff;
+$complementary-color: #b8f1ff;
 
 :host {
   display: flex;
   justify-content: center;
-  width: 100%; // Le dice al padre flex que este componente ocupa todo el ancho
+  width: 100%;
 }
 
 .map-wrapper {
-  width: 95%; // Aquí decides qué tan ancho quieres el mapa (95% es bastante)
+  width: 95%;
+  display: flex; // Añadido para controlar mejor el flujo
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
 }
 
-.map-title {
-  margin-bottom: 20px;
-  color: #333;
-  text-align: center;
-  font-weight: bolder;
-}
+// NUEVA BARRA DE ACCIONES
+.action-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+  justify-content: center;
 
-#map {
-  height: 70vh; // 70% de la altura de la pantalla
-  width: 100%; // Ocupa el 100% de .map-wrapper
-  align-self: stretch; // FUERZA a que ignore el centrado del padre y se estire
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  background-color: white; // Fondo base mientras carga
-  z-index: 1;
-  cursor: grab;
-}
+  .btn-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 50px; // Estilo píldora más moderno
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: $white;
 
-#map:active {
-  cursor: grabbing;
-}
+    .icon {
+      font-size: 1.2rem;
+    }
 
-.btn-solicitar {
-  background-color: $primary-cyan;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-  color: white;
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
-  &:hover {
-    background-color: #f0f0f0;
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .btn-solicitar {
+    background: linear-gradient(135deg, $primary-cyan, #00acc1);
+
+    &:hover {
+      background: linear-gradient(135deg, #26c6da, $primary-cyan);
+    }
+  }
+
+  .btn-votar {
+    background: linear-gradient(135deg, $secondary-purple, #5e35b1);
+
+    &:hover {
+      background: linear-gradient(135deg, #7e57c2, $secondary-purple);
+    }
   }
 }
 
-.results-container {
-  margin-top: 30px;
+.map-title {
+  margin-bottom: 25px;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+// DISTRIBUCIÓN DEL DASHBOARD
+.dashboard-layout {
+  display: flex;
   width: 100%;
-  background: white;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.map-container {
+  flex: 2; // El mapa ocupa el doble de espacio que los rankings
+  min-width: 0;
+}
+
+#map {
+  height: 65vh;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background-color: $white;
+  z-index: 1;
+}
+
+.results-container {
+  flex: 0.5; // Rankings laterales más delgados
+  background: $white;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  max-height: 65vh;
+  overflow-y: auto;
 
   h3 {
     color: #2c3e50;
     margin-bottom: 20px;
-    border-bottom: 2px solid #3498db;
-    display: inline-block;
+    font-size: 1.2rem;
+    border-bottom: 3px solid $primary-cyan;
+    padding-bottom: 5px;
   }
 }
 
-.artist-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+// Ajuste del grid de artistas para que quepan en columnas laterales
+.results-container {
+  min-height: 200px; // Asegura un espacio mínimo
+  display: block !important;
+
+  .artist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
+
 
 .artist-card {
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 10px;
-  transition: transform 0.2s;
 
-  &:hover {
-    transform: translateY(-5px);
-    background: #e9ecef;
+  /* ... tus estilos base ... */
+  &.gold-border {
+    border-left: 4px solid #ffd700;
+  }
+}
+
+// Responsivo sencillo
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    flex-direction: column;
   }
 
-  .rank {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #3498db;
-    margin-right: 15px;
-  }
-
-  .artist-info {
-    strong {
-      font-size: 1.1rem;
-    }
-
-    p {
-      margin: 0;
-      color: #666;
-      font-size: 0.9rem;
-    }
+  .results-container,
+  .map-container {
+    width: 100%;
+    flex: none;
   }
 }

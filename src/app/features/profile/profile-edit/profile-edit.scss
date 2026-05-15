@@ -1,6 +1,6 @@
 @import "variables";
 // Variables de diseño (Tus modificaciones)
-$primary-color: #00bcd4; 
+//$primary-color: #00bcd4; 
 $bg-color: #f1f5f9;
 $text-main: #176873;
 $pill-bg: #ffffff;
@@ -15,7 +15,7 @@ $radius-md: 20px;
 .profile-card-modern {
   width: 95%;
   max-width: 1100px;
-  background: white;
+  background: linear-gradient(135deg, $pill-bg 30%, $secondary-color 80%);
   border-radius: $radius-xl;
   border: none;
   overflow: hidden;
@@ -27,7 +27,7 @@ $radius-md: 20px;
 
 .profile-header-premium {
   padding: 3rem 2.5rem;
-  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(135deg, $secondary-color 0%, $pill-bg 80%);
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -75,7 +75,7 @@ $radius-md: 20px;
 }
 
 .input-pill {
-  background: #f8fafc;
+  background: $primary-color;
   border-radius: $radius-md;
   padding: 0.8rem 1.5rem;
   display: flex;
@@ -102,7 +102,7 @@ $radius-md: 20px;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #94a3b8;
+      color: $primary-color-strong;
       font-weight: 700;
     }
 
@@ -162,7 +162,15 @@ $radius-md: 20px;
 
 .section-label {
   font-size: 0.85rem;
-  color: $primary-color;
+  color: $secondary-color;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.section-label-w{
+  font-size: 0.85rem;
+  color: $white;
   font-weight: 800;
   margin-bottom: 1.5rem;
   padding-left: 0.5rem;
