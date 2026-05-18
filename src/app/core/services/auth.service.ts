@@ -5,21 +5,20 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environments';
-import { Usuario } from '../models/usuario.model'; // Asegúrate de tener este modelo
+import { Usuario } from '../models/usuario.model'; 
 
 export interface AuthResponse {
   token: string;
-  usuario?: Usuario; // Opcional: por si tu API devuelve el usuario al loguear
+  usuario?: Usuario; 
   message: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly TOKEN_KEY = 'auth_token';
-  private readonly USER_KEY = 'auth_user'; // Clave para persistir el objeto usuario
+  private readonly USER_KEY = 'auth_user'; 
   private readonly isBrowser: boolean;
 
-  // Fuentes de datos reactivas (Subjects)
   private token$ = new BehaviorSubject<string | null>(null);
   private user$ = new BehaviorSubject<Usuario | null>(null);
 
@@ -30,7 +29,6 @@ export class AuthService {
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
 
-    // Al arrancar, recuperamos lo que haya en localStorage (solo si estamos en el navegador)
     if (this.isBrowser) {
       const savedToken = localStorage.getItem(this.TOKEN_KEY);
       const savedUser = localStorage.getItem(this.USER_KEY);
@@ -50,9 +48,6 @@ export class AuthService {
 
   // --- MÉTODOS DE ACCIÓN ---
 
-  /**
-   * Realiza el login y guarda tanto el token como el usuario (si viene en la respuesta)
-   */
   login(username: string, password: string): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${environment.apiUrl}/auth/authenticate`, { username, password })
@@ -66,7 +61,6 @@ export class AuthService {
       );
   }
 
-
   fetchUserProfile(): Observable<Usuario | null> {
     return this.http.get<Usuario>(`${environment.apiUrl}/profile/perfil`).pipe(
       tap(user => this.saveUser(user)),
@@ -75,6 +69,16 @@ export class AuthService {
         return of(null);
       })
     );
+  }
+
+  /* ─── NUEVO: PASO 1 (Solicitar correo de recuperación) ─── */
+  sendForgotPasswordEmail(email: string): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${environment.apiUrl}/auth/forgot`, { email });
+  }
+
+  /* ─── NUEVO: PASO 2 (Enviar token y nueva contraseña) ─── */
+  resetPassword(data: any): Observable<{ message: string; error?: string }> {
+    return this.http.post<{ message: string }>(`${environment.apiUrl}/auth/reset-password`, data);
   }
 
   logout(redirectTo: string = '/login'): void {
@@ -87,8 +91,7 @@ export class AuthService {
     this.router.navigate([redirectTo]);
   }
 
-
-  private saveToken(token: string): void {
+  public saveToken(token: string): void {
     if (this.isBrowser) {
       localStorage.setItem(this.TOKEN_KEY, token);
     }
@@ -102,19 +105,16 @@ export class AuthService {
     this.user$.next(user);
   }
 
-  // --- GETTERS REACTIVOS (Para componentes) ---
+  // --- GETTERS REACTIVOS ---
 
-  /** Devuelve el token actual */
   getToken(): string | null {
     return this.token$.value;
   }
 
-  /** Observable del usuario actual para usar en el perfil */
   getUser(): Observable<Usuario | null> {
     return this.user$.asObservable();
   }
 
-  /** Comprueba si hay una sesión activa */
   isLoggedIn(): Observable<boolean> {
     return this.token$.pipe(map((token) => token !== null));
   }
@@ -125,7 +125,6 @@ export class AuthService {
     const token = this.token$.value;
     if (!token) return null;
     try {
-      // Usamos b64DecodeUnicode para manejar caracteres especiales
       const payload = token.split('.')[1];
       const jsonPayload = decodeURIComponent(atob(payload).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);

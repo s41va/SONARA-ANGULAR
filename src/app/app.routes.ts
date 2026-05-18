@@ -15,13 +15,15 @@ import { VotarArtistaComponent } from './features/votar/votar';
 import { ListaArtistasComponent } from './features/votar/lista-artista-votar';
 import { ConciertoComponent } from './features/concierto/concierto';
 import { PagoExitoComponent } from './features/pago-exito/pago-exito';
-
+import { Oauth2RedirectComponent } from './features/oauth2-redirect/oauth2-redirect'; 
+import { ForgotPasswordComponent } from './features/forgot-password/forgot-password';
+import { ResetPasswordComponent } from './features/reset-password/reset-password';
 
 export const routes: Routes = [
-    {
+  {
     path: '',
-    pathMatch: 'full',           // evita que '' capture todo
-    component: Home, // Ruta inicial
+    pathMatch: 'full',           
+    component: Home, 
   },
   {
     path: 'admin',
@@ -56,7 +58,7 @@ export const routes: Routes = [
     component: TicketsComponent,
     data: {role: 'USER'}
   },
-    {
+  {
     path: 'pago-exito',
     component: PagoExitoComponent,
     data: {role: 'USER'}
@@ -65,7 +67,7 @@ export const routes: Routes = [
     path: 'concierto',
     component: ConciertoComponent,
     data: {role: 'USER'}
-    }, 
+  }, 
   {
     path: 'peticiones/artista',
     component: SolicitudCrearComponent,
@@ -77,13 +79,27 @@ export const routes: Routes = [
       {path: 'artista', component: ListaArtistasComponent}
     ],
     data: {role: 'USER'}
+  },
+  {
+    path: 'oauth2/redirect',
+    component: Oauth2RedirectComponent
   },  
+  /* ─── NUEVAS RUTAS DE RECUPERACIÓN ─── */
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent
+  },
+  /* ─────────────────────────────────── */
   {
     path: 'forbidden',
-    component: Forbidden, // Página 403
+    component: Forbidden, 
   },
   {
     path: '**',
-    component: Error404, // Ruta comodín 404
+    component: Error404, 
   },
 ];
