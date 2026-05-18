@@ -1,16 +1,99 @@
 {
+  "GENERAL":{
+    "CANCEL": "Cancelar",
+    "SAVE": "Guardar Cambios"
+  },
   "NAVBAR": {
     "HOME": "Inicio",
     "MAP": "Mapa",
+    "TICKETS": "Conciertos",
+    "LOGOUT":"Cerrar sesión",
     "PROFILE": "Perfil"
   },
   "LOGIN": {
     "TITLE": "Iniciar Sesión",
-    "USER": "Usuario",
+    "USERNAME": "Nombre de Usuario",
     "PASS": "Contraseña",
-    "LOGOUT": "Cerrar sesión"
+    "FORGOTPASS": "¿Olvidaste la Contraseña?",
+    "LOGOUT": "Cerrar sesión",
+    "REGISTER": "Registrarse",
+    "SONARALOGIN": "Inicia Sesión en Sonara",
+    "ACCOUNT": "¿Tienes una Cuenta?",
+    "NOTACCOUNT": "¿No tienes una Cuenta?"
   },
   "ADMIN": {
-    "MANAGE": "Gestión"
+    "MANAGE": "Gestión",
+    "USERS": "Gestionar Usuarios",
+    "MANAGEUSER": "Administration de Usuarios",
+    "MANAGEARTIST":"Administracion de Artistas",
+    "MANAGECONCERTS": "Administration de Conciertos",
+    "TICKETS": "Administrar Conciertos/Eventos",
+    "ARTIST": "Administrar Artistas",
+    "PETITION": "Administrar Peticiones Artistas",
+    "SHOW": "Ver",
+    "EDIT": "Editar",
+    "DELETE": "Borrar",
+    "NEWUSER": "Nuevo Usuario",
+    "NEWCONCERT": "Nuevo Concierto",
+    "NEWARTIST":"Nuevo Artista",
+    "NAME": "Nombre",
+    "ID": "ID",
+    "DATE": "Registro",
+    "EMAIL": "Email",
+    "PHONE": "Teléfono",
+    "LOCAL": "Localidad",
+    "TIME": "Fecha/Hora",
+    "GENRE": "Genero",
+    "VOTES": "Votos",
+    "ACTIONS": "Acciones",
+    "DECLINE": "Rechazar",
+    "APROVE": "Aprobar",
+    "DESCRIPTION":"Descripcion"
+  },
+  "HOME":{
+    "PICS":"Fotos Destacadas",
+    "ARTISTS":"Artistas Emergentes",
+    "EVENTS":"Eventos"
+  },
+  "MAPCONTROLLER": {
+    "EXPLORE": "EXPLORA LA ESCALA MUSICAL",
+    "PETITION": "Solicitar Artista",
+    "VOTE": "Votar Artista"
+  },
+  "TICKETS":{
+    "EVENTS": "PRÓXIMOS EVENTOS",
+    "FAVORITE": "Encuentra tu música favorita",
+    "ARTIST":"Artista",
+    "CITY": "Ciudad"
+  },
+  "PROFILE": {
+    "INFORMATION": "INFORMACION DEL USUARIO",
+    "EDIT": "Editar Usuario",
+    "NAME": "Nombre",
+    "ID": "ID Usuario",
+    "BIO":"BIOGRAFÍA",
+    "LIKINGS": "GUSTOS",
+    "DATE": "Fecha de Nacimiento",
+    "PHONE": "Teléfono",
+    "LOCAL": "Localidad",
+    "LOCATIONPHRASE": "Seleccione una ciudad...",
+    "LANGUAGE": "Idioma",
+    "STATE": "Estado",
+    "MEMBER": "Miembro desde",
+    "PERSONAL": "Datos Personales",
+    "USERNAME":"Nombre de Usuario",
+    "PREFERENCES":"Preferencias",
+    "MANAGE": "Gestiona tu información personal y preferencias",
+    "CONFIGURATION": "Configuracion de Perfil"
+  },
+  "PETICIONES":{
+    "TITLE": "Postular Artista",
+    "INFO":"Envía la información para que sea revisada por nuestro equipo",
+    "PIC": "URL de la Foto",
+    "DESCRIPTION": "Descripción",
+    "GENRE": "Genero Musical",
+    "ARTISTNAME": "Nombre del Artista",
+    "PLACEHOLDERARTIST":"Cuéntanos un poco sobre el artista..."
   }
+
 }

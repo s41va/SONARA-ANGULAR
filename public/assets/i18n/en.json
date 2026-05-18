@@ -1,17 +1,98 @@
 {
+  "GENERAL":{
+    "CANCEL": "Cancel",
+    "SAVE": "Save Changes"
+  },
   "NAVBAR": {
     "HOME": "Home",
     "MAP": "Map",
+    "TICKETS": "Concerts",
     "LOGOUT": "Close Sesion",
     "PROFILE": "Profile"
   },
   "LOGIN": {
     "TITLE": "Log In",
-    "USER": "User",
+    "USERNAME": "Username",
     "PASS": "Password",
-    "LOGOUT": "Log Out"
+    "FORGOTPASS": "Forgot you password?",
+    "LOGOUT": "Log Out",
+    "REGISTER": "Register",
+    "SONARALOGIN": "Log in with Sonara",
+    "ACCOUNT": "Already have an account?",
+    "NOTACCOUNT": "Don't you have an Account?"
   },
   "ADMIN": {
-    "MANAGE": "Manage"
+    "MANAGE": "Manage",
+    "USERS": "Manage Users",
+    "MANAGEUSER": "User Administration",
+    "MANAGEARTIST":"Artist Administration",
+    "MANAGECONCERTS": "Concerts Administration",
+    "TICKETS": "Manage Concerts/Events",
+    "ARTIST": "Manage Artists",
+    "PETITION": "Manage Artists Petitions",
+    "SHOW": "Details",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "NEWUSER": "Add User",
+    "NEWCONCERT": "Add Concert",
+    "NEWARTIST":"New Artist",
+    "NAME": "Name",
+    "ID": "ID",
+    "DATE": "Registered",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "LOCAL": "City",
+    "TIME": "DATE/HOUR",
+    "GENRE": "Genre",
+    "VOTES": "Votes",
+    "ACTIONS": "Actions",
+    "DECLINE": "Decline",
+    "APROVE": "Aprove",
+    "DESCRIPTION":"Description"
+  },
+  "HOME": {
+    "PICS": "Featured Photos",
+    "ARTISTS": "Emerging Artists",
+    "EVENTS": "Events"
+  },
+  "MAPCONTROLLER": {
+    "EXPLORE": "EXPLORE THE MUSICAL SCALE",
+    "PETITION": "Request Artist",
+    "VOTE": "Vote Artist"
+  },
+  "TICKETS":{
+    "EVENTS": "NEXT EVENTS",
+    "FAVORITE": "Find your Favorites Artists ",
+    "ARTIST":"Artist",
+    "CITY": "City"
+  },
+  "PROFILE": {
+    "INFORMATION": "USER INFORMATION",
+    "EDIT": "Edit User",
+    "NAME": "Name",
+    "ID": "User ID",
+    "BIO": "BIOGRAPHY",
+    "LIKINGS": "INTERESTS",
+    "DATE": "Date of Birth",
+    "PHONE": "Phone Number",
+    "LOCAL": "Location",
+    "LOCATIONPHRASE": "select a location...",
+    "LANGUAGE": "Language",
+    "STATE": "Status",
+    "MEMBER": "Member since",
+    "PERSONAL": "Personal Data",
+    "USERNAME":"Username",
+    "PREFERENCES":"Preferences",
+    "MANAGE": "Manage your personal information and preferences",
+    "CONFIGURATION": "Profile configuration"
+  },
+  "PETICIONES": {
+    "TITLE": "Submit Artist",
+    "INFO": "Submit the information to be reviewed by our team",
+    "PIC": "Photo URL",
+    "DESCRIPTION": "Description",
+    "GENRE": "Musical Genre",
+    "ARTISTNAME": "Artist Name",
+    "PLACEHOLDERARTIST": "Talk us about the Artist..."
   }
 }

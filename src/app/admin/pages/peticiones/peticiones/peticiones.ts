@@ -1,10 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { SolicitudArtistaCreateDTO, SolicitudArtistaDTO, SolicitudArtistaService, SolicitudArtistaUpdateDTO } from '../../../../core/services/peticiones.service';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-solicitudes-admin',
   standalone: true,
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, TranslateModule],
   templateUrl: './peticiones.html',
   styleUrls: ['./peticiones.scss']
 })

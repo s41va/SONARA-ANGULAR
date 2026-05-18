@@ -17,11 +17,11 @@
                     <table class="solicitudes-table">
                         <thead>
                             <tr>
-                                <th>Artista</th>
-                                <th>Género</th>
-                                <th>Descripción</th>
-                                <th>Fecha</th>
-                                <th>Acciones</th>
+                                <th>{{"ADMIN.ARTIST" | translate}}</th>
+                                <th>{{"ADMIN.GENRE" | translate}}</th>
+                                <th>{{"ADMIN.DESCRIPTION" | translate}}</th>
+                                <th>{{"ADMIN.DATE" | translate}}</th>
+                                <th>{{"ADMIN.ACTIONS" | translate}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,8 +36,8 @@
                                 <td class="text-truncate">{{ s.descripcion }}</td>
                                 <td>{{ s.fechaSolicitud | date:'dd/MM/yyyy' }}</td>
                                 <td class="actions">
-                                    <button class="btn-approve" (click)="aprobar(s)">Aprobar</button>
-                                    <button class="btn-reject" (click)="rechazar(s.id)">Rechazar</button>
+                                    <button class="btn-approve" (click)="aprobar(s)">{{"ADMIN.APROVE" | translate}}</button>
+                                    <button class="btn-reject" (click)="rechazar(s.id)">{{"ADMIN.DECLINE" | translate}}</button>
                                 </td>
                             </tr>
                         </tbody>

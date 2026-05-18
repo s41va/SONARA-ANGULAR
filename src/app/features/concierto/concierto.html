@@ -1,16 +1,16 @@
 <div class="conciertos-page">
   <section class="top-section">
     <div class="center-group">
-      <h1 class="main-title">PRÓXIMOS <span>EVENTOS</span></h1>
-      <p class="subtitle">Encuentra tu música favorita</p>
+      <h1 class="main-title">{{"TICKETS.EVENTS" | translate}}</h1>
+      <p class="subtitle">{{"TICKETS.FAVORITE" | translate}}</p>
     </div>
 
     <div class="filters-container">
       <div class="filter-group">
-        <input #n type="text" placeholder="Artista..." (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #n type="text" placeholder="{{'TICKETS.ARTIST' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
       <div class="filter-group">
-        <input #u type="text" placeholder="Ciudad..." (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #u type="text" placeholder="{{'TICKETS.CITY' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
       <div class="filter-group">
         <input #f type="date" (input)="onFilterChange(n.value, f.value, u.value)">

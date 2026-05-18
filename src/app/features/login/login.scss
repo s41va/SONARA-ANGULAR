@@ -70,8 +70,8 @@
                 border-radius: 12px;
                 font-weight: 600;
                 cursor: pointer;
-                transition: 0.3s ease;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: 0.3s;
+                text-decoration: none;
 
                 &:hover {
                     background-color: #f0f0f0;
@@ -155,6 +155,8 @@
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
+            text-decoration: none !important;
+            color:black ;
 
             &:hover {
                 background-color: #f0f0f0;

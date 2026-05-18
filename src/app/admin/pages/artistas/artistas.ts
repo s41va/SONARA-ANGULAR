@@ -15,6 +15,7 @@ import { MatSort } from '@angular/material/sort';
 
 // Asumiendo que crearás este servicio
 import { ArtistaService } from '../../../core/services/artistas.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-artistas',
@@ -24,6 +25,7 @@ import { ArtistaService } from '../../../core/services/artistas.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    TranslateModule,
     RouterLink
   ],
   templateUrl: './artistas.html',

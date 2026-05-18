@@ -59,7 +59,7 @@
   .detail-item {
     display: flex; gap: 15px; align-items: center;
     .icon { font-size: 1.2rem; }
-    p { margin: 0; color: #eee; font-weight: 500; }
+    p { margin: 0; color: black; font-weight: 500; }
     small { color: #888; }
   }
 }
@@ -82,7 +82,7 @@
   padding: 20px;
   .btn-confirm {
     width: 100%; padding: 16px;
-    background: $secondary-color; color: white;
+    background: $secondary-color; color: black;
     border: none; border-radius: 12px;
     font-weight: bold; font-size: 1rem;
     cursor: pointer; transition: transform 0.2s;

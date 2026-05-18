@@ -1,9 +1,9 @@
 <section class="tickets-container">
     <div class="title-row">
-        <h2>Administración de Conciertos</h2>
+        <h2>{{"ADMIN.MANAGECONCERTS" | translate}}</h2>
         <div class="actions">
             <a routerLink="/admin/concierto/new" class="btn btn-cyan">
-                <i class="bi bi-ticket-perforated"></i> Nuevo Concierto
+                <i class="bi bi-ticket-perforated"></i>{{"ADMIN.NEWCONCERT" | translate}} 
             </a>
             <span class="meta">Total: <strong>{{ totalElements }}</strong></span>
         </div>
@@ -19,37 +19,37 @@
         <table mat-table [dataSource]="dataSource" matSort class="tickets-table">
 
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"ADMIN.ID" | translate}}</th>
                 <td mat-cell *matCellDef="let c">{{ c.id }}</td>
             </ng-container>
 
             <ng-container matColumnDef="artista_nombre">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Artista</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"ADMIN.ARTIST" | translate}}</th>
                 <td mat-cell *matCellDef="let c">
                     <strong>{{ c.nombre }}</strong>
-                    <small class="d-block text-muted">Nombre: {{ c.artista.nombre }}</small>
+                    <small class="d-block text-muted">{{"ADMIN.NAME" | translate}}: {{ c.artista.nombre }}</small>
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="fecha_hora">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha y Hora</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"ADMIN.TIME" | translate}}</th>
                 <td mat-cell *matCellDef="let c">{{ c.fechaHora | date:'medium' }}</td>
             </ng-container>
 
             <ng-container matColumnDef="local">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Local/Recinto</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"ADMIN.LOCAL" | translate}}</th>
                 <td mat-cell *matCellDef="let c">{{ c.local }}</td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <th mat-header-cell *matHeaderCellDef>{{"ADMIN.ACTIONS" | translate}}</th>
                 <td mat-cell *matCellDef="let c">
                     <div class="btn-group btn-group-sm">
-                        <a [routerLink]="['/admin/concierto', c.id]" class="btn btn-outline-info">Ver</a>
-                        <a [routerLink]="['/admin/concierto', c.id, 'edit']" class="btn btn-outline-primary">Editar</a>
+                        <a [routerLink]="['/admin/concierto', c.id]" class="btn btn-outline-info">{{"ADMIN.SHOW" | translate}}</a>
+                        <a [routerLink]="['/admin/concierto', c.id, 'edit']" class="btn btn-outline-primary">{{"ADMIN.EDIT" | translate}}</a>
                         <button type="button" class="btn btn-outline-danger"
                             (click)="deleteConcierto(c.id, c.artistaNombre)">
-                            Borrar
+                            {{"ADMIN.DELETE" | translate}}
                         </button>
                     </div>
                 </td>

@@ -7,11 +7,12 @@ import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 
 import { ConciertoService } from '../../../core/services/concierto.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-conciertos',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, RouterLink],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, RouterLink, TranslateModule],
   templateUrl: './conciertos.html',
   styleUrl: './conciertos.scss'
 })

@@ -3,11 +3,12 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Usuario } from '../../core/models/usuario.model';
 import { AuthService } from '../../core/services/auth.service';
 import {Router, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './profile.html',
   styleUrls: ['./profile.scss']
 })

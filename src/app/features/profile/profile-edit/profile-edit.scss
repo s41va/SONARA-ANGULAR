@@ -147,15 +147,15 @@ $radius-md: 20px;
   transition: 0.3s;
   
   &.btn-primary {
-    background: $primary-color;
-    color: white;
+    background: $secondary-color;
+    color: black;
     &:hover { background: darken($primary-color, 10%); }
     &:disabled { opacity: 0.5; }
   }
 
   &.btn-light {
     background: #e2e8f0;
-    color: #64748b;
+    color: black;
     &:hover { background: #cbd5e1; }
   }
 }

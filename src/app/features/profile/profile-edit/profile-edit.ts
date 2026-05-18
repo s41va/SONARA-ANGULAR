@@ -7,11 +7,12 @@ import { Router, RouterLink } from '@angular/router';
 import { LocalidadService } from '../../../core/services/localidad.service';
 import { Localidad } from '../../../core/models/localidad.model';
 import { UsuarioPerfil } from '../../../core/models/user-profile.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-perfil-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, TranslateModule],
   templateUrl: './profile-edit.html',
   styleUrls: ['./profile-edit.scss']
 })

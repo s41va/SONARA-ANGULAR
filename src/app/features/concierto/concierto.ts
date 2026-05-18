@@ -4,12 +4,13 @@ import { ConciertoService } from '../../core/services/concierto.service';
 import { Concierto } from '../../core/models/concierto.models';
 import { Subject, takeUntil, debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs';
 import { TicketsComponent } from '../tickets/tickets'; 
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-concierto',
   standalone: true,
   // 2. AÑADE TicketsComponent A LOS IMPORTS
-  imports: [CommonModule, TicketsComponent], 
+  imports: [CommonModule, TicketsComponent, TranslateModule], 
   templateUrl: './concierto.html',
   styleUrls: ['./concierto.scss']
 })

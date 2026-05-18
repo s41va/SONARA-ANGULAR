@@ -14,6 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 import { UsuarioService } from '../../../core/services/usuario.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-usuarios',
@@ -23,7 +24,8 @@ import { UsuarioService } from '../../../core/services/usuario.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ],
   templateUrl: './usuarios.html',
   styleUrl: './usuarios.scss',

@@ -5,10 +5,11 @@ import { LocalidadService } from '../../../core/services/localidad.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { RankingService } from '../../../core/services/ranking.service';
 import { Router, RouterLink } from '@angular/router';
+import { TranslateCompiler, TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-mapa',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './mapa.html',
   styleUrl: './mapa.scss',
 })

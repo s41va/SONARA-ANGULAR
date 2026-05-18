@@ -15,14 +15,13 @@
             </div>
 
             <div class="header-content">
-                <h2 class="premium-title">Configuración de Perfil</h2>
-                <p class="premium-subtitle">Gestiona tu información personal y preferencias</p>
+                <h2 class="premium-title">{{ "PROFILE.CONFIGURATION" | translate}}</h2>
+                <p class="premium-subtitle">{{"PROFILE.MANAGE" | translate}}</p>
             </div>
 
             <div class="header-actions">
-                <button type="button" (click)="cancelar()" class="btn-pill btn-light">Cancelar</button>
-                <button type="submit" [disabled]="profileForm.invalid" class="btn-pill btn-primary">Guardar
-                    Cambios</button>
+                <button type="button" (click)="cancelar()" class="btn-pill btn-light">{{ "GENERAL.CANCEL" | translate}}</button>
+                <button type="submit" [disabled]="profileForm.invalid" class="btn-pill btn-primary">{{ "GENERAL.SAVE" | translate}}</button>
             </div>
         </div>
 
@@ -33,21 +32,21 @@
                 <!-- Columna Datos -->
                 <div class="col-md-7">
                     <div class="form-section">
-                        <h3 class="section-label">DATOS PERSONALES</h3>
+                        <h3 class="section-label">{{ "PROFILE.PERSONAL" | translate}}</h3>
 
                         <div class="input-pill">
                             <span class="pill-icon"><i class="bi bi-person-fill"></i></span>
                             <div class="pill-content">
-                                <label>Nombre Completo</label>
+                                <label>{{ "PROFILE.USERNAME" | translate}}</label>
                                 <input type="text" formControlName="nombreCompleto" placeholder="Tu nombre...">
                             </div>
                         </div>
                         <!-- NUEVO: LOCALIDAD -->
                         <div class="input-pill">
                             <div class="pill-content">
-                                <label>Localidad / Ciudad</label>
+                                <label>{{ "PROFILE.LOCAL" | translate}}</label>
                                 <select formControlName="localidadNombre">
-                                    <option [ngValue]="null" disabled>Selecciona una ciudad...</option>
+                                    <option [ngValue]="null" disabled>{{"PROFILE.LOCATIONPHRASE" | translate}}</option>
                                     @for (loc of localidades; track loc.id) {
                                     <option [value]="loc.id">{{ loc.nombreCiudad }} ({{ loc.pais }})</option>
                                     }
@@ -58,7 +57,7 @@
                         <div class="input-pill">
                             <span class="pill-icon">📧</span>
                             <div class="pill-content">
-                                <label>Correo Electrónico</label>
+                                <label>Email</label>
                                 <input type="email" formControlName="email">
                             </div>
                         </div>
@@ -67,7 +66,7 @@
                         <div class="input-pill">
                             <span class="pill-icon"><i class="bi bi-calendar-event"></i></span>
                             <div class="pill-content">
-                                <label>Fecha de Nacimiento</label>
+                                <label>{{ "PROFILE.DATE" | translate}}</label>
                                 <input type="date" formControlName="fechaNacimiento">
                             </div>
                         </div>
@@ -75,7 +74,7 @@
                         <div class="input-pill">
                             <span class="pill-icon"><i class="bi bi-phone"></i></span>
                             <div class="pill-content">
-                                <label>Numero de Teléfono</label>
+                                <label>{{ "PROFILE.PHONE" | translate}}</label>
                                 <input type="number" formControlName="phoneNumber">
                             </div>
                         </div>
@@ -85,12 +84,12 @@
                 <!-- Columna Bio y Otros -->
                 <div class="col-md-5">
                     <div class="form-section">
-                        <h3 class="section-label-w">BIOGRAFÍA</h3>
+                        <h3 class="section-label-w">{{ "PROFILE.BIO" | translate}}</h3>
                         <div class="textarea-pill">
                             <textarea formControlName="bio" placeholder="Cuéntanos algo sobre ti..."></textarea>
                         </div>
 
-                        <h3 class="section-label-w mt-4">PREFERENCIAS</h3>
+                        <h3 class="section-label-w mt-4">{{ "PROFILE.PREFERENCES" | translate}}</h3>
                         <div class="input-pill">
                             <span class="pill-icon">🌍</span>
                             <div class="pill-content">

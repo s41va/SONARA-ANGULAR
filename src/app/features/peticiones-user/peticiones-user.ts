@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { SolicitudArtistaService, SolicitudArtistaCreateDTO } from '../../core/services/peticiones.service';
 import { CommonModule } from '@angular/common';
+import {TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-solicitud-crear',
   standalone: true,
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './peticiones-user.html',
   styleUrls: ['./peticiones-user.scss']
 })

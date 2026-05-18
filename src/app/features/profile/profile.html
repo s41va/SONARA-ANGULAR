@@ -11,10 +11,10 @@
       </div>
 
       <div class="header-title-container">
-        <h2 class="info-title">INFORMACIÓN DEL USUARIO</h2>
+        <h2 class="info-title">{{"PROFILE.INFORMATION" | translate}}</h2>
       </div>
       <div class="cuenta-centro py-3">
-        <a (click)="editarUsuario()" class="btn-edit">Editar Usuario</a>
+        <a (click)="editarUsuario()" class="btn-edit">{{"PROFILE.EDIT" | translate}}</a>
       </div>
     </div>
 
@@ -23,15 +23,15 @@
       <!-- Columna Izquierda -->
       <div class="grid-column">
         <div class="pill">
-          <span class="label">Nombre:</span>
+          <span class="label">{{"PROFILE.NAME" | translate}}</span>
           <span class="value">{{ usuario.nombreCompleto }}</span>
         </div>
         <div class="pill">
-          <span class="label">ID Usuario:</span>
+          <span class="label">{{"PROFILE.ID" | translate}}</span>
           <span class="value">#{{ usuario.id }}</span>
         </div>
         <div class="bio-box">
-          <span class="box-title">BIOGRAFÍA</span>
+          <span class="box-title">{{"PROFILE.BIO" | translate}}</span>
           <p class="box-text">{{ usuario.bio || 'Sin biografía disponible.' }}</p>
         </div>
       </div>
@@ -43,23 +43,23 @@
           <span class="value">{{ usuario.email }}</span>
         </div>
         <div class="pill">
-          <span class="label">Fecha de Nacimiento:</span>
+          <span class="label">{{"PROFILE.DATE" | translate}}</span>
           <span class="value">{{ usuario.fechaNacimiento }}</span>
         </div>
         <div class="pill">
-          <span class="label">Teléfono:</span>
+          <span class="label">{{"PROFILE.PHONE" | translate}}</span>
           <span class="value">{{ usuario.phoneNumber || 'No disponible' }}</span>
         </div>
         <div class="pill">
-          <span class="label">Localidad: </span>
+          <span class="label">{{"PROFILE.LOCAL" | translate}} </span>
           <span class="value">{{ usuario.localidad_id || 'No asignada' }}</span>
         </div>
         <div class="pill">
-          <span class="label">Idioma:</span>
+          <span class="label">{{"PROFILE.LANGUAGE" | translate}}</span>
           <span class="value">{{ usuario.locale || 'Español' }}</span>
         </div>
         <div class="pill">
-          <span class="label">Estado:</span>
+          <span class="label">{{"PROFILE.STATE" | translate}}</span>
           <span class="value">Activo</span>
         </div>
         <div class="pill">
@@ -71,7 +71,7 @@
 
     <!-- Pie: Gustos Full Width -->
     <div class="gustos-box">
-      <span class="box-title">Gustos</span>
+      <span class="box-title">{{"PROFILE.LIKINGS" | translate}}</span>
       <p class="box-text">Interesado en actividades musicales y eventos artísticos.</p>
     </div>
 

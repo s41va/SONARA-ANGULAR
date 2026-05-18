@@ -1,14 +1,14 @@
 <div class="form-container">
   <div class="form-card">
     <div class="form-header">
-      <h2>Postular Artista</h2>
-      <p>Envía la información para que sea revisada por nuestro equipo.</p>
+      <h2>{{ "PETICIONES.TITLE" | translate}}</h2>
+      <p>{{ "PETICIONES.INFO" | translate}}</p>
     </div>
 
     <form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()">
       
       <div class="form-group">
-        <label for="nombreArtista">Nombre del Artista *</label>
+        <label for="nombreArtista">{{ "PETICIONES.ARTISTNAME" | translate}}</label>
         <input 
           type="text" 
           id="nombreArtista" 
@@ -18,7 +18,7 @@
       </div>
 
       <div class="form-group">
-        <label for="generoSugerido">Género Musical</label>
+        <label for="generoSugerido">{{ "PETICIONES.GENRE" | translate}}</label>
         <input 
           type="text" 
           id="generoSugerido" 
@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-group">
-        <label for="fotoUrl">URL de la Foto</label>
+        <label for="fotoUrl">{{ "PETICIONES.PIC" | translate}}</label>
         <input 
           type="text" 
           id="fotoUrl" 
@@ -36,12 +36,12 @@
       </div>
 
       <div class="form-group">
-        <label for="descripcion">Descripción</label>
+        <label for="descripcion">{{ "PETICIONES.DESCRIPTION" | translate}}</label>
         <textarea 
           id="descripcion" 
           formControlName="descripcion" 
           rows="4" 
-          placeholder="Cuéntanos un poco sobre el artista..."></textarea>
+          placeholder= "{{'PETICIONES.PLACEHOLDERARTIST' | translate }}"></textarea>
       </div>
 
       <div class="form-actions">
