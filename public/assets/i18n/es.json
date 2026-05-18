@@ -1,7 +1,9 @@
 {
   "GENERAL":{
     "CANCEL": "Cancelar",
-    "SAVE": "Guardar Cambios"
+    "SAVE": "Guardar Cambios",
+    "GOBACK": "volver atrás",
+    "EMAIL": "Email"
   },
   "NAVBAR": {
     "HOME": "Inicio",
@@ -19,7 +21,8 @@
     "REGISTER": "Registrarse",
     "SONARALOGIN": "Inicia Sesión en Sonara",
     "ACCOUNT": "¿Tienes una Cuenta?",
-    "NOTACCOUNT": "¿No tienes una Cuenta?"
+    "NOTACCOUNT": "¿No tienes una Cuenta?",
+    "GOOGLELOGIN": "Iniciar Sesión con Google"
   },
   "ADMIN": {
     "MANAGE": "Gestión",

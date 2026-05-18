@@ -1,7 +1,9 @@
 {
   "GENERAL":{
     "CANCEL": "Cancel",
-    "SAVE": "Save Changes"
+    "SAVE": "Save Changes",
+    "GOBACK": "go back",
+    "EMAIL": "Email"
   },
   "NAVBAR": {
     "HOME": "Home",
@@ -19,7 +21,8 @@
     "REGISTER": "Register",
     "SONARALOGIN": "Log in with Sonara",
     "ACCOUNT": "Already have an account?",
-    "NOTACCOUNT": "Don't you have an Account?"
+    "NOTACCOUNT": "Don't you have an Account?",
+    "GOOGLELOGIN": "Log In with Google"
   },
   "ADMIN": {
     "MANAGE": "Manage",
