@@ -4,12 +4,12 @@
     
     <div class="ticket-header">
       <img [src]="concierto?.artista?.foto || 'https://placehold.co/600x300'" alt="Banner Artista">
-      <div class="status-badge">Disponible</div>
+      <div class="status-badge">{{"TICKETS.AVAILABLEP" | translate}}</div>
     </div>
 
     <div class="ticket-body">
       <div class="artist-info">
-        <small>ARTISTA</small>
+        <small>{{"GENERAL.ARTIST" | translate}}</small>
         <h2>{{ concierto?.artista?.nombre }}</h2>
       </div>
 
@@ -33,8 +33,8 @@
 
       <div class="price-section">
         <div class="price-label">
-          <span>Entrada General</span>
-          <small>IVA incluido</small>
+          <span>{{"TICKETS.TGENERAL" | translate}}</span>
+          <small>{{"TICKETS.IVA" | translate}}</small>
         </div>
         <div class="price-value">45.00€</div>
       </div>
@@ -42,7 +42,7 @@
 
     <div class="ticket-footer">
       <button class="btn-confirm" (click)="comprar()">
-        PROCEDER AL PAGO
+        {{"TICKETS.PAYMENT" | translate}}
       </button>
     </div>
   </div>

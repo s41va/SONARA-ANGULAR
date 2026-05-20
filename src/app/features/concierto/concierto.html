@@ -7,13 +7,13 @@
 
     <div class="filters-container">
       <div class="filter-group">
-        <input #n type="text" placeholder="{{'TICKETS.ARTIST' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #n input="[type=date]" placeholder="{{'TICKETS.ARTIST' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
       <div class="filter-group">
-        <input #u type="text" placeholder="{{'TICKETS.CITY' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #u input="[type=text]" placeholder="{{'TICKETS.CITY' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
       <div class="filter-group">
-        <input #f type="date" (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #f input="[type=date]" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
     </div>
   </section>
@@ -43,16 +43,16 @@
           <p class="description">{{ c?.descripcion }}</p>
           
           <div class="card-footer">
-            <span class="price">Entradas disponibles</span>
+            <span class="price">{{"TICKETS.AVAILABLE" | translate}}</span>
             <!-- 5. LLAMADA AL MÉTODO abrirTicket -->
-            <button class="btn-action" (click)="abrirTicket(c)">VER TICKETS</button>
+            <button class="btn-action" (click)="abrirTicket(c)">{{"TICKETS.SHOWTICKETS" | translate}}</button>
           </div>
         </div>
       </article>
     </div>
 
     <div *ngIf="!isLoading && conciertos.length === 0" class="no-results">
-      <p class="subtitle">No se encontraron conciertos con esos filtros.</p>
+      <p class="subtitle">{{"TICKETS.NOTFOUND" | translate}}</p>
     </div>
   </main>
 

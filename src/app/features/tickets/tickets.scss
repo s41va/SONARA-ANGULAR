@@ -59,8 +59,8 @@
   .detail-item {
     display: flex; gap: 15px; align-items: center;
     .icon { font-size: 1.2rem; }
-    p { margin: 0; color: black; font-weight: 500; }
-    small { color: #888; }
+    p { margin: 0; color: white; font-weight: 500; }
+    small { color: white; }
   }
 }
 
@@ -73,7 +73,7 @@
   align-items: center;
   .price-label {
     span { display: block; color: white; }
-    small { color: #666; }
+    small { color: white; }
   }
   .price-value { font-size: 1.5rem; font-weight: bold; color: $secondary-color; }
 }

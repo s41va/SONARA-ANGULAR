@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StripeService } from '../../core/services/stripe.service'; 
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tickets',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './tickets.html',
   styleUrls: ['./tickets.scss']
 })

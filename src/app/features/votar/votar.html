@@ -6,7 +6,9 @@
       </div>
     
       <div class="ranking">
-        <span class="votos-count">{{ artista.votosRanking }} votos</span>
+        <span class="votos-count">
+          <span class="numero">{{ artista.votosRanking }}</span> votos
+        </span>
         <button (click)="votar()" [disabled]="cargando" class="btn-votar">
           {{ cargando ? 'Enviando...' : '¡Votar!' }}
         </button>

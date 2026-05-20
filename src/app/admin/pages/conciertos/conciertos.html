@@ -45,7 +45,7 @@
                 <th mat-header-cell *matHeaderCellDef>{{"ADMIN.ACTIONS" | translate}}</th>
                 <td mat-cell *matCellDef="let c">
                     <div class="btn-group btn-group-sm">
-                        <a [routerLink]="['/admin/concierto', c.id]" class="btn btn-outline-info">{{"ADMIN.SHOW" | translate}}</a>
+                        <a [routerLink]="['/admin/concierto', c.id]" class="btn-outline-info-personalize">{{"ADMIN.SHOW" | translate}}</a>
                         <a [routerLink]="['/admin/concierto', c.id, 'edit']" class="btn btn-outline-primary">{{"ADMIN.EDIT" | translate}}</a>
                         <button type="button" class="btn btn-outline-danger"
                             (click)="deleteConcierto(c.id, c.artistaNombre)">

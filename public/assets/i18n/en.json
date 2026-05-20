@@ -3,7 +3,8 @@
     "CANCEL": "Cancel",
     "SAVE": "Save Changes",
     "GOBACK": "go back",
-    "EMAIL": "Email"
+    "EMAIL": "Email",
+    "ARTIST": "ARTIST"
   },
   "NAVBAR": {
     "HOME": "Home",
@@ -51,7 +52,8 @@
     "ACTIONS": "Actions",
     "DECLINE": "Decline",
     "APROVE": "Aprove",
-    "DESCRIPTION":"Description"
+    "DESCRIPTION":"Description",
+    "NOPETITION": "There are no pending requests at the moment."
   },
   "HOME": {
     "PICS": "Featured Photos",
@@ -67,7 +69,14 @@
     "EVENTS": "NEXT EVENTS",
     "FAVORITE": "Find your Favorites Artists ",
     "ARTIST":"Artist",
-    "CITY": "City"
+    "CITY": "City",
+    "SHOWTICKETS": "Show Tickets",
+    "NOTFOUND": "Could not find events with these filters.",
+    "AVAILABLE" :"AVAILABLE TICKETS",
+    "PAYMENT": "PROCEED TO PAYMENT",
+    "TGENERAL": "General Ticket",
+    "IVA": "IVA Included",
+    "AVAILABLEP": "AVAILABLE"
   },
   "PROFILE": {
     "INFORMATION": "USER INFORMATION",

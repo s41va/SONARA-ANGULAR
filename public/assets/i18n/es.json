@@ -3,7 +3,8 @@
     "CANCEL": "Cancelar",
     "SAVE": "Guardar Cambios",
     "GOBACK": "volver atrás",
-    "EMAIL": "Email"
+    "EMAIL": "Email",
+    "ARTIST": "ARTISTA"
   },
   "NAVBAR": {
     "HOME": "Inicio",
@@ -51,7 +52,8 @@
     "ACTIONS": "Acciones",
     "DECLINE": "Rechazar",
     "APROVE": "Aprobar",
-    "DESCRIPTION":"Descripcion"
+    "DESCRIPTION":"Descripcion",
+    "NOPETITION": "No hay solicitudes pendientes por el momento."
   },
   "HOME":{
     "PICS":"Fotos Destacadas",
@@ -67,7 +69,14 @@
     "EVENTS": "PRÓXIMOS EVENTOS",
     "FAVORITE": "Encuentra tu música favorita",
     "ARTIST":"Artista",
-    "CITY": "Ciudad"
+    "CITY": "Ciudad",
+    "SHOWTICKETS": "VER TICKETS",
+    "NOTFOUND": "No se encontraron conciertos con esos filtros.",
+    "AVAILABLE":"ENTRADAS DISPONIBLES",
+    "PAYMENT": "PROCEDER AL PAGO",
+    "TGENERAL": "Entrada General",
+    "IVA": "IVA Incluido",
+    "AVAILABLEP": "DISPONIBLE"
   },
   "PROFILE": {
     "INFORMATION": "INFORMACION DEL USUARIO",

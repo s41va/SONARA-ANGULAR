@@ -34,7 +34,7 @@
 
     <!-- SECCIÓN DERECHA: RANKING PROVINCIAL -->
     <aside class="results-container province-ranking" *ngIf="provinciaSeleccionada">
-      <h3>📍 Top en {{ provinciaSeleccionada }}</h3>
+      <h3>📍 Top {{ provinciaSeleccionada }}</h3>
       <div *ngIf="topArtistas.length > 0; else noArtistas" class="artist-list">
         <div *ngFor="let artista of topArtistas; let i = index" class="artist-card">
           <span class="rank">#{{ i + 1 }}</span>

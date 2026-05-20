@@ -20,6 +20,19 @@
   }
 }
 
+.btn-outline-info-personalize{
+  background-color: white;
+  color: #7C3AED;
+  border: 1px #7C3AED solid;
+  border-radius: 2px;
+  text-decoration: none;
+  text-align: center;
+  padding: 5px;
+}
+.btn-outline-info-personalize:hover{
+    background-color: #7C3AED;
+    color: white;
+}
 .users-table {
   width: 100%;
   background: white;
