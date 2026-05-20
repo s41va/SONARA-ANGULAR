@@ -4,7 +4,11 @@ import { AuthService } from '../../core/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { TranslateModule } from '@ngx-translate/core';
+=======
+import { environment } from '../../environments/environments';
+>>>>>>> 34973a5 (Arreglos)
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './login.scss',
 })
 export class Login {
-
+  googleLoginUrl = `${environment.apiUrl.replace('/api', '')}/oauth2/authorization/google`;
   username = '';
   password = '';
 
