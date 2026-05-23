@@ -6,15 +6,19 @@
     </div>
 
     <div class="filters-container">
+      
       <div class="filter-group">
-        <input #n input="[type=date]" placeholder="{{'TICKETS.ARTIST' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #n type="text" placeholder="{{'TICKETS.ARTIST' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
+
       <div class="filter-group">
-        <input #u input="[type=text]" placeholder="{{'TICKETS.CITY' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #u type="text" placeholder="{{'TICKETS.CITY' | translate }}" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
+
       <div class="filter-group">
-        <input #f input="[type=date]" (input)="onFilterChange(n.value, f.value, u.value)">
+        <input #f type="date" (input)="onFilterChange(n.value, f.value, u.value)">
       </div>
+
     </div>
   </section>
 
@@ -23,7 +27,7 @@
   <main class="bottom-section">
     <div *ngIf="isLoading" class="loading-state">
       <div class="spinner"></div>
-      <p>Sincronizando cartelera...</p>
+      <p class="subtitle">Sincronizando cartelera...</p>
     </div>
 
     <div class="conciertos-grid" *ngIf="!isLoading && conciertos.length > 0">

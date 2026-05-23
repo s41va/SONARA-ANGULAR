@@ -31,14 +31,13 @@
         </div>
       </div>
 
-      <div class="price-section">
+       <div class="price-section">
         <div class="price-label">
           <span>{{"TICKETS.TGENERAL" | translate}}</span>
           <small>{{"TICKETS.IVA" | translate}}</small>
         </div>
-        <div class="price-value">45.00€</div>
+      <div class="price-value">{{ concierto?.precio | number:'1.2-2' }}€</div>
       </div>
-    </div>
 
     <div class="ticket-footer">
       <button class="btn-confirm" (click)="comprar()">
