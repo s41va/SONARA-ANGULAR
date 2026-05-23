@@ -1,24 +1,45 @@
 <div class="success-wrapper">
   <div class="ticket">
-    <!-- Parte superior: Info del Evento -->
     <div class="ticket-header">
-    <h1>¡Nos vemos en el show de <span class="artista-highlight">{{ artistaNombre }}</span>!</h1>
+      <h1 class="main-text">¡Nos vemos en el show de <span class="artista-highlight">{{ artistaNombre }}</span>!</h1>
       <p class="event-msg">Tu entrada se ha generado correctamente.</p>
     </div>
 
-    <!-- Divisor con efecto de corte -->
     <div class="ticket-divider">
       <div class="notch left"></div>
       <div class="notch right"></div>
     </div>
 
-    <!-- Parte inferior: QR y Datos -->
     <div class="ticket-body">
+      
+      <div class="concierto-detalles-ticket">
+        <div class="detalles-title">
+          <span>🎫 DATOS DE LA ENTRADA PARA <span class="artista-highlight">{{ artistaNombre }}</span></span>
+        </div>
+
+        <div class="detalles-grid">
+          <div class="detalle-item">
+            <span class="label">📅 FECHA Y HORA</span>
+            <span class="value-highlight">{{ fechaConcierto }}</span>
+          </div>
+          
+          <div class="detalle-item">
+            <span class="label">📍 LUGAR / UBICACIÓN</span>
+            <span class="value-highlight">{{ lugarConcierto }}</span>
+          </div>
+          
+          <div class="detalle-item">
+            <span class="label">💰 PRECIO DE ENTRADA</span>
+            <span class="value-highlight">{{ precioConcierto }}</span>
+          </div>
+        </div>
+      </div>
+
       @if (sessionId) {
         <div class="qr-container">
           <qrcode 
             [qrdata]="sessionId" 
-            [width]="200" 
+            [width]="180" 
             [errorCorrectionLevel]="'M'"
             [margin]="2">
           </qrcode>
