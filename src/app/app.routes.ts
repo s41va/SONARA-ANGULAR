@@ -18,6 +18,7 @@ import { PagoExitoComponent } from './features/pago-exito/pago-exito';
 import { Oauth2RedirectComponent } from './features/oauth2-redirect/oauth2-redirect'; 
 import { ForgotPasswordComponent } from './features/forgot-password/forgot-password';
 import { ResetPasswordComponent } from './features/reset-password/reset-password';
+import { adminGuard } from './admin/guards/admin-guard';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [adminGuard], 
     loadChildren: () =>
       import('./admin/admin.routes').then(r => r.ADMIN_ROUTES)
   },
@@ -84,7 +86,6 @@ export const routes: Routes = [
     path: 'oauth2/redirect',
     component: Oauth2RedirectComponent
   },  
-  /* ─── NUEVAS RUTAS DE RECUPERACIÓN ─── */
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
@@ -93,7 +94,6 @@ export const routes: Routes = [
     path: 'reset-password',
     component: ResetPasswordComponent
   },
-  /* ─────────────────────────────────── */
   {
     path: 'forbidden',
     component: Forbidden, 
